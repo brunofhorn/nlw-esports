@@ -25,14 +25,14 @@ const Home: NextPage = () => {
         está aqui.
       </h1>
       <div className='grid grid-cols-6 gap-6 mt-16'>
-        {/* {games.map((game) => (
+        {games.map((game) => (
           <GameCard
             key={game.id}
             title={game.title}
             bannerUrl={game.bannerUrl}
             adsCount={game._count.ads}
           />
-        ))} */}
+        ))}
       </div>
       <Dialog.Root>
         {/* <CreateAdBanner />
