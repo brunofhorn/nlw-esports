@@ -6,12 +6,14 @@ import logo from '@assets/logo.svg';
 import Image from 'next/image';
 import { GameCard } from '../components/GameCard';
 import type { Game } from '../interfaces';
+import { CreateAdBanner } from '@components/CreateAdBanner';
+import { CreateAdModal } from '@components/CreateAdModal';
 
 const Home: NextPage = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios('/api/games').then(({ data }) => console.log(data));
+    axios('/api/games').then(({ data }) => setGames(data));
   }, []);
 
   return (
@@ -35,8 +37,8 @@ const Home: NextPage = () => {
         ))}
       </div>
       <Dialog.Root>
-        {/* <CreateAdBanner />
-        <CreateAdModal /> */}
+        <CreateAdBanner />
+        <CreateAdModal />
       </Dialog.Root>
     </div>
   );
