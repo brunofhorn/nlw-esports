@@ -1,0 +1,45 @@
+{
+  "short_name": "eSports",
+  "name": "NLW - eSports",
+  "description": "NLW - eSports",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "prefer_related_applications": false,
+  "theme_color": "#833ab4",
+  "background_color": "#ffffff",
+  "gcm_user_visible_only": true,
+  "icons": [
+    {
+      "src": "/images/maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/images/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/images/pwa-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/pwa-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
