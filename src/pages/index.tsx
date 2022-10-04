@@ -8,9 +8,19 @@ import { GameCard } from '../components/GameCard';
 import type { Game } from '../interfaces';
 import { CreateAdBanner } from '@components/CreateAdBanner';
 import { CreateAdModal } from '@components/CreateAdModal';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 
 const Home: NextPage = () => {
   const [games, setGames] = useState<Game[]>([]);
+  const [ref] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: 'free',
+    slides: {
+      perView: 6,
+      spacing: 15,
+    },
+  });
 
   useEffect(() => {
     axios('/api/games').then(({ data }) => setGames(data));
@@ -26,9 +36,10 @@ const Home: NextPage = () => {
         </span>{' '}
         está aqui.
       </h1>
-      <div className='grid grid-cols-6 gap-6 mt-16'>
-        {games.map((game) => (
+      <div className='grid grid-cols-6 gap-6 mt-16 keen-slider' ref={ref}>
+        {games.map((game, index) => (
           <GameCard
+            className={`keen-slider__slide number-slide${index}`}
             key={game.id}
             title={game.title}
             bannerUrl={game.bannerUrl}
