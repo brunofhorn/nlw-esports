@@ -18,9 +18,7 @@ const Home: NextPage = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios('/api/games').then(({ data }) => {
-      console.log(data);
-    });
+    axios('/api/games').then(({ data }) => setGames(data));
   }, []);
 
   return (
