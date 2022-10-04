@@ -5,21 +5,13 @@ import * as Dialog from '@radix-ui/react-dialog';
 import logo from '@assets/logo.svg';
 import Image from 'next/image';
 import { GameCard } from '../components/GameCard';
-
-interface Game {
-  id: string;
-  title: string;
-  bannerUrl: string;
-  _count: {
-    ads: number;
-  };
-}
+import type { Game } from '../interfaces';
 
 const Home: NextPage = () => {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    axios('/api/games').then(({ data }) => setGames(data));
+    axios('/api/games').then(({ data }) => console.log(data));
   }, []);
 
   return (
@@ -33,14 +25,14 @@ const Home: NextPage = () => {
         está aqui.
       </h1>
       <div className='grid grid-cols-6 gap-6 mt-16'>
-        {games.map((game) => (
+        {/* {games.map((game) => (
           <GameCard
             key={game.id}
             title={game.title}
             bannerUrl={game.bannerUrl}
             adsCount={game._count.ads}
           />
-        ))}
+        ))} */}
       </div>
       <Dialog.Root>
         {/* <CreateAdBanner />

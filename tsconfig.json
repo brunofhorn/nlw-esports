@@ -35,6 +35,9 @@
       "@styles/*": [
         "styles/*"
       ],
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
     }
   },
   "include": [
