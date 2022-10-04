@@ -8,6 +8,7 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log('PRISMA');
   const games: Game[] = await prisma.game.findMany({
     include: {
       _count: {
@@ -17,6 +18,8 @@ export default async function handler(
       },
     },
   });
+
+  console.log('GAMES: ', games);
 
   res.status(200).json(games);
 }
