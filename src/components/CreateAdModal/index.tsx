@@ -6,6 +6,7 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { Check, GameController } from 'phosphor-react';
 import { Input } from '../Form/Input';
 import { SelectInput } from '../Form/SelectInput';
+import { Label } from '@components/Form/Label';
 
 interface Game {
   id: string;
@@ -55,15 +56,13 @@ export function CreateAdModal() {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
-      <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
-        <Dialog.Title className='text-3xl font-black'>
+      <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white mt-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
+        <Dialog.Title className='text-2xl font-black'>
           Publique um anúncio
         </Dialog.Title>
         <form onSubmit={handleCreateAd} className='mt-8 flex flex-col gap-4'>
           <div className='flex flex-col gap-2'>
-            <label className='font-semibold' htmlFor='game'>
-              Qual o game?
-            </label>
+            <Label htmlFor='game' text='Qual o game?' />
             <SelectInput
               gameSelected={gameSelected}
               games={games}
@@ -71,9 +70,7 @@ export function CreateAdModal() {
             />
           </div>
           <div className='flex flex-col gap-2'>
-            <label className='font-semibold' htmlFor='name'>
-              Seu nome (ou nickname)
-            </label>
+            <Label htmlFor='name' text='Seu nome (ou nickname)' />
             <Input
               id='name'
               name='name'
@@ -82,9 +79,7 @@ export function CreateAdModal() {
           </div>
           <div className='grid grid-cols-2 gap-6'>
             <div className='flex flex-col gap-2'>
-              <label className='font-semibold' htmlFor='yearsPlaying'>
-                Joga há quantos anos?
-              </label>
+              <Label htmlFor='yearsPlaying' text='Joga há quantos anos?' />
               <Input
                 id='yearsPlaying'
                 name='yearsPlaying'
@@ -93,17 +88,13 @@ export function CreateAdModal() {
               />
             </div>
             <div className='flex flex-col gap-2'>
-              <label className='font-semibold' htmlFor='discord'>
-                Qual seu discord?
-              </label>
+              <Label htmlFor='discord' text='Qual seu discord?' />
               <Input id='discord' name='discord' placeholder='Usuario#8080' />
             </div>
           </div>
           <div className='flex gap-6'>
             <div className='flex flex-col gap-2'>
-              <label className='font-semibold' htmlFor='weekDays'>
-                Quando costuma jogar?
-              </label>
+              <Label htmlFor='weekDays' text='Quando costuma jogar?' />
               <ToggleGroup.Root
                 type='multiple'
                 className='grid grid-cols-4 gap-2'
@@ -176,9 +167,7 @@ export function CreateAdModal() {
               </ToggleGroup.Root>
             </div>
             <div className='flex flex-col gap-2 flex-1'>
-              <label className='font-semibold' htmlFor='hourStart'>
-                Qual horário do dia?
-              </label>
+              <Label htmlFor='hourStart' text='Qual horário do dia?' />
               <div className='grid grid-cols-2 gap-2'>
                 <Input
                   name='hourStart'

@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className='max-w-[1344px] mx-auto flex flex-col items-center my-20'>
+    <div className='max-w-[1344px] flex flex-col items-center my-20 mx-20'>
       <Image src={logo} alt='NLW eSports' />
       <h1 className='text-6xl text-white font-black mt-20'>
         Seu{' '}
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
           />
         ))}
       </div>
-      <Dialog.Root>
+      <Dialog.Root modal>
         <CreateAdBanner />
         <CreateAdModal />
       </Dialog.Root>
