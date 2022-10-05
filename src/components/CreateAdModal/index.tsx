@@ -7,6 +7,7 @@ import { Check, GameController } from 'phosphor-react';
 import { Input } from '../Form/Input';
 import { SelectInput } from '../Form/SelectInput';
 import { Label } from '@components/Form/Label';
+import { Toggle } from '@components/Form/Toggle';
 
 interface Game {
   id: string;
@@ -101,69 +102,48 @@ export function CreateAdModal() {
                 value={weekDays}
                 onValueChange={setWeekDays}
               >
-                <ToggleGroup.Item
-                  value='0'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('0') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Domingo'
-                >
-                  D
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='1'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('1') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Segunda'
-                >
-                  S
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='2'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('2') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Terça'
-                >
-                  T
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='3'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('3') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Quarta'
-                >
-                  Q
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='4'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('4') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Quinta'
-                >
-                  Q
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='5'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('5') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Sexta'
-                >
-                  S
-                </ToggleGroup.Item>
-                <ToggleGroup.Item
-                  value='6'
-                  className={`w-8 h-8 rounded ${
-                    weekDays.includes('6') ? 'bg-violet-500' : 'bg-zinc-900'
-                  }`}
-                  title='Sábado'
-                >
-                  S
-                </ToggleGroup.Item>
+                <Toggle
+                  value={'0'}
+                  weekDays={weekDays}
+                  title={'Domingo'}
+                  letter={'D'}
+                />
+                <Toggle
+                  value={'1'}
+                  weekDays={weekDays}
+                  title={'Segunda'}
+                  letter={'S'}
+                />
+                <Toggle
+                  value={'2'}
+                  weekDays={weekDays}
+                  title={'Terça'}
+                  letter={'T'}
+                />
+                <Toggle
+                  value={'3'}
+                  weekDays={weekDays}
+                  title={'Quarta'}
+                  letter={'Q'}
+                />
+                <Toggle
+                  value={'4'}
+                  weekDays={weekDays}
+                  title={'Quinta'}
+                  letter={'Q'}
+                />
+                <Toggle
+                  value={'5'}
+                  weekDays={weekDays}
+                  title={'Sexta'}
+                  letter={'S'}
+                />
+                <Toggle
+                  value={'6'}
+                  weekDays={weekDays}
+                  title={'Sábado'}
+                  letter={'S'}
+                />
               </ToggleGroup.Root>
             </div>
             <div className='flex flex-col gap-2 flex-1'>
