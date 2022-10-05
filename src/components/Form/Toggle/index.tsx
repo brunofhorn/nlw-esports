@@ -11,7 +11,7 @@ export function Toggle({ value, weekDays, title, letter }: ToggleProps) {
   return (
     <ToggleGroup.Item
       value={value}
-      className={`w-8 h-8 rounded ${
+      className={`text-xs w-6 h-6 rounded ${
         weekDays.includes(value) ? 'bg-violet-500' : 'bg-zinc-900'
       }`}
       title={title}

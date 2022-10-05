@@ -21,7 +21,7 @@ export function SelectInput({
       value={gameSelected}
       onValueChange={setGameSelected}
     >
-      <Select.Trigger className='bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500 flex items-start justify-between unset'>
+      <Select.Trigger className='bg-zinc-900 py-2 px-4 rounded text-sm placeholder:text-zinc-500 flex items-start justify-between unset'>
         <Select.Value placeholder='Selecione o game que deseja jogar' />
         <Select.Icon />
       </Select.Trigger>
