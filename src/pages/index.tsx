@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     mode: 'free',
     slides: {
       perView: 6,
-      spacing: 15,
+      spacing: 10,
     },
   });
 
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         </span>{' '}
         está aqui.
       </h1>
-      <div className='grid grid-cols-6 gap-6 mt-16 keen-slider' ref={ref}>
+      <div className='mt-16 keen-slider' ref={ref}>
         {games.map((game, index) => (
           <GameCard
             className={`keen-slider__slide number-slide${index}`}
