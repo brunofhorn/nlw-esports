@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { Game } from '../../interfaces';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../lib/prisma';
 
 export default async function handler(
   _req: NextApiRequest,
