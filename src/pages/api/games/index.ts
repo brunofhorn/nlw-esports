@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { Game } from '../../interfaces';
-import { prisma } from '../../lib/prisma';
+import type { Game } from '../../../interfaces';
+import { prisma } from '../../../lib/prisma';
 
 export default async function handler(
   _req: NextApiRequest,

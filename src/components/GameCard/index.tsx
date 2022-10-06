@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 interface GameCardProps {
   id: string;
   className?: string;
@@ -7,14 +8,13 @@ interface GameCardProps {
 }
 
 export function GameCard({ id, adsCount, bannerUrl, title }: GameCardProps) {
+  const router = useRouter();
+
   function handleRedirectToGame() {
-    // navigate(`games/${id}/ads`, {
-    //     state: {
-    //         title: name,
-    //         bannerUrl: bannerUrl,
-    //         adsCount: adsCount
-    //     }
-    // })
+    router.push({
+      pathname: '/game/[pid]',
+      query: { pid: id, title, bannerUrl },
+    });
   }
 
   return (
