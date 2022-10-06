@@ -1,18 +1,19 @@
-import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
+import type { NextPage } from 'next';
+import Image from 'next/image';
 import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
-import logo from '@assets/logo.svg';
-import Image from 'next/image';
-import { GameCard } from '../components/GameCard';
-import type { Game } from '../interfaces';
-import { CreateAdBanner } from '@components/CreateAdBanner';
-import { CreateAdModal } from '@components/CreateAdModal';
 import { CaretLeft, CaretRight } from 'phosphor-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperProps } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import logo from '@assets/logo.svg';
+import type { Game } from '@interfaces/index';
+import { GameCard } from '@components/GameCard';
+import { CreateAdBanner } from '@components/CreateAdBanner';
+import { CreateAdModal } from '@components/CreateAdModal';
+import { Loading } from '@components/Loading';
 
 const breakPointsConfig = {
   480: {
@@ -36,9 +37,12 @@ const breakPointsConfig = {
 const Home: NextPage = () => {
   const [swiper, setSwiper] = useState<SwiperProps>({} as SwiperProps);
   const [games, setGames] = useState<Game[]>([]);
+  const [loadingGames, setLoadingGames] = useState(true);
 
   useEffect(() => {
+    setLoadingGames(true);
     axios('/api/games').then(({ data }) => setGames(data));
+    setLoadingGames(false);
   }, []);
 
   return (
@@ -51,6 +55,7 @@ const Home: NextPage = () => {
         </span>{' '}
         está aqui.
       </h1>
+      <Loading load={loadingGames} />
       <div className='flex w-[100%] mt-16'>
         <button onClick={() => swiper.slidePrev()}>
           <CaretLeft size={48} className='text-zinc-500' />

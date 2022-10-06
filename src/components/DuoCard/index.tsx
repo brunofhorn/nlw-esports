@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { useState } from 'react';
 
 interface DuoCardProps {
   id: string;

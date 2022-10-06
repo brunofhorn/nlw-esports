@@ -4,8 +4,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { Check, GameController } from 'phosphor-react';
-import { Input } from '../Form/Input';
-import { Select } from '../Form/SelectInput';
+import { Input } from '@components/Form/Input';
+import { Select } from '@components/Form/SelectInput';
 import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
 
