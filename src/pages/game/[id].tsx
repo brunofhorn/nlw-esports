@@ -29,12 +29,12 @@ const Game: NextPage<Game> = (props) => {
   const { id, title, bannerUrl } = router.query as Game;
   const [ads, setAds] = useState<AdsParams[]>([]);
 
-  useEffect(() => {
-    async function loadAds() {
-      await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
-    }
+  const getAds = async () => {
+    await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
+  };
 
-    loadAds();
+  useEffect(() => {
+    getAds();
   }, [router.query]);
 
   return (

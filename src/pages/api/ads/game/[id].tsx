@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { convertMinutesAmountToHours } from 'utils/convertMinutesAmountToHoursString';
-import type { Game } from '../../../../interfaces';
 import { prisma } from '../../../../lib/prisma';
 
 export default async function adsHandler(
@@ -10,7 +9,6 @@ export default async function adsHandler(
   const { id } = req.query;
 
   if (typeof id !== 'string') {
-    throw new Error("Query param 'url' has to be of type string");
     return res.status(400).json([]);
   }
 

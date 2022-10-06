@@ -24,12 +24,12 @@ export function DuoCard({ data }: Props) {
 
   return (
     <li className='w-[100%] h-[84px] pl-5 flex justify-between items-center rounded-lg bg-[#2A2634] hover:bg-[#2a263483] overflow-hidden'>
-      <img
+      {/* <img
         className='w-12 h-12 rounded hidden md:block'
         src={`https://cdn.discordapp.com/avatars/${data.userId}/${data.bannerUrl}`}
         alt={data.username}
         title='Foto de Perfil'
-      />
+      /> */}
 
       <div className='flex justify-between flex-1 px-4'>
         <div className='flex flex-col text-xs w-[128px]'>
