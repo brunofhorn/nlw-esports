@@ -8,19 +8,34 @@ import { GameCard } from '../components/GameCard';
 import type { Game } from '../interfaces';
 import { CreateAdBanner } from '@components/CreateAdBanner';
 import { CreateAdModal } from '@components/CreateAdModal';
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
+import { CaretLeft, CaretRight } from 'phosphor-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperProps } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+const breakPointsConfig = {
+  480: {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  640: {
+    slidesPerView: 3,
+    spaceBetween: 20,
+  },
+  900: {
+    slidesPerView: 4,
+    spaceBetween: 20,
+  },
+  1100: {
+    slidesPerView: 5,
+    spaceBetween: 20,
+  },
+};
 
 const Home: NextPage = () => {
+  const [swiper, setSwiper] = useState<SwiperProps>({} as SwiperProps);
   const [games, setGames] = useState<Game[]>([]);
-  const [ref] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    mode: 'free',
-    slides: {
-      perView: 6,
-      spacing: 10,
-    },
-  });
 
   useEffect(() => {
     axios('/api/games').then(({ data }) => setGames(data));
@@ -36,16 +51,29 @@ const Home: NextPage = () => {
         </span>{' '}
         está aqui.
       </h1>
-      <div className='mt-16 keen-slider' ref={ref}>
-        {games.map((game, index) => (
-          <GameCard
-            className={`keen-slider__slide number-slide${index}`}
-            key={game.id}
-            title={game.title}
-            bannerUrl={game.bannerUrl}
-            adsCount={game._count.ads}
-          />
-        ))}
+      <div className='flex w-[100%] mt-16'>
+        <button onClick={() => swiper.slidePrev()}>
+          <CaretLeft size={48} className='text-zinc-500' />
+        </button>
+        <Swiper
+          onSwiper={(slider: any) => setSwiper(slider)}
+          breakpoints={breakPointsConfig}
+          style={{ zIndex: 0, height: 240 }}
+        >
+          {games.map((game) => (
+            <SwiperSlide key={game.id}>
+              <GameCard
+                id={game.id}
+                bannerUrl={game.bannerUrl}
+                title={game.title}
+                adsCount={game._count.ads}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <button onClick={() => swiper.slideNext()}>
+          <CaretRight size={48} className='text-zinc-500' />
+        </button>
       </div>
       <Dialog.Root modal>
         <CreateAdBanner />

@@ -5,7 +5,7 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 import { Check, GameController } from 'phosphor-react';
 import { Input } from '../Form/Input';
-import { SelectInput } from '../Form/SelectInput';
+import { Select } from '../Form/SelectInput';
 import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
 
@@ -57,17 +57,19 @@ export function CreateAdModal() {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
-      <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white mt-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
+      <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
         <Dialog.Title className='text-2xl font-black'>
           Publique um anúncio
         </Dialog.Title>
         <form onSubmit={handleCreateAd} className='mt-8 flex flex-col gap-4'>
           <div className='flex flex-col gap-2'>
             <Label htmlFor='game' text='Qual o game?' />
-            <SelectInput
-              gameSelected={gameSelected}
-              games={games}
-              setGameSelected={setGameSelected}
+            <Select
+              label='Games'
+              options={games}
+              onSelectedChange={(option) => setGameSelected(option)}
+              placeholder='Selecione o game que deseja jogar...'
+              name='game'
             />
           </div>
           <div className='flex flex-col gap-2'>
@@ -181,12 +183,12 @@ export function CreateAdModal() {
             </Checkbox.Root>
             Costumo me conectar ao chat de voz
           </div>
-          <footer className='mt-4 flex justify-end gap-4'>
+          <footer className='mt-2 flex justify-end gap-4'>
             <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'>
               Cancelar
             </Dialog.Close>
             <button
-              className='bg-violet-500 px-5 h-12 rounded-md font-semibold  flex items-center gap-3 hover:bg-violet-600'
+              className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
               type='submit'
             >
               <GameController size={24} />

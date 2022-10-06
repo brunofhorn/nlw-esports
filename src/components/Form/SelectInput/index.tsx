@@ -1,54 +1,66 @@
-import * as Select from '@radix-ui/react-select';
+import * as SelectUI from '@radix-ui/react-select';
+import { CaretDown, Check, GameController } from 'phosphor-react';
 
-interface Game {
+type Game = {
   id: string;
   title: string;
+};
+
+interface SelectProps extends SelectUI.SelectTriggerProps {
+  options: Game[];
+  label: string;
+  placeholder: string;
+  name: string;
+  onSelectedChange: (option: string) => void;
 }
 
-interface SelectInputProps {
-  gameSelected: string;
-  setGameSelected: (value: string) => void;
-  games: Game[];
-}
-export function SelectInput({
-  gameSelected,
-  setGameSelected,
-  games,
-}: SelectInputProps) {
+export function Select({
+  options,
+  label,
+  placeholder,
+  name,
+  onSelectedChange,
+  ...rest
+}: SelectProps) {
   return (
-    <Select.Root
-      name='game'
-      value={gameSelected}
-      onValueChange={setGameSelected}
-    >
-      <Select.Trigger className='bg-zinc-900 py-2 px-4 rounded text-sm placeholder:text-zinc-500 flex items-start justify-between unset'>
-        <Select.Value placeholder='Selecione o game que deseja jogar' />
-        <Select.Icon />
-      </Select.Trigger>
-      <Select.Portal>
-        <Select.Content className=' bg-zinc-900 text-white rounded  overflow-auto'>
-          <Select.ScrollUpButton className='flex items-center justify-center h-6 bg-white' />
-          <Select.Viewport>
-            <Select.Group>
-              <Select.Label className='px-4 py-3 flex text-zinc-500 italic'>
-                Games
-              </Select.Label>
-              {games.map((game) => (
-                <Select.Item
-                  value={game.id}
-                  key={game.id}
-                  className={
-                    'px-4 py-3 hover:cursor-pointer hover:bg-violet-700 hover:text-zinc-900 userSelect-none'
-                  }
+    <SelectUI.Root onValueChange={(option) => onSelectedChange(option)}>
+      <SelectUI.Trigger
+        aria-label={label}
+        className='inline-flex items-center justify-between bg-zinc-900 py-3 px-4 rounded text-zinc-500 text-sm'
+        {...rest}
+      >
+        <SelectUI.Value placeholder={placeholder} />
+        <SelectUI.Icon>
+          <CaretDown size={16} />
+        </SelectUI.Icon>
+      </SelectUI.Trigger>
+
+      <SelectUI.Portal>
+        <SelectUI.Content className='bg-zinc-900 hidden rounded-md'>
+          <SelectUI.Viewport className='p-2'>
+            <SelectUI.Group>
+              <SelectUI.Label className='text-white font-bold flex items-center justify-center gap-2'>
+                <GameController size={20} />
+                {label}
+              </SelectUI.Label>
+
+              {options.map((option) => (
+                <SelectUI.Item
+                  key={option.id}
+                  value={option.id}
+                  className='mt-2 flex items-center gap-1 h-8 p-2 hover:bg-violet-500 text-white text-xs rounded cursor-pointer'
                 >
-                  <Select.ItemText>{game.title}</Select.ItemText>
-                </Select.Item>
+                  <SelectUI.ItemText>{option.title}</SelectUI.ItemText>
+
+                  <SelectUI.ItemIndicator>
+                    <Check size={16} />
+                  </SelectUI.ItemIndicator>
+                </SelectUI.Item>
               ))}
-            </Select.Group>
-          </Select.Viewport>
-          <Select.ScrollDownButton />
-        </Select.Content>
-      </Select.Portal>
-    </Select.Root>
+            </SelectUI.Group>
+          </SelectUI.Viewport>
+        </SelectUI.Content>
+      </SelectUI.Portal>
+    </SelectUI.Root>
   );
 }
