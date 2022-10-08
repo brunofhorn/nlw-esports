@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CaretLeft, CaretRight } from 'phosphor-react';
@@ -8,12 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperProps } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import logo from '@assets/logo.svg';
 import type { Game } from '@interfaces/index';
 import { GameCard } from '@components/GameCard';
 import { CreateAdBanner } from '@components/CreateAdBanner';
 import { CreateAdModal } from '@components/CreateAdModal';
 import { Loading } from '@components/Loading';
+import { Header } from '@components/Header';
 
 const breakPointsConfig = {
   480: {
@@ -47,7 +46,8 @@ const Home: NextPage = () => {
 
   return (
     <div className='max-w-[1344px] flex flex-col items-center my-20 mx-20'>
-      <Image src={logo} alt='NLW eSports' />
+      <Header />
+
       <h1 className='text-6xl text-white font-black mt-20'>
         Seu{' '}
         <span className='text-transparent bg-nlw-gradient bg-clip-text'>

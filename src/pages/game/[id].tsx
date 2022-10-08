@@ -6,6 +6,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Loading } from '@components/Loading';
+import { Header } from '@components/Header';
 
 type Game = {
   id: string;
@@ -43,7 +44,7 @@ const Game: NextPage<Game> = (props) => {
 
   return (
     <div className='max-w-[1344px] mx-auto flex flex-col items-center my-8 px-4'>
-      <Image src={logo} alt='NLW eSports' />
+      <Header />
       <div className='w-[100%] lg:h-[436px] flex flex-col lg:flex-row items-center lg:items-start gap-10 mt-12 px-10 py-8 rounded'>
         <div className='flex flex-col items-center gap-6 '>
           <h1 className='text-white font-bold text-3xl md:text-4xl lg:text-2xl'>
