@@ -38,6 +38,9 @@
       "@interfaces/*": [
         "interfaces/*"
       ],
+      "@lib/*":[
+        "lib/*"
+      ]
     }
   },
   "include": [
