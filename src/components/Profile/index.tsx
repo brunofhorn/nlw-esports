@@ -25,7 +25,7 @@ export function Profile() {
       title='Perfil'
     >
       {user === '' ? (
-        <Link href={'http://localhost:3000/api/discord/login'}>
+        <Link href={'/api/discord/login'}>
           <button className='flex gap-2'>
             <div className='flex flex-col items-end'>
               <span className='text-white font-semibold text-sm'>
