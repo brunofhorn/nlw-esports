@@ -4,9 +4,7 @@ const OAuthScope = ['identify'].join(' ');
 const OAuthData = new URLSearchParams({
   response_type: 'code',
   client_id: process.env.CLIENT_ID as string,
-  redirect_uri: decodeURIComponent(
-    `${process.env.DOMAIN}/api/discord/callback`
-  ),
+  redirect_uri: 'https://duo-esports-ignite.vercel.app/api/discord/callback',
   scope: OAuthScope,
 });
 
