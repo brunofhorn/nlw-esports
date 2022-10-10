@@ -4,7 +4,9 @@ const OAuthScope = ['identify'].join(' ');
 const OAuthData = new URLSearchParams({
   response_type: 'code',
   client_id: process.env.CLIENT_ID as string,
-  redirect_uri: encodeURI(`${process.env.DOMAIN}/api/discord/callback`),
+  redirect_uri: encodeURIComponent(
+    `${process.env.DOMAIN}/api/discord/callback`
+  ),
   scope: OAuthScope,
 });
 
