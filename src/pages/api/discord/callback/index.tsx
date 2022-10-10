@@ -110,5 +110,5 @@ export default async function handler(
   //   }
 
   //   await req.session.save();
-  //   res.redirect('/?r=true');
+  res.redirect('/?r=true');
 }
