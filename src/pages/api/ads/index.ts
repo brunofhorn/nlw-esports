@@ -14,6 +14,8 @@ export default async function adsHandler(
       name: body.name,
       yearsPlaying: body.yearsPlaying,
       discord: body.discord,
+      discordImage: body.discordImage,
+      discordId: body.discordId,
       weekDays: body.weekDays.join(','),
       hourStart: convertHoursToMinutesAmount(body.hourStart),
       hourEnd: convertHoursToMinutesAmount(body.hourEnd),

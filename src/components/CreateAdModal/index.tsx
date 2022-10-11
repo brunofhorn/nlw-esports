@@ -9,10 +9,38 @@ import { Select } from '@components/Form/SelectInput';
 import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
 import { useSession } from 'next-auth/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm, FormProvider } from 'react-hook-form';
+
+import * as z from 'zod';
+import { ErrorMessage } from '@components/ErrorMessage';
 interface Game {
   id: string;
   title: string;
 }
+
+const discordRegex = new RegExp('^.{3,32}#[0-9]{4}$');
+
+const formSchema = z.object({
+  username: z.string().min(3, {
+    message: 'O nome / nickname deve possui no mínimo 3 caracteres.',
+  }),
+  yearsPlaying: z
+    .string()
+    .min(1, { message: 'O preenchimento é obrigatório.' })
+    .max(300, { message: 'O valor deve ser menor do que 300.' }),
+  discord: z.string().regex(discordRegex, {
+    message: 'O formato padrão para o discord é: nome#0000',
+  }),
+  hourStart: z
+    .string()
+    .min(5, { message: 'O preenchimento do horário é obrigatório.' }),
+  hourEnd: z
+    .string()
+    .min(5, { message: 'O preenchimento do horário é obrigatório.' }),
+});
+
+type formInputs = z.infer<typeof formSchema>;
 
 export function CreateAdModal() {
   const [games, setGames] = useState<Game[]>([]);
@@ -20,40 +48,60 @@ export function CreateAdModal() {
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
   const { data: session } = useSession();
-  let user = '';
+  let discord = '';
+  let discordId = '';
+  let discordImage = '';
+  let username = '';
 
   if (session) {
-    user = `${session.user?.username}#${session.user?.discriminator}`;
+    const { user } = session;
+
+    username = user?.username as string;
+    discord = `${user?.username}#${user?.discriminator}`;
+    discordId = user?.id as string;
+    discordImage = user?.image_url as string;
   }
+
+  const methods = useForm<formInputs>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      discord: discord,
+      username: username,
+    },
+  });
+
+  const {
+    formState: { errors, isValid, isSubmitting },
+    handleSubmit,
+    register,
+    reset,
+  } = methods;
 
   useEffect(() => {
     axios('api/games').then(({ data }) => setGames(data));
   }, []);
 
-  const handleCreateAd = async (event: FormEvent) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target as HTMLFormElement);
-    const data = Object.fromEntries(formData);
-
-    if (!data.name) {
-      alert('Preencha tudo');
-      return;
-    }
-
+  const handleCreateAd = async (data: formInputs) => {
     try {
-      axios.post(`api/ads/`, {
+      if (!gameSelected || !weekDays) {
+        return;
+      }
+
+      await axios.post(`api/ads/`, {
         gameId: gameSelected,
-        name: data.name,
+        username: data.username,
+        userId: discordId,
+        bannerUrl: discordImage,
         yearsPlaying: Number(data.yearsPlaying),
-        discord: user ?? data.discord,
-        weekDays: weekDays.map(Number),
+        discord: data.discord,
+        weekDays: weekDays?.map(Number),
         hourStart: data.hourStart,
         hourEnd: data.hourEnd,
-        useVoiceChannel: useVoiceChannel,
+        useVoiceChannel,
       });
 
-      alert('Anúncio criado com sucesso.');
+      alert('Anuncio criado com sucesso');
+      reset();
     } catch (error) {
       alert('Erro ao criar o anúncio!');
     }
@@ -66,7 +114,10 @@ export function CreateAdModal() {
         <Dialog.Title className='text-2xl font-black'>
           Publique um anúncio
         </Dialog.Title>
-        <form onSubmit={handleCreateAd} className='mt-8 flex flex-col gap-4'>
+        <form
+          onSubmit={handleSubmit(handleCreateAd)}
+          className='mt-8 flex flex-col gap-4'
+        >
           <div className='flex flex-col gap-2'>
             <Label htmlFor='game' text='Qual o game?' />
             <Select
@@ -76,34 +127,49 @@ export function CreateAdModal() {
               placeholder='Selecione o game que deseja jogar...'
               name='game'
             />
+            {!gameSelected && isValid && (
+              <ErrorMessage message={'É obrigatório a seleção de um jogo'} />
+            )}
           </div>
           <div className='flex flex-col gap-2'>
             <Label htmlFor='name' text='Seu nome (ou nickname)' />
             <Input
-              id='name'
-              name='name'
+              id='username'
+              name='username'
+              registerName='username'
               placeholder='Como te chamam dentro do game?'
             />
+            {errors.username && (
+              <ErrorMessage message={errors.username.message} />
+            )}
           </div>
           <div className='grid grid-cols-2 gap-6'>
             <div className='flex flex-col gap-2'>
               <Label htmlFor='yearsPlaying' text='Joga há quantos anos?' />
               <Input
+                type='number'
+                min='0'
+                max='99'
                 id='yearsPlaying'
                 name='yearsPlaying'
+                registerName='yearsPlaying'
                 placeholder='Tudo bem ser ZERO'
-                type='number'
               />
+              {errors.yearsPlaying && (
+                <ErrorMessage message={errors.yearsPlaying.message} />
+              )}
             </div>
             <div className='flex flex-col gap-2'>
               <Label htmlFor='discord' text='Qual seu discord?' />
               <Input
                 id='discord'
                 name='discord'
+                registerName='discord'
                 placeholder='Usuario#8080'
-                defaultValue={user}
-                disabled={user ? true : false}
               />
+              {errors.discord && (
+                <ErrorMessage message={errors.discord.message} />
+              )}
             </div>
           </div>
           <div className='flex gap-6'>
@@ -114,6 +180,7 @@ export function CreateAdModal() {
                 className='grid grid-cols-7 gap-2'
                 value={weekDays}
                 onValueChange={setWeekDays}
+                aria-label='Dias da semana'
               >
                 <Toggle
                   value={'0'}
@@ -158,23 +225,31 @@ export function CreateAdModal() {
                   letter={'S'}
                 />
               </ToggleGroup.Root>
+              {!weekDays && isValid && (
+                <ErrorMessage message={'Selecione os dias da semana.'} />
+              )}
             </div>
             <div className='flex flex-col gap-2 flex-1'>
               <Label htmlFor='hourStart' text='Qual horário do dia?' />
               <div className='grid grid-cols-2 gap-2'>
                 <Input
-                  name='hourStart'
-                  id='hourStart'
                   type='time'
+                  id='hourStart'
+                  name='hourStart'
                   placeholder='De'
+                  registerName='hourStart'
                 />
                 <Input
-                  name='hourEnd'
-                  id='hourEnd'
                   type='time'
+                  id='hourEnd'
+                  name='hourEnd'
                   placeholder='Até'
+                  registerName='hourEnd'
                 />
               </div>
+              {(errors.hourStart || errors.hourEnd) && (
+                <ErrorMessage message={'Informar os horários'} />
+              )}
             </div>
           </div>
           <div className='mt-2 flex items-center gap-2 text-xs'>

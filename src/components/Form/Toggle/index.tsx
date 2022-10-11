@@ -11,10 +11,11 @@ export function Toggle({ value, weekDays, title, letter }: ToggleProps) {
   return (
     <ToggleGroup.Item
       value={value}
+      title={title}
+      aria-label={title}
       className={`text-xs w-6 h-6 rounded ${
         weekDays.includes(value) ? 'bg-violet-500' : 'bg-zinc-900'
       }`}
-      title={title}
     >
       {letter}
     </ToggleGroup.Item>
