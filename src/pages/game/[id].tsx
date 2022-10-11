@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { DuoCard } from '../../components/DuoCard';
-import logo from '@assets/logo.svg';
 import { NextPage } from 'next';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';

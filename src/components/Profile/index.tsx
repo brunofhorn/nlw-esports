@@ -1,59 +1,53 @@
-import { useState } from 'react';
 import { CaretDown, UserCircle } from 'phosphor-react';
-import axios from 'axios';
-import Link from 'next/link';
-
-interface DiscordLoginProps {
-  clientId: string;
-  redirectUri: string;
-  scope?: string;
-  render?: any;
-}
+import { signIn, signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 export function Profile() {
-  const [user, setUser] = useState('');
-  const [loginModal, setLoginModal] = useState(false);
+  const { data: session } = useSession();
 
-  const discordLogin = async () => {
-    const retorno = await axios.get('/api/discord/login');
-    console.log('RETORNO: ', retorno);
-  };
+  if (session) {
+    const { user } = session;
 
-  return (
-    <div
-      className='flex gap-2 p-2 items-center cursor-pointer hover:bg-[#1d1a2496] rounded'
-      title='Perfil'
-    >
-      {user === '' ? (
-        <Link href={'/api/discord/login'}>
-          <button className='flex gap-2'>
-            <div className='flex flex-col items-end'>
-              <span className='text-white font-semibold text-sm'>
-                Efetue o login
-              </span>
+    console.log(user);
 
-              <span className='text-zinc-500 text-xs'>no Discord</span>
-            </div>
+    return (
+      <div
+        className='flex gap-2 p-2 items-center cursor-pointer hover:bg-[#1d1a2496] rounded'
+        title='Perfil'
+      >
+        <div className='flex flex-col items-end'>
+          <span className='text-white font-semibold text-sm'>
+            {user?.username}
+          </span>
 
-            <UserCircle size={32} color='#FFF' weight='bold' />
-          </button>
-        </Link>
-      ) : (
-        <>
+          <span className='text-zinc-500 text-xs' onClick={() => signOut()}>
+            #{user?.discriminator}
+          </span>
+        </div>
+
+        {user?.image_url && (
+          <img className='w-10 h-10 rounded-full' src={user.image_url} />
+        )}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className='flex gap-2 p-2 items-center cursor-pointer hover:bg-[#1d1a2496] rounded'
+        title='Perfil'
+      >
+        <button onClick={() => signIn('discord')} className='flex gap-2'>
           <div className='flex flex-col items-end'>
-            <span className='text-white font-semibold text-sm'>Bruno</span>
+            <span className='text-white font-semibold text-sm'>
+              Efetue o login
+            </span>
 
-            <span className='text-zinc-500 text-xs'>#brunofhorn</span>
+            <span className='text-zinc-500 text-xs'>no Discord</span>
           </div>
 
-          <img
-            className='w-10 h-10 rounded'
-            src={`https://cdn.discordapp.com/avatars/`}
-          />
-
-          <CaretDown size={16} color='#FFF' weight='bold' />
-        </>
-      )}
-    </div>
-  );
+          <UserCircle size={32} color='#FFF' weight='bold' />
+        </button>
+      </div>
+    );
+  }
 }
