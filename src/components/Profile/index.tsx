@@ -1,14 +1,11 @@
-import { CaretDown, UserCircle } from 'phosphor-react';
+import { UserCircle } from 'phosphor-react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
 
 export function Profile() {
   const { data: session } = useSession();
 
   if (session) {
     const { user } = session;
-
-    console.log(user);
 
     return (
       <div

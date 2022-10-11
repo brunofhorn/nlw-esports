@@ -8,7 +8,7 @@ import { Input } from '@components/Form/Input';
 import { Select } from '@components/Form/SelectInput';
 import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
-
+import { useSession } from 'next-auth/react';
 interface Game {
   id: string;
   title: string;
@@ -19,6 +19,12 @@ export function CreateAdModal() {
   const [gameSelected, setGameSelected] = useState('');
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
+  const { data: session } = useSession();
+  let user = '';
+
+  if (session) {
+    user = `${session.user?.username}#${session.user?.discriminator}`;
+  }
 
   useEffect(() => {
     axios('api/games').then(({ data }) => setGames(data));
@@ -36,10 +42,11 @@ export function CreateAdModal() {
     }
 
     try {
-      axios.post(`api/games/${data.game}/ads`, {
+      axios.post(`api/ads/`, {
+        gameId: gameSelected,
         name: data.name,
         yearsPlaying: Number(data.yearsPlaying),
-        discord: data.discord,
+        discord: user ?? data.discord,
         weekDays: weekDays.map(Number),
         hourStart: data.hourStart,
         hourEnd: data.hourEnd,
@@ -50,8 +57,6 @@ export function CreateAdModal() {
     } catch (error) {
       alert('Erro ao criar o anúncio!');
     }
-
-    console.log(data);
   };
 
   return (
@@ -92,7 +97,13 @@ export function CreateAdModal() {
             </div>
             <div className='flex flex-col gap-2'>
               <Label htmlFor='discord' text='Qual seu discord?' />
-              <Input id='discord' name='discord' placeholder='Usuario#8080' />
+              <Input
+                id='discord'
+                name='discord'
+                placeholder='Usuario#8080'
+                defaultValue={user}
+                disabled={user ? true : false}
+              />
             </div>
           </div>
           <div className='flex gap-6'>

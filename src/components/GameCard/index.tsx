@@ -11,10 +11,13 @@ export function GameCard({ id, adsCount, bannerUrl, title }: GameCardProps) {
   const router = useRouter();
 
   function handleRedirectToGame() {
-    router.push({
-      pathname: '/game/[pid]',
-      query: { pid: id, title, bannerUrl },
-    });
+    router.push(
+      {
+        pathname: '/game/[id]',
+        query: { id, title, bannerUrl },
+      },
+      `/game/${id}`
+    );
   }
 
   return (
@@ -30,7 +33,9 @@ export function GameCard({ id, adsCount, bannerUrl, title }: GameCardProps) {
       />
 
       <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0 flex flex-col items-start'>
-        <strong className='font-bold text-white block'>{title}</strong>
+        <strong className='font-bold text-white block text-left'>
+          {title}
+        </strong>
         <span className='text-zinc-300 text-sm block'>
           {adsCount} anúncio(s)
         </span>

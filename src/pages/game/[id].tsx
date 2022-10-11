@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { DuoCard } from '../../components/DuoCard';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { DuoCard } from '@components/DuoCard';
 import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';
+import axios from 'axios';
 
 type Game = {
   id: string;

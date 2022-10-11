@@ -1,8 +1,8 @@
-import { Profile } from '@components/Profile';
 import { ArrowLeft } from 'phosphor-react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import logo from '@assets/logo.svg';
+import { Profile } from '@components/Profile';
 
 export function Header() {
   const router = useRouter();
