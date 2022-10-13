@@ -8,6 +8,32 @@
   flex-direction: column;
 }
 
-input[type='time']::-webkit-calendar-picker-indicator {
-  filter: invert(100%);
+* input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+* input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: ##18181b;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #9572fc 0%, #43e7ad 50.52%, #e2d45c 100%);
+  border-radius: 6px;
 }

@@ -3,7 +3,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { Check, GameController } from 'phosphor-react';
+import { Check, GameController, X } from 'phosphor-react';
 import { Input } from '@components/Form/Input';
 import { Select } from '@components/Form/SelectInput';
 import { Label } from '@components/Form/Label';
@@ -110,6 +110,13 @@ export function CreateAdModal() {
       <Dialog.Portal>
         <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
         <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
+          <Dialog.Close className='top-5 right-5 absolute'>
+            <X
+              size={24}
+              className='text-zinc-500 hover:text-red-900'
+              weight='regular'
+            />
+          </Dialog.Close>
           <Dialog.Title className='text-2xl font-black'>
             Publique um anúncio
           </Dialog.Title>
@@ -118,7 +125,7 @@ export function CreateAdModal() {
           ) : (
             <form
               onSubmit={handleSubmit(handleCreateAd)}
-              className='mt-8 flex flex-col gap-4'
+              className='mt-6 flex flex-col gap-4'
             >
               <div className='flex flex-col gap-2'>
                 <Label htmlFor='game' text='Qual o game?' />
