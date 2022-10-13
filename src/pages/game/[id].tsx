@@ -34,8 +34,6 @@ const Game: NextPage<Game> = (props) => {
     setLoadingAds(true);
     await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
     setLoadingAds(false);
-
-    console.log(ads);
   };
 
   useEffect(() => {

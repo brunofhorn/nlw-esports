@@ -23,7 +23,7 @@ const breakPointsConfig = {
     spaceBetween: 20,
   },
   1100: {
-    slidesPerView: 5,
+    slidesPerView: 6,
     spaceBetween: 20,
   },
 };

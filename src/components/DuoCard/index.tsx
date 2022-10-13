@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import { UserDiscordModal } from '@components/UserDiscordModal';
 
 interface DuoCardProps {
   id: string;
@@ -73,6 +74,7 @@ export function DuoCard({ data }: Props) {
         >
           <GameController size={28} weight='bold' />
         </Dialog.Trigger>
+        {adSelectedId && <UserDiscordModal discordId={adSelectedId} />}
       </Dialog.Root>
     </li>
   );

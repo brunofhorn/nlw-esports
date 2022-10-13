@@ -3,7 +3,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
-import { Check, GameController, X } from 'phosphor-react';
+import { Check, GameController, Spinner, X } from 'phosphor-react';
 import { Input } from '@components/Form/Input';
 import { Select } from '@components/Form/SelectInput';
 import { Label } from '@components/Form/Label';
@@ -291,8 +291,16 @@ export function CreateAdModal() {
                   className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
                   type='submit'
                 >
-                  <GameController size={24} />
-                  Encontrar duo
+                  {isSubmitting ? (
+                    <>
+                      <Spinner size={20} className='animate-spin-slow' />
+                    </>
+                  ) : (
+                    <>
+                      <GameController size={24} />
+                      Encontrar duo
+                    </>
+                  )}
                 </button>
               </footer>
             </form>
