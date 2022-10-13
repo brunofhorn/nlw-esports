@@ -14,9 +14,9 @@ type Game = {
 
 type AdsParams = {
   id: string;
-  bannerUrl: string;
+  discordImage: string;
   username: string;
-  userId: string;
+  discordId: string;
   hourEnd: string;
   hourStart: string;
   useVoiceChannel: boolean;
@@ -34,6 +34,8 @@ const Game: NextPage<Game> = (props) => {
     setLoadingAds(true);
     await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
     setLoadingAds(false);
+
+    console.log(ads);
   };
 
   useEffect(() => {

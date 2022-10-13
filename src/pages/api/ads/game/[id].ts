@@ -16,6 +16,8 @@ export default async function adsHandler(
     select: {
       id: true,
       discord: true,
+      discordImage: true,
+      username: true,
       weekDays: true,
       useVoiceChannel: true,
       yearsPlaying: true,
