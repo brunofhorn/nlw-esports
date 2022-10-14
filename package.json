@@ -28,6 +28,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.37.0",
     "react-spinners": "^0.13.5",
+    "react-spring": "^9.5.5",
     "swiper": "^8.4.3",
     "zod": "^3.19.1"
   },

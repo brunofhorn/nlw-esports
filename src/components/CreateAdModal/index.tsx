@@ -14,6 +14,8 @@ import { useForm, FormProvider } from 'react-hook-form';
 import * as z from 'zod';
 import { ErrorMessage } from '@components/ErrorMessage';
 import { Loading } from '@components/Loading';
+import { useTransition, animated, config } from 'react-spring';
+import { AdModal } from '@interfaces/index';
 interface Game {
   id: string;
   title: string;
@@ -42,7 +44,7 @@ const formSchema = z.object({
 
 type formInputs = z.infer<typeof formSchema>;
 
-export function CreateAdModal() {
+export function CreateAdModal({ open }: AdModal) {
   const { data: session, status } = useSession();
   const [games, setGames] = useState<Game[]>([]);
   const [gameSelected, setGameSelected] = useState('');
@@ -52,6 +54,13 @@ export function CreateAdModal() {
   const [discordId, setDiscordId] = useState('');
   const [discordImage, setDiscordImage] = useState('');
   const [username, setUsername] = useState('');
+
+  const transitions = useTransition(open, {
+    from: { opacity: 0, y: -10 },
+    enter: { opacity: 1, y: 0 },
+    leave: { opacity: 0, y: 10 },
+    config: config.stiff,
+  });
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -83,8 +92,6 @@ export function CreateAdModal() {
         return;
       }
 
-      console.log(data);
-
       await axios.post(`api/ads/`, {
         gameId: gameSelected,
         username: data.username,
@@ -108,204 +115,242 @@ export function CreateAdModal() {
   return (
     <FormProvider {...methods}>
       <Dialog.Portal>
-        <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
-        <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
-          <Dialog.Close className='top-5 right-5 absolute'>
-            <X
-              size={24}
-              className='text-zinc-500 hover:text-red-900'
-              weight='regular'
-            />
-          </Dialog.Close>
-          <Dialog.Title className='text-2xl font-black'>
-            Publique um anúncio
-          </Dialog.Title>
-          {discord === '' ? (
-            <Loading load={true} size={20} />
-          ) : (
-            <form
-              onSubmit={handleSubmit(handleCreateAd)}
-              className='mt-6 flex flex-col gap-4'
-            >
-              <div className='flex flex-col gap-2'>
-                <Label htmlFor='game' text='Qual o game?' />
-                <Select
-                  label='Games'
-                  options={games}
-                  onSelectedChange={(option) => setGameSelected(option)}
-                  placeholder='Selecione o game que deseja jogar...'
-                  name='game'
-                  id='game'
-                />
-                {!gameSelected && isValid && (
-                  <ErrorMessage
-                    message={'É obrigatório a seleção de um jogo'}
-                  />
-                )}
-              </div>
-              <div className='flex flex-col gap-2'>
-                <Label htmlFor='name' text='Seu nome (ou nickname)' />
-                <Input
-                  id='username'
-                  name='username'
-                  registerName='username'
-                  placeholder='Como te chamam dentro do game?'
-                  defaultValue={username}
-                />
-                {errors.username && (
-                  <ErrorMessage message={errors.username.message} />
-                )}
-              </div>
-              <div className='grid grid-cols-2 gap-6'>
-                <div className='flex flex-col gap-2'>
-                  <Label htmlFor='yearsPlaying' text='Joga há quantos anos?' />
-                  <Input
-                    type='number'
-                    min='0'
-                    max='301'
-                    id='yearsPlaying'
-                    name='yearsPlaying'
-                    registerName='yearsPlaying'
-                    placeholder='Tudo bem ser ZERO'
-                  />
-                  {errors.yearsPlaying && (
-                    <ErrorMessage message={errors.yearsPlaying.message} />
-                  )}
-                </div>
-                <div className='flex flex-col gap-2'>
-                  <Label htmlFor='discord' text='Qual seu discord?' />
-                  <Input
-                    id='discord'
-                    name='discord'
-                    registerName='discord'
-                    placeholder='Usuario#8080'
-                    defaultValue={discord}
-                  />
-                  {errors.discord && (
-                    <ErrorMessage message={errors.discord.message} />
-                  )}
-                </div>
-              </div>
-              <div className='flex gap-6'>
-                <div className='flex flex-col gap-2 flex-1'>
-                  <Label htmlFor='weekDays' text='Quando costuma jogar?' />
-                  <ToggleGroup.Root
-                    type='multiple'
-                    className='grid grid-cols-7 gap-2'
-                    value={weekDays}
-                    onValueChange={setWeekDays}
-                    aria-label='Dias da semana'
-                  >
-                    <Toggle
-                      value={'0'}
-                      weekDays={weekDays}
-                      title={'Domingo'}
-                      letter={'D'}
-                    />
-                    <Toggle
-                      value={'1'}
-                      weekDays={weekDays}
-                      title={'Segunda'}
-                      letter={'S'}
-                    />
-                    <Toggle
-                      value={'2'}
-                      weekDays={weekDays}
-                      title={'Terça'}
-                      letter={'T'}
-                    />
-                    <Toggle
-                      value={'3'}
-                      weekDays={weekDays}
-                      title={'Quarta'}
-                      letter={'Q'}
-                    />
-                    <Toggle
-                      value={'4'}
-                      weekDays={weekDays}
-                      title={'Quinta'}
-                      letter={'Q'}
-                    />
-                    <Toggle
-                      value={'5'}
-                      weekDays={weekDays}
-                      title={'Sexta'}
-                      letter={'S'}
-                    />
-                    <Toggle
-                      value={'6'}
-                      weekDays={weekDays}
-                      title={'Sábado'}
-                      letter={'S'}
-                    />
-                  </ToggleGroup.Root>
-                  {!weekDays && isValid && (
-                    <ErrorMessage message={'Selecione os dias da semana.'} />
-                  )}
-                </div>
-                <div className='flex flex-col gap-2 flex-1'>
-                  <Label htmlFor='hourStart' text='Qual horário do dia?' />
-                  <div className='grid grid-cols-2 gap-2'>
-                    <Input
-                      type='time'
-                      id='hourStart'
-                      name='hourStart'
-                      placeholder='De'
-                      registerName='hourStart'
-                    />
-                    <Input
-                      type='time'
-                      id='hourEnd'
-                      name='hourEnd'
-                      placeholder='Até'
-                      registerName='hourEnd'
-                    />
-                  </div>
-                  {(errors.hourStart || errors.hourEnd) && (
-                    <ErrorMessage message={'Informar os horários'} />
-                  )}
-                </div>
-              </div>
-              <div className='mt-2 flex items-center gap-2 text-xs'>
-                <Checkbox.Root
-                  className='w-6 h-6 p-1 rounded bg-zinc-900'
-                  onCheckedChange={(checked) => {
-                    if (checked === true) {
-                      setUseVoiceChannel(true);
-                    } else {
-                      setUseVoiceChannel(false);
-                    }
+        {transitions((styles: any, item: any) =>
+          item ? (
+            <>
+              <Dialog.Overlay
+                forceMount
+                asChild
+                className='bg-black/60 inset-0 fixed'
+              >
+                <animated.div
+                  style={{
+                    opacity: styles.opacity,
                   }}
-                >
-                  <Checkbox.Indicator>
-                    <Check className='w-4 h-4 text-emerald-400' />
-                  </Checkbox.Indicator>
-                </Checkbox.Root>
-                Costumo me conectar ao chat de voz
-              </div>
-              <footer className='mt-2 flex justify-end gap-4'>
-                <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'>
-                  Cancelar
-                </Dialog.Close>
-                <button
-                  className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
-                  type='submit'
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Spinner size={20} className='animate-spin-slow' />
-                    </>
+                />
+              </Dialog.Overlay>
+              <Dialog.Content
+                forceMount
+                asChild
+                className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'
+              >
+                <animated.div style={styles}>
+                  <Dialog.Close className='top-5 right-5 absolute'>
+                    <X
+                      size={24}
+                      className='text-zinc-500 hover:text-red-900'
+                      weight='regular'
+                    />
+                  </Dialog.Close>
+                  <Dialog.Title className='text-2xl font-black'>
+                    Publique um anúncio
+                  </Dialog.Title>
+                  {discord === '' ? (
+                    <Loading load={true} size={20} />
                   ) : (
-                    <>
-                      <GameController size={24} />
-                      Encontrar duo
-                    </>
+                    <form
+                      onSubmit={handleSubmit(handleCreateAd)}
+                      className='mt-6 flex flex-col gap-4'
+                    >
+                      <div className='flex flex-col gap-2'>
+                        <Label htmlFor='game' text='Qual o game?' />
+                        <Select
+                          label='Games'
+                          options={games}
+                          onSelectedChange={(option) => setGameSelected(option)}
+                          placeholder='Selecione o game que deseja jogar...'
+                          name='game'
+                          id='game'
+                        />
+                        {!gameSelected && isValid && (
+                          <ErrorMessage
+                            message={'É obrigatório a seleção de um jogo'}
+                          />
+                        )}
+                      </div>
+                      <div className='flex flex-col gap-2'>
+                        <Label htmlFor='name' text='Seu nome (ou nickname)' />
+                        <Input
+                          id='username'
+                          name='username'
+                          registerName='username'
+                          placeholder='Como te chamam dentro do game?'
+                          defaultValue={username}
+                        />
+                        {errors.username && (
+                          <ErrorMessage message={errors.username.message} />
+                        )}
+                      </div>
+                      <div className='grid grid-cols-2 gap-6'>
+                        <div className='flex flex-col gap-2'>
+                          <Label
+                            htmlFor='yearsPlaying'
+                            text='Joga há quantos anos?'
+                          />
+                          <Input
+                            type='number'
+                            min='0'
+                            max='301'
+                            id='yearsPlaying'
+                            name='yearsPlaying'
+                            registerName='yearsPlaying'
+                            placeholder='Tudo bem ser ZERO'
+                          />
+                          {errors.yearsPlaying && (
+                            <ErrorMessage
+                              message={errors.yearsPlaying.message}
+                            />
+                          )}
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                          <Label htmlFor='discord' text='Qual seu discord?' />
+                          <Input
+                            id='discord'
+                            name='discord'
+                            registerName='discord'
+                            placeholder='Usuario#8080'
+                            defaultValue={discord}
+                          />
+                          {errors.discord && (
+                            <ErrorMessage message={errors.discord.message} />
+                          )}
+                        </div>
+                      </div>
+                      <div className='flex gap-6'>
+                        <div className='flex flex-col gap-2 flex-1'>
+                          <Label
+                            htmlFor='weekDays'
+                            text='Quando costuma jogar?'
+                          />
+                          <ToggleGroup.Root
+                            type='multiple'
+                            className='grid grid-cols-7 gap-2'
+                            value={weekDays}
+                            onValueChange={setWeekDays}
+                            aria-label='Dias da semana'
+                          >
+                            <Toggle
+                              value={'0'}
+                              weekDays={weekDays}
+                              title={'Domingo'}
+                              letter={'D'}
+                            />
+                            <Toggle
+                              value={'1'}
+                              weekDays={weekDays}
+                              title={'Segunda'}
+                              letter={'S'}
+                            />
+                            <Toggle
+                              value={'2'}
+                              weekDays={weekDays}
+                              title={'Terça'}
+                              letter={'T'}
+                            />
+                            <Toggle
+                              value={'3'}
+                              weekDays={weekDays}
+                              title={'Quarta'}
+                              letter={'Q'}
+                            />
+                            <Toggle
+                              value={'4'}
+                              weekDays={weekDays}
+                              title={'Quinta'}
+                              letter={'Q'}
+                            />
+                            <Toggle
+                              value={'5'}
+                              weekDays={weekDays}
+                              title={'Sexta'}
+                              letter={'S'}
+                            />
+                            <Toggle
+                              value={'6'}
+                              weekDays={weekDays}
+                              title={'Sábado'}
+                              letter={'S'}
+                            />
+                          </ToggleGroup.Root>
+                          {!weekDays && isValid && (
+                            <ErrorMessage
+                              message={'Selecione os dias da semana.'}
+                            />
+                          )}
+                        </div>
+                        <div className='flex flex-col gap-2 flex-1'>
+                          <Label
+                            htmlFor='hourStart'
+                            text='Qual horário do dia?'
+                          />
+                          <div className='grid grid-cols-2 gap-2'>
+                            <Input
+                              type='time'
+                              id='hourStart'
+                              name='hourStart'
+                              placeholder='De'
+                              registerName='hourStart'
+                            />
+                            <Input
+                              type='time'
+                              id='hourEnd'
+                              name='hourEnd'
+                              placeholder='Até'
+                              registerName='hourEnd'
+                            />
+                          </div>
+                          {(errors.hourStart || errors.hourEnd) && (
+                            <ErrorMessage message={'Informar os horários'} />
+                          )}
+                        </div>
+                      </div>
+                      <div className='mt-2 flex items-center gap-2 text-xs'>
+                        <Checkbox.Root
+                          className='w-6 h-6 p-1 rounded bg-zinc-900'
+                          onCheckedChange={(checked) => {
+                            if (checked === true) {
+                              setUseVoiceChannel(true);
+                            } else {
+                              setUseVoiceChannel(false);
+                            }
+                          }}
+                        >
+                          <Checkbox.Indicator>
+                            <Check className='w-4 h-4 text-emerald-400' />
+                          </Checkbox.Indicator>
+                        </Checkbox.Root>
+                        Costumo me conectar ao chat de voz
+                      </div>
+                      <footer className='mt-2 flex justify-end gap-4'>
+                        <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'>
+                          Cancelar
+                        </Dialog.Close>
+                        <button
+                          className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
+                          type='submit'
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Spinner
+                                size={20}
+                                className='animate-spin-slow'
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <GameController size={24} />
+                              Encontrar duo
+                            </>
+                          )}
+                        </button>
+                      </footer>
+                    </form>
                   )}
-                </button>
-              </footer>
-            </form>
-          )}
-        </Dialog.Content>
+                </animated.div>
+              </Dialog.Content>
+            </>
+          ) : null
+        )}
       </Dialog.Portal>
     </FormProvider>
   );

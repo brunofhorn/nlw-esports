@@ -48,6 +48,7 @@ export default class MyDocument extends Document {
             sizes='180x180'
           />
           <meta name='msapplication-config' content='/browserconfig.xml' />
+          <title>DUO eSports - Ignite</title>
         </Head>
         <body className='h-full bg-galaxy bg-cover bg-no-repeat'>
           <Main />
