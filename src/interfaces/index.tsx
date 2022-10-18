@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export type Game = {
   id: string;
   title: string;
@@ -11,4 +9,10 @@ export type Game = {
 
 export type AdModal = {
   open: boolean;
+  setOpen(open: boolean): void;
+};
+
+export type Toast = {
+  open: boolean;
+  setOpen(open: boolean): void;
 };

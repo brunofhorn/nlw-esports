@@ -16,7 +16,7 @@ import { ErrorMessage } from '@components/ErrorMessage';
 import { Loading } from '@components/Loading';
 import { useTransition, animated, config } from 'react-spring';
 import { AdModal } from '@interfaces/index';
-
+import { Toast } from '@components/Toast';
 interface Game {
   id: string;
   title: string;
@@ -30,7 +30,7 @@ const formSchema = z.object({
   }),
   yearsPlaying: z
     .string()
-    .min(1, { message: 'O preenchimento é obrigatório.' })
+    .min(1, { message: 'É obrigatório preencher há quantos anos joga.' })
     .max(300, { message: 'O valor deve ser menor do que 300.' }),
   discord: z.string().regex(discordRegex, {
     message: 'O formato padrão para o discord é: nome#0000',
@@ -45,7 +45,7 @@ const formSchema = z.object({
 
 type formInputs = z.infer<typeof formSchema>;
 
-export function CreateAdModal({ open }: AdModal) {
+export function CreateAdModal({ open, setOpen }: AdModal) {
   const { data: session, status } = useSession();
   const [games, setGames] = useState<Game[]>([]);
   const [gameSelected, setGameSelected] = useState('');
@@ -55,6 +55,9 @@ export function CreateAdModal({ open }: AdModal) {
   const [discordId, setDiscordId] = useState('');
   const [discordImage, setDiscordImage] = useState('');
   const [username, setUsername] = useState('');
+  const [errorGameSelected, setErrorGameSelected] = useState<boolean>(false);
+  const [errorWeekDays, setErrorWeekDays] = useState<boolean>(false);
+  const [toastOpen, setToastOpen] = useState<boolean>(false);
 
   const transitions = useTransition(open, {
     from: { opacity: 0 },
@@ -89,7 +92,13 @@ export function CreateAdModal({ open }: AdModal) {
 
   const handleCreateAd = async (data: formInputs) => {
     try {
-      if (!gameSelected || !weekDays) {
+      if (!gameSelected) {
+        setErrorGameSelected(true);
+        return;
+      }
+
+      if (weekDays.length == 0) {
+        setErrorWeekDays(true);
         return;
       }
 
@@ -106,12 +115,27 @@ export function CreateAdModal({ open }: AdModal) {
         useVoiceChannel,
       });
 
-      alert('Anuncio criado com sucesso');
       reset();
+      setWeekDays([]);
+      setGameSelected('');
+      setOpen(false);
+      setToastOpen(true);
     } catch (error) {
       alert('Erro ao criar o anúncio!');
     }
   };
+
+  useEffect(() => {
+    if (gameSelected !== '') {
+      setErrorGameSelected(false);
+    }
+  }, [gameSelected]);
+
+  useEffect(() => {
+    if (weekDays.length > 0) {
+      setErrorWeekDays(false);
+    }
+  }, [weekDays.length]);
 
   return (
     <FormProvider {...methods}>
@@ -163,7 +187,7 @@ export function CreateAdModal({ open }: AdModal) {
                           name='game'
                           id='game'
                         />
-                        {!gameSelected && isValid && (
+                        {!gameSelected && errorGameSelected && (
                           <ErrorMessage
                             message={'É obrigatório a seleção de um jogo'}
                           />
@@ -197,11 +221,6 @@ export function CreateAdModal({ open }: AdModal) {
                             registerName='yearsPlaying'
                             placeholder='Tudo bem ser ZERO'
                           />
-                          {errors.yearsPlaying && (
-                            <ErrorMessage
-                              message={errors.yearsPlaying.message}
-                            />
-                          )}
                         </div>
                         <div className='flex flex-col gap-2'>
                           <Label htmlFor='discord' text='Qual seu discord?' />
@@ -212,11 +231,14 @@ export function CreateAdModal({ open }: AdModal) {
                             placeholder='Usuario#8080'
                             defaultValue={discord}
                           />
-                          {errors.discord && (
-                            <ErrorMessage message={errors.discord.message} />
-                          )}
                         </div>
                       </div>
+                      {errors.yearsPlaying && (
+                        <ErrorMessage message={errors.yearsPlaying.message} />
+                      )}
+                      {errors.discord && (
+                        <ErrorMessage message={errors.discord.message} />
+                      )}
                       <div className='flex gap-6'>
                         <div className='flex flex-col gap-2 flex-1'>
                           <Label
@@ -273,11 +295,6 @@ export function CreateAdModal({ open }: AdModal) {
                               letter={'S'}
                             />
                           </ToggleGroup.Root>
-                          {!weekDays && isValid && (
-                            <ErrorMessage
-                              message={'Selecione os dias da semana.'}
-                            />
-                          )}
                         </div>
                         <div className='flex flex-col gap-2 flex-1'>
                           <Label
@@ -300,21 +317,26 @@ export function CreateAdModal({ open }: AdModal) {
                               registerName='hourEnd'
                             />
                           </div>
-                          {(errors.hourStart || errors.hourEnd) && (
-                            <ErrorMessage message={'Informar os horários'} />
-                          )}
                         </div>
                       </div>
+                      {weekDays.length == 0 && errorWeekDays && (
+                        <ErrorMessage
+                          message={
+                            'Selecione os dias da semana que costuma jogar.'
+                          }
+                        />
+                      )}
+                      {(errors.hourStart || errors.hourEnd) && (
+                        <ErrorMessage
+                          message={'Informar os horários inicial e final.'}
+                        />
+                      )}
                       <div className='mt-2 flex items-center gap-2 text-xs'>
                         <Checkbox.Root
                           className='w-6 h-6 p-1 rounded bg-zinc-900'
-                          onCheckedChange={(checked) => {
-                            if (checked === true) {
-                              setUseVoiceChannel(true);
-                            } else {
-                              setUseVoiceChannel(false);
-                            }
-                          }}
+                          onCheckedChange={(checked) =>
+                            setUseVoiceChannel(checked as boolean)
+                          }
                         >
                           <Checkbox.Indicator>
                             <Check className='w-4 h-4 text-emerald-400' />
@@ -331,12 +353,7 @@ export function CreateAdModal({ open }: AdModal) {
                           type='submit'
                         >
                           {isSubmitting ? (
-                            <>
-                              <Spinner
-                                size={20}
-                                className='animate-spin-slow'
-                              />
-                            </>
+                            <Spinner size={20} className='animate-spin-slow' />
                           ) : (
                             <>
                               <GameController size={24} />
@@ -353,6 +370,7 @@ export function CreateAdModal({ open }: AdModal) {
           ) : null
         )}
       </Dialog.Portal>
+      <Toast open={toastOpen} setOpen={setToastOpen} />
     </FormProvider>
   );
 }

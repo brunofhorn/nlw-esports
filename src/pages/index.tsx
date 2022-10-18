@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       <GameList />
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <CreateAdBanner />
-        <CreateAdModal open={open} />
+        <CreateAdModal open={open} setOpen={setOpen} />
       </Dialog.Root>
     </div>
   );
