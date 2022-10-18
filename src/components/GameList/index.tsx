@@ -33,11 +33,16 @@ export default function GameList() {
   const [games, setGames] = useState<Game[]>([]);
   const [loadingGames, setLoadingGames] = useState(true);
 
+  const loadGames = async () => {
+    await axios('/api/games').then(({ data }) => setGames(data));
+  };
+
   useEffect(() => {
     setLoadingGames(true);
-    axios('/api/games').then(({ data }) => setGames(data));
+    loadGames();
     setLoadingGames(false);
   }, []);
+
   return (
     <>
       <Loading load={loadingGames} />

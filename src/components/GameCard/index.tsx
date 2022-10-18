@@ -23,7 +23,7 @@ export function GameCard({ id, adsCount, bannerUrl, title }: GameCardProps) {
   return (
     <button
       className='relative rounded-lg overflow-hidden w-[100%] h-[100%]'
-      onClick={handleRedirectToGame}
+      onClick={adsCount > 0 ? handleRedirectToGame : () => null}
     >
       <img
         src={bannerUrl}

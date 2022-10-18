@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
@@ -16,6 +16,7 @@ import { ErrorMessage } from '@components/ErrorMessage';
 import { Loading } from '@components/Loading';
 import { useTransition, animated, config } from 'react-spring';
 import { AdModal } from '@interfaces/index';
+
 interface Game {
   id: string;
   title: string;
@@ -56,9 +57,9 @@ export function CreateAdModal({ open }: AdModal) {
   const [username, setUsername] = useState('');
 
   const transitions = useTransition(open, {
-    from: { opacity: 0, y: -10 },
-    enter: { opacity: 1, y: 0 },
-    leave: { opacity: 0, y: 10 },
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
     config: config.stiff,
   });
 
