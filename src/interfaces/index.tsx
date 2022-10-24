@@ -15,4 +15,11 @@ export type AdModal = {
 export type Toast = {
   open: boolean;
   setOpen(open: boolean): void;
+  dados: ToastData;
+};
+
+export type ToastData = {
+  type: string;
+  title: string;
+  message: string;
 };

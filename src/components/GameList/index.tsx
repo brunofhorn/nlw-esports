@@ -56,7 +56,10 @@ export default function GameList() {
           style={{ zIndex: 0, height: 240 }}
         >
           {games.map((game) => (
-            <SwiperSlide key={game.id}>
+            <SwiperSlide
+              key={game.id}
+              className='border-2 border-transparent hover:border-2 hover:border-slate-200 hover:rounded-xl'
+            >
               <GameCard
                 id={game.id}
                 bannerUrl={game.bannerUrl}
