@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CaretLeft, CaretRight } from 'phosphor-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperProps } from 'swiper';
@@ -8,6 +8,7 @@ import { Game } from '@interfaces/index';
 import { GameCard } from '@components/GameCard';
 import { Loading } from '@components/Loading';
 import axios from 'axios';
+import { GameContext } from '@contexts/GamesContext';
 
 const breakPointsConfig = {
   480: {
@@ -30,7 +31,7 @@ const breakPointsConfig = {
 
 export default function GameList() {
   const [swiper, setSwiper] = useState<SwiperProps>({} as SwiperProps);
-  const [games, setGames] = useState<Game[]>([]);
+  const { games, setGames } = useContext(GameContext);
   const [loadingGames, setLoadingGames] = useState(true);
 
   const loadGames = async () => {

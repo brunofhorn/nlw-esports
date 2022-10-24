@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
@@ -16,6 +16,7 @@ import { ErrorMessage } from '@components/ErrorMessage';
 import { useTransition, animated, config } from 'react-spring';
 import { AdModal } from '@interfaces/index';
 import { Toast } from '@components/Toast';
+import { GameContext } from '@contexts/GamesContext';
 interface Game {
   id: string;
   title: string;
@@ -45,8 +46,8 @@ const formSchema = z.object({
 type formInputs = z.infer<typeof formSchema>;
 
 export function CreateAdModal({ open, setOpen }: AdModal) {
+  const { games, setGames } = useContext(GameContext);
   const { data: session, status } = useSession();
-  const [games, setGames] = useState<Game[]>([]);
   const [gameSelected, setGameSelected] = useState('');
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);

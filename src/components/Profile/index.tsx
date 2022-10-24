@@ -14,11 +14,10 @@ export function Profile() {
       >
         <div className='flex flex-col items-end'>
           <span className='text-white font-semibold text-sm'>
-            {user?.username}
+            {user?.username}#{user?.discriminator}
           </span>
-
           <span className='text-zinc-500 text-xs' onClick={() => signOut()}>
-            #{user?.discriminator}
+            Sair
           </span>
         </div>
 
