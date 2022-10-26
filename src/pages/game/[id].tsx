@@ -1,42 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NextPage } from 'next';
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { DuoCard } from '@components/DuoCard';
 import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';
-import axios from 'axios';
+import { GameContext } from '@contexts/GamesContext';
+import { IAdsParams, IGame } from '@interfaces/index';
 
-type Game = {
-  id: string;
-  title: string;
-  bannerUrl: string;
-};
-
-type AdsParams = {
-  id: string;
-  discordImage: string;
-  username: string;
-  discordId: string;
-  hourEnd: string;
-  hourStart: string;
-  useVoiceChannel: boolean;
-  weekDays: string[];
-  yearsPlaying: number;
-};
-
-const Game: NextPage<Game> = (props) => {
-  const router = useRouter();
-  const { id, title, bannerUrl } = router.query as Game;
-  const [ads, setAds] = useState<AdsParams[]>([]);
+const Game: NextPage<IGame> = (props) => {
+  const { gameSelected, setIsPageLoading } = useContext(GameContext);
+  const { id, title, bannerUrl } = gameSelected as IGame;
+  const [ads, setAds] = useState<IAdsParams[]>([]);
   const [loadingAds, setLoadingAds] = useState(true);
 
   const getAds = async () => {
-    setLoadingAds(true);
     await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
     setLoadingAds(false);
   };
 
   useEffect(() => {
+    setIsPageLoading(false);
+    setLoadingAds(true);
     getAds();
   }, []);
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { GameController } from 'phosphor-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { UserDiscordModal } from '@components/UserDiscordModal';
-import * as Tooltip from '@radix-ui/react-tooltip';
+import { Tooltip } from '@components/Tooltip';
 
 interface DuoCardProps {
   id: string;
@@ -73,22 +73,9 @@ export function DuoCard({ data }: Props) {
           onClick={() => setAdSelectedId(data.id)}
           className='h-[100%] bg-violet-500 hover:bg-violet-600 flex items-center justify-center text-md text-white font-semibold gap-2 p-2'
         >
-          <Tooltip.Provider>
-            <Tooltip.Root delayDuration={0}>
-              <Tooltip.Trigger asChild>
-                <GameController size={28} weight='bold' />
-              </Tooltip.Trigger>
-              <Tooltip.Content
-                sideOffset={4}
-                className='radix-side-top:animate-slide-down-fade radix-side-right:animate-slide-left-fade radix-side-bottom:animate-slide-up-fade radix-side-left:animate-slide-right-fade inline-flex items-center rounded-md px-4 py-2.5 bg-white dark:bg-gray-800'
-              >
-                <Tooltip.Arrow className='mb-8 fill-current text-white dark:text-gray-800' />
-                <span className='block text-xs leading-none text-gray-700 dark:text-gray-100'>
-                  Clique aqui para visualizar o discord deste usuário.
-                </span>
-              </Tooltip.Content>
-            </Tooltip.Root>
-          </Tooltip.Provider>
+          <Tooltip description='Clique aqui para visualizar o discord deste usuário.'>
+            <GameController size={28} weight='bold' />
+          </Tooltip>
         </Dialog.Trigger>
         {adSelectedId && <UserDiscordModal discordId={adSelectedId} />}
       </Dialog.Root>

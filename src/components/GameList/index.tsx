@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperProps } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Game } from '@interfaces/index';
 import { GameCard } from '@components/GameCard';
 import { Loading } from '@components/Loading';
 import axios from 'axios';
@@ -61,12 +60,7 @@ export default function GameList() {
               key={game.id}
               className='border-2 border-transparent hover:border-2 hover:border-slate-200 hover:rounded-xl'
             >
-              <GameCard
-                id={game.id}
-                bannerUrl={game.bannerUrl}
-                title={game.title}
-                adsCount={game._count.ads}
-              />
+              <GameCard game={game} />
             </SwiperSlide>
           ))}
         </Swiper>

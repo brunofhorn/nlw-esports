@@ -1,8 +1,8 @@
-import { Toast } from '@interfaces/index';
+import { IToast } from '@interfaces/index';
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import { CheckCircle, Info, WarningCircle, XCircle } from 'phosphor-react';
 
-export function Toast({ open, setOpen, dados }: Toast) {
+export function Toast({ open, setOpen, dados }: IToast) {
   const { type, title, message } = dados;
 
   const Icone = () => {
