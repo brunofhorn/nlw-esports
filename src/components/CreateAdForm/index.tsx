@@ -13,9 +13,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
 import * as z from 'zod';
 import { ErrorMessage } from '@components/ErrorMessage';
-import { IAdModal } from '@interfaces/index';
 import { Toast } from '@components/Toast';
-import { GameContext } from '@contexts/GamesContext';
+import { AppContext } from '@contexts/AppContext';
 import { Modal } from '@components/Modal';
 
 const discordRegex = new RegExp('^.{3,32}#[0-9]{4}$');
@@ -41,8 +40,9 @@ const formSchema = z.object({
 
 type formInputs = z.infer<typeof formSchema>;
 
-export function CreateAdForm({ open, setOpen }: IAdModal) {
-  const { games, setGames, refreshAds } = useContext(GameContext);
+export function CreateAdForm() {
+  const { isAdsModalOpen, setIsAdsModalOpen, games, setGames, refreshAds } =
+    useContext(AppContext);
   const { data: session, status } = useSession();
   const [gameSelected, setGameSelected] = useState('');
   const [weekDays, setWeekDays] = useState<string[]>([]);
@@ -127,7 +127,7 @@ export function CreateAdForm({ open, setOpen }: IAdModal) {
     reset();
     setWeekDays([]);
     setGameSelected('');
-    setOpen(false);
+    setIsAdsModalOpen(false);
     setToastOpen(true);
   };
 
@@ -145,7 +145,11 @@ export function CreateAdForm({ open, setOpen }: IAdModal) {
 
   return (
     <FormProvider {...methods}>
-      <Modal title='Publique um anúncio'>
+      <Modal
+        open={isAdsModalOpen}
+        setOpen={setIsAdsModalOpen}
+        title='Publique um anúncio'
+      >
         <form
           onSubmit={handleSubmit(handleCreateAd)}
           className='mt-6 flex flex-col gap-4'

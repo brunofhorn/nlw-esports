@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import { GameCard } from '@components/GameCard';
 import { Loading } from '@components/Loading';
 import axios from 'axios';
-import { GameContext } from '@contexts/GamesContext';
+import { AppContext } from '@contexts/AppContext';
 
 const breakPointsConfig = {
   480: {
@@ -31,7 +31,7 @@ const breakPointsConfig = {
 export default function GameList() {
   const [swiper, setSwiper] = useState<SwiperProps>({} as SwiperProps);
   const { games, setGames, isGamesLoading, setIsGamesLoading } =
-    useContext(GameContext);
+    useContext(AppContext);
 
   const loadGames = async () => {
     await axios('/api/games').then(({ data }) => setGames(data));

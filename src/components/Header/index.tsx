@@ -4,10 +4,10 @@ import Image from 'next/image';
 import logo from '@assets/logo.svg';
 import { Profile } from '@components/Profile';
 import { useContext } from 'react';
-import { GameContext } from '@contexts/GamesContext';
+import { AppContext } from '@contexts/AppContext';
 
 export function Header() {
-  const { setIsPageLoading } = useContext(GameContext);
+  const { setIsPageLoading } = useContext(AppContext);
   const router = useRouter();
 
   const handleBack = () => {

@@ -1,11 +1,13 @@
 import { IGame } from '@interfaces/index';
 import { createContext, ReactNode, useState } from 'react';
 
-type GameContextProps = {
+type AppContextProps = {
   children: ReactNode;
 };
 
-type GameContextType = {
+type AppContextType = {
+  isAdsModalOpen: boolean;
+  setIsAdsModalOpen: (open: boolean) => void;
   isGamesLoading: boolean;
   setIsGamesLoading: (newState: boolean) => void;
   games: IGame[] | [];
@@ -18,6 +20,8 @@ type GameContextType = {
 };
 
 const initialValue = {
+  isAdsModalOpen: false,
+  setIsAdsModalOpen: () => {},
   isGamesLoading: false,
   setIsGamesLoading: () => {},
   games: [],
@@ -29,9 +33,12 @@ const initialValue = {
   setIsPageLoading: () => {},
 };
 
-export const GameContext = createContext<GameContextType>(initialValue);
+export const AppContext = createContext<AppContextType>(initialValue);
 
-export const GameProvider = ({ children }: GameContextProps) => {
+export const AppProvider = ({ children }: AppContextProps) => {
+  const [isAdsModalOpen, setIsAdsModalOpen] = useState(
+    initialValue.isAdsModalOpen
+  );
   const [isGamesLoading, setIsGamesLoading] = useState<boolean>(
     initialValue.isGamesLoading
   );
@@ -42,6 +49,8 @@ export const GameProvider = ({ children }: GameContextProps) => {
   const [gameSelected, setGameSelected] = useState<IGame | null>(
     initialValue.gameSelected
   );
+
+  console.log(isAdsModalOpen);
 
   const refreshAds = (gameId: string) => {
     const refreshGames: IGame[] = games.map((game: IGame) => {
@@ -56,8 +65,10 @@ export const GameProvider = ({ children }: GameContextProps) => {
   };
 
   return (
-    <GameContext.Provider
+    <AppContext.Provider
       value={{
+        isAdsModalOpen,
+        setIsAdsModalOpen,
         isGamesLoading,
         setIsGamesLoading,
         games,
@@ -70,6 +81,6 @@ export const GameProvider = ({ children }: GameContextProps) => {
       }}
     >
       {children}
-    </GameContext.Provider>
+    </AppContext.Provider>
   );
 };

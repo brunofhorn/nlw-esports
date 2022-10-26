@@ -26,15 +26,12 @@ export type IAdsParams = {
 };
 
 export type IModal = {
+  open: boolean;
+  setOpen(open: boolean): void;
   title?: string;
   close?: boolean;
   centered?: boolean;
   children: ReactNode;
-};
-
-export type IAdModal = {
-  open: boolean;
-  setOpen(open: boolean): void;
 };
 
 export type IToast = {

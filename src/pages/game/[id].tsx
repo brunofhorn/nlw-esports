@@ -1,15 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { DuoCard } from '@components/DuoCard';
 import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';
-import { GameContext } from '@contexts/GamesContext';
+import { AppContext } from '@contexts/AppContext';
 import { IAdsParams, IGame } from '@interfaces/index';
 
 const Game: NextPage<IGame> = (props) => {
-  const { gameSelected, setIsPageLoading } = useContext(GameContext);
+  const { gameSelected, setIsPageLoading } = useContext(AppContext);
   const { id, title, bannerUrl } = gameSelected as IGame;
   const [ads, setAds] = useState<IAdsParams[]>([]);
   const [loadingAds, setLoadingAds] = useState(true);
