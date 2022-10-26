@@ -31,22 +31,22 @@ const breakPointsConfig = {
 
 export default function GameList() {
   const [swiper, setSwiper] = useState<SwiperProps>({} as SwiperProps);
-  const { games, setGames } = useContext(GameContext);
-  const [loadingGames, setLoadingGames] = useState(true);
+  const { games, setGames, isGamesLoading, setIsGamesLoading } =
+    useContext(GameContext);
 
   const loadGames = async () => {
     await axios('/api/games').then(({ data }) => setGames(data));
+    setIsGamesLoading(false);
   };
 
   useEffect(() => {
-    setLoadingGames(true);
+    setIsGamesLoading(true);
     loadGames();
-    setLoadingGames(false);
   }, []);
 
   return (
     <>
-      <Loading load={loadingGames} />
+      <Loading load={isGamesLoading} />
       <div className='flex w-[100%] mt-16'>
         <button onClick={() => swiper.slidePrev()}>
           <CaretLeft size={48} className='text-zinc-500' />

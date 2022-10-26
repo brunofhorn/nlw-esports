@@ -46,7 +46,7 @@ const formSchema = z.object({
 type formInputs = z.infer<typeof formSchema>;
 
 export function CreateAdModal({ open, setOpen }: AdModal) {
-  const { games, setGames } = useContext(GameContext);
+  const { games, setGames, refreshAds } = useContext(GameContext);
   const { data: session, status } = useSession();
   const [gameSelected, setGameSelected] = useState('');
   const [weekDays, setWeekDays] = useState<string[]>([]);
@@ -125,6 +125,8 @@ export function CreateAdModal({ open, setOpen }: AdModal) {
         title: 'PARABÉNS!',
         message: 'O anúncio foi criado com sucesso.',
       });
+
+      refreshAds(gameSelected);
     } catch (error) {
       setDadosToast({
         type: 'error',
