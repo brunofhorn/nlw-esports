@@ -4,7 +4,7 @@
 <br/>
 <div align="center">
    <a href="https://github.com/mathrb22">
-      <img alt="Made by mathrb22" src="https://img.shields.io/badge/made%20by-mathrb22-yellow">
+      <img alt="Made by brunofhorn" src="https://img.shields.io/badge/made%20by-brunofhorn-yellow">
    </a>
    <img alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/mathrb22/nlw-esports-ignite">
    <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/mathrb22/nlw-esports-ignite">
@@ -26,7 +26,6 @@
       <img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB">
       <img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white">
       <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
-      <img alt="Vite" src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white">
       <img alt="React Native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
       <img alt="Expo" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37">
       <img alt="Nodejs" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white">
