@@ -79,6 +79,12 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 <a href="https://reactjs.org/" target="_blank">
    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 </a>
+<a href="https://nextjs.org/" target="_blank">
+   <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" />
+</a>
+<a href="" target="_blank">
+   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+</a>
 
 ## 📟 Layout
 
