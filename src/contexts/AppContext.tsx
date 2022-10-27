@@ -13,7 +13,7 @@ type AppContextType = {
   games: IGame[] | [];
   setGames: (newState: IGame[]) => void;
   refreshAds: (newState: string) => void;
-  gameSelected: IGame | null;
+  gameSelected: IGame;
   setGameSelected: (newState: IGame) => void;
   isPageLoading: boolean;
   setIsPageLoading: (newState: boolean) => void;
@@ -27,7 +27,14 @@ const initialValue = {
   games: [],
   setGames: () => {},
   refreshAds: () => {},
-  gameSelected: null,
+  gameSelected: {
+    id: '',
+    title: '',
+    bannerUrl: '',
+    _count: {
+      ads: 0,
+    },
+  },
   setGameSelected: () => {},
   isPageLoading: false,
   setIsPageLoading: () => {},
@@ -46,7 +53,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
     initialValue.isPageLoading
   );
   const [games, setGames] = useState<IGame[]>(initialValue.games);
-  const [gameSelected, setGameSelected] = useState<IGame | null>(
+  const [gameSelected, setGameSelected] = useState<IGame>(
     initialValue.gameSelected
   );
 
