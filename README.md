@@ -3,7 +3,7 @@
 </div>
 <br/>
 <div align="center">
-   <a href="https://github.com/mathrb22">
+   <a href="https://github.com/brunofhorn">
       <img alt="Made by brunofhorn" src="https://img.shields.io/badge/made%20by-brunofhorn-yellow">
    </a>
    <img alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/mathrb22/nlw-esports-ignite">
@@ -17,8 +17,8 @@
    <a href="https://github.com/mathrb22/nlw-esports-ignite/pulls">
       <img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
    </a>
-   <a href="https://github.com/mathrb22/nlw-esports-ignite/blob/main/LICENSE.md">
-      <img alt="GitHub License" src="https://img.shields.io/github/license/mathrb22/nlw-esports-ignite">
+   <a href="https://github.com/brunofhorn/duo-esports-web/blob/main/LICENSE.md">
+      <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports-web">
    </a>
    </br>
    </br>
@@ -28,17 +28,19 @@
       <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
       <img alt="React Native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
       <img alt="Expo" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37">
-      <img alt="Nodejs" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white">
       <img alt="Prisma" src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white">
    </a>
 </div>
-
+<br />
+<div align="center">
+   <img src=".github/app-preview.jpeg" alt="NLW eSports" />
+</div>
 </br>
 <div align="center">
 
 [**Sobre**](#-sobre) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Tecnologias e ferramentas utilizadas**](#-tecnologias-e-ferramentas-utilizadas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Tecnologias e Ferramentas Utilizadas**](#-tecnologias-e-ferramentas-utilizadas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Layout**](#-layout) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Instalação e execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Como contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -81,17 +83,15 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 <table>
    <tbody>
       <tr>
-         <td style="font-weight: bold">Front-end (web)</td>
+         <td style="font-weight: bold">Front & Back (web + server)</td>
          <td>
          <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a>,
+         <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Nextjs</a>,
          <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>,
          <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">TailwindCSS</a>,
-         <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a>,
          <a href="https://www.radix-ui.com/" target="_blank" rel="noopener noreferrer">RadixUI</a>,
-         <a href="https://formik.org/" target="_blank" rel="noopener noreferrer" >Formik</a>,
-         <a href="https://www.npmjs.com/package/yup" target="_blank" rel="noopener noreferrer" >Yup</a>,
-         <a href="https://react-hot-toast.com/" target="_blank" rel="noopener noreferrer" >React Hot Toast</a>,
          <a href="https://phosphoricons.com/" target="_blank" rel="noopener noreferrer" >Phosphor Icons</a>
+         <a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a>
          </td>
       </tr>
       <tr>
@@ -99,14 +99,6 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
          <td>
           <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> e
           <a href="https://expo.dev/" target="_blank" rel="noopener noreferrer">Expo</a>
-         </td>
-      </tr>
-      <tr>
-         <td style="font-weight: bold">Back-end</td>
-         <td>
-          <a href="https://nodejs.org/en/" target="_blank" rel="noopener noreferrer">NodeJs</a>
-         e
-             <a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a>
          </td>
       </tr>
    </tbody>
@@ -123,8 +115,16 @@ Para baixar o código-fonte do projeto em sua máquina, primeiramente terá que 
 
 Com o Git instalado, em seu terminal execute o seguinte comando:
 
+Web + Server
+
 ```bash
-git clone https://github.com/mathrb22/nlw-esports-ignite.git
+git clone https://github.com/brunofhorn/duo-esports-web.git
+```
+
+Mobile
+
+```bash
+git clone https://github.com/brunofhorn/duo-esports-mobile.git
 ```
 
 Para instalar as dependências e executar o projeto terá que ter instalado em sua máquina o [**Node.js**](https://nodejs.org/en/), que vem acompanhado do NPM. Com ele instalado:
@@ -135,14 +135,7 @@ Navegue para as subpastas separadas para cada projeto (web/server/mobile) e rode
 npm install
 ```
 
-Executar o projeto web:
-
-```bash
-npm run dev
-
-```
-
-Executar o servidor node:
+Executar o projeto web / server:
 
 ```bash
 npm run dev
@@ -170,13 +163,13 @@ Pull requests são sempre bem-vindos. Em caso de dúvidas ou sugestões, crie um
 
 Entre em contato comigo por e-mail ou pelo meu LinkedIn:
 
-<a href="mailto:math.ribeiro.dev@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/></a>
-<a href="https://www.linkedin.com/in/matheus-ribeiro-dev/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="mailto:contato@brunofhorn.com.br"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/></a>
+<a href="https://www.linkedin.com/in/brunofhorn/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 
 ## 📝 Licença
 
-<a href="https://github.com/mathrb22/nlw-esports-ignite/blob/main/LICENSE">
-    <img alt="GitHub License" src="https://img.shields.io/github/license/mathrb22/nlw-esports-ignite">
+<a href="https://github.com/brunofhorn/duo-esports-web/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports-web">
 </a>
 
 Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mais detalhes.
@@ -184,5 +177,5 @@ Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mai
 ---
 
 <h5 align="center">
-  &copy;2022 - <a href="https://github.com/mathrb22/">Matheus Ribeiro</a>
+  &copy;2022 - <a href="https://github.com/brunofhorn/">Bruno Fernandes Horn</a>
 </h5>
