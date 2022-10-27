@@ -48,7 +48,7 @@ export function UserDiscordModal({ discordId }: UserDiscordModal) {
             />
           </Dialog.Close>
           <Dialog.Title className='text-3xl text-white font-black'>
-            Let's play!
+            {"Let's play!"}
           </Dialog.Title>
           <Dialog.Description className='text-zinc-400 leading-[160%]'>
             Agora é só começar a jogar!
