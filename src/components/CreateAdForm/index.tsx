@@ -10,12 +10,14 @@ import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
 import { signIn, useSession } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, useFormState } from 'react-hook-form';
 import * as z from 'zod';
 import { ErrorMessage } from '@components/ErrorMessage';
 import { Toast } from '@components/Toast';
 import { AppContext } from '@contexts/AppContext';
 import { Modal } from '@components/Modal';
+import { convertMinutesAmountToHours } from '@utils/convertMinutesAmountToHoursString';
+import { convertHoursToMinutesAmount } from '@utils/convertHoursToMinutesAmount';
 
 const discordRegex = new RegExp('^.{3,32}#[0-9]{4}$');
 
@@ -53,6 +55,7 @@ export function CreateAdForm() {
   const [username, setUsername] = useState('');
   const [errorGameSelected, setErrorGameSelected] = useState<boolean>(false);
   const [errorWeekDays, setErrorWeekDays] = useState<boolean>(false);
+  const [errorHours, setErrorHours] = useState<boolean>(false);
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [dadosToast, setDadosToast] = useState({
     type: '',
@@ -96,6 +99,14 @@ export function CreateAdForm() {
         return;
       }
 
+      if (
+        convertHoursToMinutesAmount(data.hourStart) >
+        convertHoursToMinutesAmount(data.hourEnd)
+      ) {
+        setErrorHours(true);
+        return;
+      }
+
       await axios.post(`api/ads/`, {
         gameId: gameSelected,
         username: data.username,
@@ -124,12 +135,25 @@ export function CreateAdForm() {
       });
     }
 
-    reset();
-    setWeekDays([]);
-    setGameSelected('');
-    setIsAdsModalOpen(false);
+    handleCancel();
     setToastOpen(true);
   };
+
+  const handleCancel = () => {
+    reset();
+    setGameSelected('');
+    setWeekDays([]);
+    setErrorGameSelected(false);
+    setErrorHours(false);
+    setErrorWeekDays(false);
+    setIsAdsModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (!isAdsModalOpen) {
+      handleCancel();
+    }
+  }, [isAdsModalOpen]);
 
   useEffect(() => {
     if (gameSelected !== '') {
@@ -149,6 +173,7 @@ export function CreateAdForm() {
         open={isAdsModalOpen}
         setOpen={setIsAdsModalOpen}
         title='Publique um anúncio'
+        close
       >
         <form
           onSubmit={handleSubmit(handleCreateAd)}
@@ -298,6 +323,11 @@ export function CreateAdForm() {
           )}
           {(errors.hourStart || errors.hourEnd) && (
             <ErrorMessage message={'Informar os horários inicial e final.'} />
+          )}
+          {errorHours && (
+            <ErrorMessage
+              message={'A hora inicial não pode ser maior que a hora final.'}
+            />
           )}
           <div className='mt-2 flex items-center gap-2 text-xs'>
             <Checkbox.Root
