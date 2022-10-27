@@ -76,78 +76,68 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 
 ## 🚀 Tecnologias
 
-<a href="https://reactjs.org/" target="_blank">
-   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
-</a>
-<br />
-<br />
-<a href="https://nextjs.org/" target="_blank">
-   <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" />
-</a>
-<br />
-<br />
-<a href="https://tailwindcss.com/" target="_blank">
-   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-</a>
-<br />
-<br />
-<a href="https://www.radix-ui.com/" target="_blank">
-   Radix UI
-</a>
-<br />
-<br />
-<a href="https://axios-http.com/ptbr/docs/intro" target="_blank">
-   Axios
-</a>
-<br />
-<br />
+<ul>
+   <li>ReactJS (https://reactjs.org/)</li>
+   <li>NextJS (https://nextjs.org/)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>Tailwind CSS (https://tailwindcss.com/)</li>
+   <li>Radix UI (https://www.radix-ui.com/)</li>
+   <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
+   <li>Prisma (https://prisma.io/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Phosphor Icons (https://phosphoricons.com/)</li>
+   <li>ZOD (https://zod.dev/)</li>
+   <li>Next Auth (https://next-auth.js.org/)</li>
+   <li>React Spring (https://react-spring.dev/)</li>
+   <li>React Swiper (https://swiperjs.com/react)</li>
+</ul>
 
 ## 📟 Layout
 
 O layout das telas da aplicação **NLW eSports** foi desenvolvido pela equipe da **Rocketseat** através da ferramenta [**Figma**](https://www.figma.com), um software de prototipação voltado para **UI Design (design de interfaces de usuário)**.
 Você pode acessar o layout através deste link: [**NLW eSports**](https://www.figma.com/community/file/1150897317533332617).
 
-## 🔧 Instalação e execução
+## 🔧 Instalação
 
 Para baixar o código-fonte do projeto em sua máquina, primeiramente terá que ter instalado o [**Git**](https://git-scm.com/).
 
 Com o Git instalado, em seu terminal execute o seguinte comando:
 
-Web + Server
-
 ```bash
-git clone https://github.com/brunofhorn/duo-esports-web.git
-```
-
-Mobile
-
-```bash
-git clone https://github.com/brunofhorn/duo-esports-mobile.git
+git clone https://github.com/brunofhorn/duo-esports.git
 ```
 
 Para instalar as dependências e executar o projeto terá que ter instalado em sua máquina o [**Node.js**](https://nodejs.org/en/), que vem acompanhado do NPM. Com ele instalado:
 
-Navegue para as subpastas separadas para cada projeto (web/server/mobile) e rode o comando a seguir:
+A versão web / server está na raiz. Para testar, rode o seguinte comando:
 
 ```bash
 npm install
 ```
 
-Executar o projeto web / server:
+Em seguida execute o comando abaixo para rodar o projeto web / server:
 
 ```bash
 npm run dev
 
 ```
 
-Executar o projeto mobile:
+**Não esqueça de executar o prisma e gerar as tabelas**
+
+Para testar o projeto na versão mobile, entre na pasta src/mobile e rode o seguinte comando:
+
+```bash
+npm install
+```
+
+Em seguida, execute o comando abaixo para rodar a versão mobile (em um emulador ou direto no seu celular caso possua o app Expo Go):
 
 ```bash
 npm start
 
 ```
 
-## 💡 Como contribuir
+## 💡 Contribuição
 
 - Faça um **_fork_** desse repositório;
 - Crie um **branch** para a sua feature: `git checkout -b minha-feature`;
@@ -166,8 +156,8 @@ Entre em contato comigo por e-mail ou pelo meu LinkedIn:
 
 ## 📝 Licença
 
-<a href="https://github.com/brunofhorn/duo-esports-web/blob/main/LICENSE">
-    <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports-web">
+<a href="https://github.com/brunofhorn/duo-esports/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports">
 </a>
 
 Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mais detalhes.
