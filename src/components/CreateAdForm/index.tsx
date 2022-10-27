@@ -10,13 +10,12 @@ import { Label } from '@components/Form/Label';
 import { Toggle } from '@components/Form/Toggle';
 import { signIn, useSession } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, FormProvider, useFormState } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import * as z from 'zod';
 import { ErrorMessage } from '@components/ErrorMessage';
 import { Toast } from '@components/Toast';
 import { AppContext } from '@contexts/AppContext';
 import { Modal } from '@components/Modal';
-import { convertMinutesAmountToHours } from '@utils/convertMinutesAmountToHoursString';
 import { convertHoursToMinutesAmount } from '@utils/convertHoursToMinutesAmount';
 
 const discordRegex = new RegExp('^.{3,32}#[0-9]{4}$');

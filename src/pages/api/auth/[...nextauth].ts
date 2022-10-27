@@ -1,3 +1,4 @@
+import { IDiscordProfile } from '@interfaces/index';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import DiscordProvider, { DiscordProfile } from 'next-auth/providers/discord';
 

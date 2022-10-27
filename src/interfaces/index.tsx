@@ -51,3 +51,17 @@ export type ITooltip = {
   delayDuration?: number;
   children: ReactNode;
 };
+
+export type IDiscordProfile = {
+  user?: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+    discriminator?: string | null;
+    avatar?: string | null;
+    image_url?: string | null;
+    username?: string | null;
+    id?: string | null;
+  };
+  expires?: string;
+};
