@@ -13,6 +13,5 @@ declare module 'next-auth' {
       username?: string | null;
       id?: string | null;
     };
-    expires: string;
   }
 }
