@@ -77,7 +77,7 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 ## 🚀 Tecnologias
 
 <a href="https://reactjs.org/" target="_blank">
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 </a>
 
 ## 📟 Layout
