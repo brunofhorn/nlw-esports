@@ -80,17 +80,27 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
 </a>
 <br />
+<br />
 <a href="https://nextjs.org/" target="_blank">
    <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" />
 </a>
+<br />
 <br />
 <a href="https://tailwindcss.com/" target="_blank">
    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" />
 </a>
 <br />
+<br />
 <a href="https://www.radix-ui.com/" target="_blank">
    Radix UI
 </a>
+<br />
+<br />
+<a href="https://axios-http.com/ptbr/docs/intro" target="_blank">
+   Axios
+</a>
+<br />
+<br />
 
 ## 📟 Layout
 
