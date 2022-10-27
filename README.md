@@ -19,15 +19,6 @@
       <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports-web">
    </a>
    </br>
-   </br>
-   <a href="#-tecnologias-utilizadas">
-      <img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB">
-      <img alt="TypeScript" src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white">
-      <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white">
-      <img alt="React Native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
-      <img alt="Expo" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37">
-      <img alt="Prisma" src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white">
-   </a>
 </div>
 <br />
 <div align="center">
@@ -38,24 +29,24 @@
 
 [**O Projeto**](#-o-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Tecnologias e Ferramentas Utilizadas**](#-tecnologias-e-ferramentas-utilizadas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Tecnologias**](#-tecnologias) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Layout**](#-layout) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Instalação e Execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Instalação**](#-instalação) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Como Contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Contato**](#-contato) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Licença**](#-licença)
 
 </div>
 
-## 💻 O Projeto
+## 🎮 O Projeto
 
-<img src=".github/landing-web.png" alt="Landing page NLW eSports" />
+<img src=".github/landing-web.png" alt="NLW eSports" />
 
 <br/>
 
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
 
-Trata-se de uma landing page que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
+Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
 <br/>
 <img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
@@ -76,31 +67,7 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 - [x] Copiar o usuário do discord para a área de transferência (mobile)
 - [x] Recebendo notificações push (mobile)
 
-## 🚀 Tecnologias e ferramentas utilizadas
-
-<table>
-   <tbody>
-      <tr>
-         <td style="font-weight: bold">Front & Back (web + server)</td>
-         <td>
-         <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">React</a>,
-         <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">Nextjs</a>,
-         <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">TypeScript</a>,
-         <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">TailwindCSS</a>,
-         <a href="https://www.radix-ui.com/" target="_blank" rel="noopener noreferrer">RadixUI</a>,
-         <a href="https://phosphoricons.com/" target="_blank" rel="noopener noreferrer" >Phosphor Icons</a>
-         <a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a>
-         </td>
-      </tr>
-      <tr>
-         <td style="font-weight: bold">Mobile</td>
-         <td>
-          <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> e
-          <a href="https://expo.dev/" target="_blank" rel="noopener noreferrer">Expo</a>
-         </td>
-      </tr>
-   </tbody>
-</table>
+## 🚀 Tecnologias
 
 ## 📟 Layout
 
