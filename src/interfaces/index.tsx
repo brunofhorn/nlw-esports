@@ -63,5 +63,7 @@ export type IDiscordProfile = {
     username?: string | null;
     id?: string | null;
   };
-  expires?: string;
+  expires: ISODateString;
 };
+
+export declare type ISODateString = string;
