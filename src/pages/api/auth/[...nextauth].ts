@@ -29,6 +29,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  secret: process.env.SECRET,
   callbacks: {
     async redirect({ url, baseUrl }) {
       return baseUrl;
