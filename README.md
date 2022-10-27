@@ -4,17 +4,15 @@
 <br/>
 <div align="center">
    <a href="https://github.com/brunofhorn">
-      <img alt="Made by brunofhorn" src="https://img.shields.io/badge/made%20by-brunofhorn-yellow">
+      <img alt="Made by brunofhorn" src="https://img.shields.io/badge/made%20by-brunofhorn-blue">
    </a>
-   <img alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/mathrb22/nlw-esports-ignite">
-   <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/mathrb22/nlw-esports-ignite">
-   <a href="https://github.com/mathrb22/nlw-esports-ignite/commits/main">
-      <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/mathrb22/nlw-esports-ignite">
+   <a href="https://github.com/brunofhorn/duo-esports-web/commits/main">
+      <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/brunofhorn/duo-esports-web">
    </a>
    <a href="https://github.com/mathrb22/nlw-esports-ignite/issues">
       <img alt="GitHub Issues" src="https://img.shields.io/github/issues/mathrb22/nlw-esports-ignite">
    </a>
-   <a href="https://github.com/mathrb22/nlw-esports-ignite/pulls">
+   <a href="https://github.com/brunofhorn/duo-esports-web/pulls">
       <img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
    </a>
    <a href="https://github.com/brunofhorn/duo-esports-web/blob/main/LICENSE.md">
@@ -38,18 +36,18 @@
 </br>
 <div align="center">
 
-[**Sobre**](#-sobre) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**O Projeto**](#-o-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Tecnologias e Ferramentas Utilizadas**](#-tecnologias-e-ferramentas-utilizadas) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Layout**](#-layout) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Instalação e execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Como contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Instalação e Execução**](#-instalação-e-execução) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Como Contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Contato**](#-contato) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Licença**](#-licença)
 
 </div>
 
-## 📃 Sobre
+## 💻 O Projeto
 
 <img src=".github/landing-web.png" alt="Landing page NLW eSports" />
 
