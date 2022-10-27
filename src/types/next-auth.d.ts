@@ -1,4 +1,5 @@
 import NextAuth from 'next-auth';
+import { string } from 'zod';
 
 declare module 'next-auth' {
   interface Session {
@@ -12,5 +13,6 @@ declare module 'next-auth' {
       username?: string | null;
       id?: string | null;
     };
+    expires: string;
   }
 }
