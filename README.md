@@ -27,18 +27,23 @@
 </br>
 <div align="center">
 
-[**O Projeto**](#-o-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Links**](#-links) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Projeto**](#-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Tecnologias**](#-tecnologias) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Layout**](#-layout) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Instalação**](#-instalação) &nbsp;&nbsp;**|**&nbsp;&nbsp;
-[**Como Contribuir**](#-como-contribuir) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Contribuição**](#-contribuição) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Contato**](#-contato) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Licença**](#-licença)
 
 </div>
 
-## 🎮 O Projeto
+## 🔗 Links
+
+O projeto pode ser acompanhado através do link: [**DUO eSports**](https://duo-esports-ignite.vercel.app/)
+
+## 🎮 Projeto
 
 <img src=".github/landing-web.png" alt="NLW eSports" />
 
@@ -58,16 +63,20 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 ## ✨ Features
 
 - [x] Listagem de games (web e mobile)
-- [x] Criação de um novo anúncio (web)
-- [x] Validações de formulário com o Formik e Yup (web)
+- [x] Criação de um novo anúncio (web e mobile)
+- [x] Validação de autenticação com o discord (web)
+- [x] Validações de formulário com o Zod (web)
 - [x] Combobox autocomplete com lista de games para seleção (web)
-- [x] Design totalmente responsivo (web)
-- [x] Feedbacks para o usuário: loading durante criação, toast de sucesso e erro (web)
-- [x] Listagem de anúncios (mobile)
-- [x] Copiar o usuário do discord para a área de transferência (mobile)
-- [x] Recebendo notificações push (mobile)
+- [x] Context API (web)
+- [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro (web)
+- [x] Listagem de anúncios (web e mobile)
+- [x] Copiar o usuário do discord para a área de transferência (web e mobile)
+- [ ] Recebendo notificações push (mobile)
+- [ ] Design totalmente responsivo (web)
 
 ## 🚀 Tecnologias
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
 ## 📟 Layout
 
