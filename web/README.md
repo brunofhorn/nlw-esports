@@ -78,9 +78,10 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
 ## 🚀 Tecnologias
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>Tailwind CSS (https://tailwindcss.com/)</li>
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
@@ -227,9 +228,10 @@ It is a system that allows users to search for their duo (duo) in online games a
 ## 🚀 Technologies
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>Tailwind CSS (https://tailwindcss.com/)</li>
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>

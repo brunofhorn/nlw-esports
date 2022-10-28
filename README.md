@@ -85,9 +85,10 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 ### Web + Server
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>Tailwind CSS (https://tailwindcss.com/)</li>
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
@@ -268,9 +269,10 @@ In the mobile version, player ads are displayed for registered games, and users 
 ### Web + Server
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>Tailwind CSS (https://tailwindcss.com/)</li>
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>

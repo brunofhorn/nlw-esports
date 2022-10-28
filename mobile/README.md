@@ -189,6 +189,8 @@ In the mobile version, player ads are displayed for registered games, and users 
 ## 🚀 Technologies
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>React Native (https://reactnative.dev/)</li>
    <li>Expo (https://docs.expo.dev/)</li>
    <li>React Navigation (https://reactnavigation.org/)</li>
