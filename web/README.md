@@ -1,5 +1,5 @@
 <div align="center">
-   <img alt="NLW eSports" src=".github/logo-nlw-esports.svg" width="40%"/>
+   <img alt="NLW eSports" src="../.github/logo-nlw-esports.svg" width="40%"/>
 </div>
 <br/>
 <div align="center">
@@ -22,7 +22,7 @@
 </div>
 <br />
 <div align="center">
-   <img src=".github/app-preview.jpeg" alt="NLW eSports" />
+   <img src="../.github/app-preview.jpeg" alt="NLW eSports" />
 </div>
 </br>
 <div align="center">
@@ -45,7 +45,7 @@ O projeto pode ser acompanhado através do link: [**DUO eSports**](https://duo-e
 
 ## 🎮 Projeto
 
-<img src=".github/landing-web.png" alt="NLW eSports" />
+<img src="../.github/landing-web.png" alt="NLW eSports" />
 
 <br/>
 
@@ -54,11 +54,11 @@ O projeto pode ser acompanhado através do link: [**DUO eSports**](https://duo-e
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
 <br/>
-<img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
+<img src="../.github/create-ad-web.png" alt="Modal de criação de anúncio" />
 
 Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
 
-<img src=".github/mobile-screens.png" alt="Telas do aplicativo mobile" />
+<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
 
