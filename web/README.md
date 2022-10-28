@@ -18,13 +18,16 @@
    <a href="https://github.com/brunofhorn/duo-esports/blob/main/LICENSE.md">
       <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports">
    </a>
-   </br>
+   <br/>
 </div>
 <br />
 <div align="center">
    <img src="../.github/app-preview.jpeg" alt="NLW eSports" />
 </div>
-</br>
+<br/>
+<a href="#english"><b><i>Read it in English</i></b></a>
+<br/>
+<br/>
 <div align="center">
 
 [**Links**](#-links) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -38,8 +41,6 @@
 [**Licença**](#-licença)
 
 </div>
-<br />
-_[Read it in English](#English)_
 
 ## 🔗 Links
 
@@ -170,14 +171,158 @@ Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mai
 
 ---
 
+<div id="english">
+
+_English version_
+
+<br />
+<div align="center">
+
+[**Links**](#-links) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Project**](#-project) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Technologies**](#-technologies) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Layout**](#-layout) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Installation**](#-installation) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Contribution**](#-contribution) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**Contact**](#-contact) &nbsp;&nbsp;**|**&nbsp;&nbsp;
+[**License**](#-license)
+
+</div>
+
+## 🔗 Links
+
+The project can be followed through the link: <a href="https://duo-esports-ignite.vercel.app/" target="_blank">**DUO eSports**</a>.
+
+## 🎮 Project
+
+<img src=".github/landing-web.png" alt="NLW eSports" />
+
+<br/>
+
+**NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
+
+It is a system that allows users to search for their duo (duo) in online games and post an ad to find other players in the game they want.
+<br/>
+<br/>
+<img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
+
+## ✨ Features
+
+- [x] Moving from ReactJS + NodeJS to NextJS
+- [x] Games listing
+- [x] Creating a new ad
+- [x] Authentication validation with discord
+- [x] Form Validations with Zod
+- [x] Combobox autocomplete with list of games for selection
+- [x] Context API
+- [x] User feedback: loading during creation, page change, success and error toast
+- [x] Ads listing
+- [x] Copy discord user to clipboard
+- [x] 404 error page
+- [ ] Fully responsive design
+
+## 🚀 Technologies
+
+<ul>
+   <li>ReactJS (https://reactjs.org/)</li>
+   <li>NextJS (https://nextjs.org/)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>Tailwind CSS (https://tailwindcss.com/)</li>
+   <li>Radix UI (https://www.radix-ui.com/)</li>
+   <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
+   <li>Prisma (https://prisma.io/)</li>
+   <li>PostgreSQL (https://www.postgresql.org/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Phosphor Icons (https://phosphoricons.com/)</li>
+   <li>ZOD (https://zod.dev/)</li>
+   <li>Next Auth (https://next-auth.js.org/)</li>
+   <li>React Spring (https://react-spring.dev/)</li>
+   <li>React Swiper (https://swiperjs.com/react)</li>
+   <li>Vercel - Web Hosting (https://vercel.com/)</li>
+   <li>Heroku - PostgreSQL Hosting (https://www.heroku.com/)</li>
+</ul>
+
+## 📟 Layout
+
+The screen layout of the **NLW eSports** application was developed by the **Rocketseat** team through the tool [**Figma**](https://www.figma.com), a prototyping software aimed at **UI Design (user interface design)**.
+You can access the layout through this link: [**NLW eSports**](https://www.figma.com/community/file/1150897317533332617).
+
+## 🔧 Installation
+
+To download the project's source code on your machine, you must first have [**Git**](https://git-scm.com/) installed.
+
+With Git installed, in your terminal run the following command:
+
+```bash
+git clone https://github.com/brunofhorn/duo-esports.git
+```
+
+To install the dependencies and run the project, you must have [**Node.js**](https://nodejs.org/en/) installed on your machine, which comes with NPM. With it installed:
+
+The web/server version is in the **web** folder. To test, run the following command:
+
+```bash
+npm install
+```
+
+Then run the command below to run the project:
+
+```bash
+npm run dev
+
+```
+
+Open http://localhost:3000 in your browser to see the result.
+
+**Don't forget to run the prism and generate the tables. You will need to create a database and host it (in the case of PostgreSQL) or use SQLite or any database of your choice and link in the .env file.**
+
+See more in the <a href="https://prisma.io/" target="_blank">**Prisma**</a> documentation.
+
+## 💡 Contribution
+
+- Do a **_fork_** of that repository;
+- Create a **branch** for your feature: `git checkout -b minha-feature`;
+- Make a **commit** with your changes: `git commit -m 'feat: Minha nova feature'`;
+- Make a **push** to your branch: `git push origin minha-feature`;
+- Make a **pull request** with your feature;
+
+Pull requests are always welcome. If you have any questions or suggestions, please create an _**issue**_ or contact me.
+
+## 📲 Contact
+
+Contact me by email or through my social networks:
+
+<a href="mailto:contato@brunofhorn.com.br" target="_blank">
+   <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
+</a>
+<a href="https://linkedin.com/in/brunofhorn/" target="_blank">
+   <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
+<a href="https://tiktok.com/@brunofhorn" target="_blank">
+   <img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" alt="Tiktok" />
+</a>
+<a href="https://twitter.com/brunofhorn" target="_blank">
+   <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
+</a>
+<a href="https://instagram.com/brunofhorn" target="_blank">
+   <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+</a>
+
+## 📝 License
+
+<a href="https://github.com/brunofhorn/duo-esports/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports">
+</a>
+
+This project is under the **MIT** license. See the _**LICENSE**_ file for more details.
+
+</div>
+
+---
+
 <h5 align="center">
   &copy;2022 - <a href="https://github.com/brunofhorn/">Bruno Fernandes Horn</a>
 </h5>
 
----
-
-<div id="English">
-
-_English version_
-
-</div>
+<a href='#top'>🔼 Back to top</a>

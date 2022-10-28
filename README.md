@@ -1,4 +1,4 @@
-<div align="center"  id="top">
+<div align="center" id="top">
    <img alt="NLW eSports" src=".github/logo-nlw-esports.svg" width="40%"/>
 </div>
 <br/>
@@ -18,15 +18,16 @@
    <a href="https://github.com/brunofhorn/duo-esports/blob/main/LICENSE.md">
       <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports">
    </a>
-   </br>
+   <br/>
 </div>
-<br />
+<br/>
 <div align="center">
    <img src=".github/app-preview.jpeg" alt="NLW eSports" />
 </div>
-<br />
-_[Read it in English](#English)_
-<br />
+<br/>
+<a href="#english"><b><i>Read it in English</i></b></a>
+<br/>
+<br/>
 <div align="center">
 
 [**Links**](#-links) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -52,7 +53,7 @@ O projeto pode ser acompanhado através do link: <a href="https://duo-esports-ig
 <br/>
 
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
-
+<br/>
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
 <br/>
@@ -204,7 +205,7 @@ Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mai
 
 ---
 
-<div id="English">
+<div id="english">
 
 _English version_
 
