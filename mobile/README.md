@@ -49,8 +49,6 @@
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
 Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
-<br />
-<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
 
