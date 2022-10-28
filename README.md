@@ -76,6 +76,8 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 
 ## 🚀 Tecnologias
 
+### Web + Server
+
 <ul>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
@@ -84,12 +86,23 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
    <li>Prisma (https://prisma.io/)</li>
+   <li>PostgreSQL (https://www.postgresql.org/)<li>
    <li>React Hook Form (https://react-hook-form.com/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
    <li>ZOD (https://zod.dev/)</li>
    <li>Next Auth (https://next-auth.js.org/)</li>
    <li>React Spring (https://react-spring.dev/)</li>
    <li>React Swiper (https://swiperjs.com/react)</li>
+</ul>
+
+### Mobile
+
+<ul>
+   <li>React Native (https://reactnative.dev/)</li>
+   <li>Expo (https://docs.expo.dev/)</li>
+   <li>React Navigation (https://reactnavigation.org/)</li>
+   <li>Phosphor Icons (https://phosphoricons.com/)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
 </ul>
 
 ## 📟 Layout
@@ -149,10 +162,23 @@ Pull requests são sempre bem-vindos. Em caso de dúvidas ou sugestões, crie um
 
 ## 📲 Contato
 
-Entre em contato comigo por e-mail ou pelo meu LinkedIn:
+Entre em contato comigo por e-mail ou pelas minhas redes sociais:
 
-<a href="mailto:contato@brunofhorn.com.br"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/></a>
-<a href="https://www.linkedin.com/in/brunofhorn/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="mailto:contato@brunofhorn.com.br" target="_blank">
+   <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
+</a>
+<a href="https://www.linkedin.com/in/brunofhorn/" target="_blank">
+   <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
+<a href="https://www.tiktok.com/@brunofhorn" target="_blank">
+   <img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" alt="Tiktok" />
+</a>
+<a href="https://twitter.com/brunofhorn" target="_blank">
+   <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
+</a>
+<a href="" target="_blank">
+   <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+</a>
 
 ## 📝 Licença
 
