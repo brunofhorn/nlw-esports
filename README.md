@@ -6,17 +6,17 @@
    <a href="https://github.com/brunofhorn">
       <img alt="Made by brunofhorn" src="https://img.shields.io/badge/made%20by-brunofhorn-blue">
    </a>
-   <a href="https://github.com/brunofhorn/duo-esports-web/commits/main">
-      <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/brunofhorn/duo-esports-web">
+   <a href="https://github.com/brunofhorn/duo-esports/commits/main">
+      <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/brunofhorn/duo-esports">
    </a>
-   <a href="https://github.com/mathrb22/nlw-esports-ignite/issues">
-      <img alt="GitHub Issues" src="https://img.shields.io/github/issues/mathrb22/nlw-esports-ignite">
+   <a href="https://github.com/brunofhorn/duo-esports/issues">
+      <img alt="GitHub Issues" src="https://img.shields.io/github/issues/brunofhorn/duo-esports">
    </a>
-   <a href="https://github.com/brunofhorn/duo-esports-web/pulls">
+   <a href="https://github.com/brunofhorn/duo-esports/pulls">
       <img alt="Pull Requests Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
    </a>
-   <a href="https://github.com/brunofhorn/duo-esports-web/blob/main/LICENSE.md">
-      <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports-web">
+   <a href="https://github.com/brunofhorn/duo-esports/blob/main/LICENSE.md">
+      <img alt="GitHub License" src="https://img.shields.io/github/license/brunofhorn/duo-esports">
    </a>
    </br>
 </div>
