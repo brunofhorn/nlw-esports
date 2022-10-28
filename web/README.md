@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" id="top">
    <img alt="NLW eSports" src="../.github/logo-nlw-esports.svg" width="40%"/>
 </div>
 <br/>
@@ -38,6 +38,8 @@
 [**Licença**](#-licença)
 
 </div>
+<br />
+_[Read it in English](#English)_
 
 ## 🔗 Links
 
@@ -171,3 +173,11 @@ Esse projeto está sob a licença **MIT**. Veja o arquivo _**LICENSE**_ para mai
 <h5 align="center">
   &copy;2022 - <a href="https://github.com/brunofhorn/">Bruno Fernandes Horn</a>
 </h5>
+
+---
+
+<div id="English">
+
+_English version_
+
+</div>
