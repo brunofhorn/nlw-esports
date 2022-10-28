@@ -86,7 +86,7 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
    <li>Radix UI (https://www.radix-ui.com/)</li>
    <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
    <li>Prisma (https://prisma.io/)</li>
-   <li>PostgreSQL (https://www.postgresql.org/)<li>
+   <li>PostgreSQL (https://www.postgresql.org/)</li>
    <li>React Hook Form (https://react-hook-form.com/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
    <li>ZOD (https://zod.dev/)</li>
@@ -122,22 +122,30 @@ git clone https://github.com/brunofhorn/duo-esports.git
 
 Para instalar as dependências e executar o projeto terá que ter instalado em sua máquina o [**Node.js**](https://nodejs.org/en/), que vem acompanhado do NPM. Com ele instalado:
 
-A versão web / server está na raiz. Para testar, rode o seguinte comando:
+### Web + Server
+
+A versão web / server está na pasta **web**. Para testar, rode o seguinte comando:
 
 ```bash
 npm install
 ```
 
-Em seguida execute o comando abaixo para rodar o projeto web / server:
+Em seguida execute o comando abaixo para rodar o projeto:
 
 ```bash
 npm run dev
 
 ```
 
-**Não esqueça de executar o prisma e gerar as tabelas**
+Abra http://localhost:3000 em seu navegador para ver o resultado.
 
-Para testar o projeto na versão mobile, entre na pasta src/mobile e rode o seguinte comando:
+**Não esqueça de executar o prisma e gerar as tabelas. Você precisará criar um banco de dados e hospedá-lo (no caso do PostgreSQL) ou então utilizar o SQLite ou algum banco da sua preferência e vincular no arquivo .env.**
+
+Veja mais na documentação do <a href="https://prisma.io/" target="_blank">**Prisma**</a>.
+
+### Mobile
+
+Para testar o projeto na versão mobile, entre na pasta **mobile** e rode o seguinte comando:
 
 ```bash
 npm install
@@ -167,16 +175,16 @@ Entre em contato comigo por e-mail ou pelas minhas redes sociais:
 <a href="mailto:contato@brunofhorn.com.br" target="_blank">
    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
 </a>
-<a href="https://www.linkedin.com/in/brunofhorn/" target="_blank">
+<a href="https://linkedin.com/in/brunofhorn/" target="_blank">
    <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
 </a>
-<a href="https://www.tiktok.com/@brunofhorn" target="_blank">
+<a href="https://tiktok.com/@brunofhorn" target="_blank">
    <img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" alt="Tiktok" />
 </a>
 <a href="https://twitter.com/brunofhorn" target="_blank">
    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
 </a>
-<a href="" target="_blank">
+<a href="https://instagram.com/brunofhorn" target="_blank">
    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
 </a>
 
