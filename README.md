@@ -41,7 +41,7 @@
 
 ## 🔗 Links
 
-O projeto pode ser acompanhado através do link: [**DUO eSports**](https://duo-esports-ignite.vercel.app/)
+O projeto pode ser acompanhado através do link: <a href="https://duo-esports-ignite.vercel.app/" target="_blank">**DUO eSports**</a>.
 
 ## 🎮 Projeto
 

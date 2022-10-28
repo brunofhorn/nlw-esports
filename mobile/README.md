@@ -27,7 +27,6 @@
 </br>
 <div align="center">
 
-[**Links**](#-links) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Projeto**](#-projeto) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Features**](#-features) &nbsp;&nbsp;**|**&nbsp;&nbsp;
 [**Tecnologias**](#-tecnologias) &nbsp;&nbsp;**|**&nbsp;&nbsp;
@@ -39,13 +38,9 @@
 
 </div>
 
-## 🔗 Links
-
-O projeto pode ser acompanhado através do link: <a href="https://duo-esports-ignite.vercel.app/" target="_blank">**DUO eSports**</a>.
-
 ## 🎮 Projeto
 
-<img src="../.github/landing-web.png" alt="NLW eSports" />
+<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
 
 <br/>
 
@@ -53,39 +48,26 @@ O projeto pode ser acompanhado através do link: <a href="https://duo-esports-ig
 
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
-<br/>
-<img src="../.github/create-ad-web.png" alt="Modal de criação de anúncio" />
+Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
+<br />
+<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
 
 - [x] Listagem de games
 - [x] Criação de um novo anúncio
-- [x] Validação de autenticação com o discord
-- [x] Validações de formulário com o Zod
-- [x] Combobox autocomplete com lista de games para seleção
-- [x] Context API
-- [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro
 - [x] Listagem de anúncios
 - [x] Copiar o usuário do discord para a área de transferência
-- [ ] Design totalmente responsivo (web)
+- [ ] Recebendo notificações push (mobile)
 
 ## 🚀 Tecnologias
 
 <ul>
-   <li>ReactJS (https://reactjs.org/)</li>
-   <li>NextJS (https://nextjs.org/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
-   <li>Tailwind CSS (https://tailwindcss.com/)</li>
-   <li>Radix UI (https://www.radix-ui.com/)</li>
-   <li>Axios (https://axios-http.com/ptbr/docs/intro)</li>
-   <li>Prisma (https://prisma.io/)</li>
-   <li>PostgreSQL (https://www.postgresql.org/)</li>
-   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>React Native (https://reactnative.dev/)</li>
+   <li>Expo (https://docs.expo.dev/)</li>
+   <li>React Navigation (https://reactnavigation.org/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
-   <li>ZOD (https://zod.dev/)</li>
-   <li>Next Auth (https://next-auth.js.org/)</li>
-   <li>React Spring (https://react-spring.dev/)</li>
-   <li>React Swiper (https://swiperjs.com/react)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
 </ul>
 
 ## 📟 Layout
@@ -105,24 +87,18 @@ git clone https://github.com/brunofhorn/duo-esports.git
 
 Para instalar as dependências e executar o projeto terá que ter instalado em sua máquina o [**Node.js**](https://nodejs.org/en/), que vem acompanhado do NPM. Com ele instalado:
 
-Para testar a versão web + server rode o seguinte comando:
+Para testar o projeto na versão mobile rode o seguinte comando:
 
 ```bash
 npm install
 ```
 
-Em seguida execute o comando abaixo para rodar o projeto:
+Em seguida, execute o comando abaixo para rodar a versão mobile (em um emulador ou direto no seu celular caso possua o app Expo Go):
 
 ```bash
-npm run dev
+npm start
 
 ```
-
-Abra http://localhost:3000 em seu navegador para ver o resultado.
-
-**Não esqueça de executar o prisma e gerar as tabelas. Você precisará criar um banco de dados e hospedá-lo (no caso do PostgreSQL) ou então utilizar o SQLite ou algum banco da sua preferência e vincular no arquivo .env.**
-
-Veja mais na documentação do <a href="https://prisma.io/" target="_blank">**Prisma**</a>.
 
 ## 💡 Contribuição
 
