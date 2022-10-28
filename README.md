@@ -62,6 +62,7 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 
 ## ✨ Features
 
+- [x] Mudança de ReactJS + NodeJS para NextJS (web)
 - [x] Listagem de games (web e mobile)
 - [x] Criação de um novo anúncio (web e mobile)
 - [x] Validação de autenticação com o discord (web)
@@ -71,6 +72,7 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 - [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro (web)
 - [x] Listagem de anúncios (web e mobile)
 - [x] Copiar o usuário do discord para a área de transferência (web e mobile)
+- [x] Página de erro 404 (web e mobile)
 - [ ] Recebendo notificações push (mobile)
 - [ ] Design totalmente responsivo (web)
 
@@ -93,6 +95,8 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
    <li>Next Auth (https://next-auth.js.org/)</li>
    <li>React Spring (https://react-spring.dev/)</li>
    <li>React Swiper (https://swiperjs.com/react)</li>
+   <li>Vercel - Hospedagem Web (https://vercel.com/)</li>
+   <li>Heroku - Hospedagem PostgreSQL (https://www.heroku.com/)</li>
 </ul>
 
 ### Mobile

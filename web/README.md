@@ -58,6 +58,7 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
 
 ## ✨ Features
 
+- [x] Mudança de ReactJS + NodeJS para NextJS
 - [x] Listagem de games
 - [x] Criação de um novo anúncio
 - [x] Validação de autenticação com o discord
@@ -67,7 +68,8 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
 - [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro
 - [x] Listagem de anúncios
 - [x] Copiar o usuário do discord para a área de transferência
-- [ ] Design totalmente responsivo (web)
+- [x] Página de erro 404
+- [ ] Design totalmente responsivo
 
 ## 🚀 Tecnologias
 
@@ -86,6 +88,8 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
    <li>Next Auth (https://next-auth.js.org/)</li>
    <li>React Spring (https://react-spring.dev/)</li>
    <li>React Swiper (https://swiperjs.com/react)</li>
+   <li>Vercel - Hospedagem Web (https://vercel.com/)</li>
+   <li>Heroku - Hospedagem PostgreSQL (https://www.heroku.com/)</li>
 </ul>
 
 ## 📟 Layout

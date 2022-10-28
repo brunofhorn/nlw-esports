@@ -56,7 +56,8 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
 - [x] Criação de um novo anúncio
 - [x] Listagem de anúncios
 - [x] Copiar o usuário do discord para a área de transferência
-- [ ] Recebendo notificações push (mobile)
+- [x] Página de erro 404
+- [ ] Recebendo notificações push
 
 ## 🚀 Tecnologias
 
