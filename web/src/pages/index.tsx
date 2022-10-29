@@ -13,9 +13,9 @@ const Home: NextPage = () => {
   const { isPageLoading, setIsPageLoading } = useContext(AppContext);
 
   return (
-    <div className='max-w-[1344px] flex flex-col items-center my-20 mx-20'>
+    <div className='max-w-[1344px] flex flex-col items-center my-0 mx-0 sm:mx-20 sm:my-20'>
       <Header />
-      <h1 className='text-6xl text-white font-black mt-20'>
+      <h1 className='text-3xl sm:text-6xl text-white font-black mt-20 text-center max-[640px]:text-2xl'>
         Seu{' '}
         <span className='text-transparent bg-nlw-gradient bg-clip-text'>
           duo

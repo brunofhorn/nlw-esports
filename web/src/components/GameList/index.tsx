@@ -11,8 +11,8 @@ import { AppContext } from '@contexts/AppContext';
 
 const breakPointsConfig = {
   480: {
-    slidesPerView: 1,
-    spaceBetween: 0,
+    slidesPerView: 2,
+    spaceBetween: 5,
   },
   640: {
     slidesPerView: 3,
