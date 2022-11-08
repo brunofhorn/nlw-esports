@@ -328,7 +328,7 @@ export function CreateAdForm() {
               message={'A hora inicial não pode ser maior que a hora final.'}
             />
           )}
-          <div className='mt-2 flex items-center gap-2 text-xs'>
+          <div className='mt-2 flex items-center gap-2 text-label md:text-xs'>
             <Checkbox.Root
               className='w-6 h-6 p-1 rounded bg-zinc-900'
               onCheckedChange={(checked) =>

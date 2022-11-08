@@ -5,9 +5,6 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    fontSize:{
-      label: '0.5rem',
-    },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
     },

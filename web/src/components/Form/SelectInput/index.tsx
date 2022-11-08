@@ -29,7 +29,10 @@ export function Select({
         className='inline-flex items-center justify-between bg-zinc-900 py-3 px-4 rounded text-zinc-500 text-xs md:text-sm'
         {...rest}
       >
-        <SelectUI.Value placeholder={placeholder} />
+        <SelectUI.Value
+          placeholder={placeholder}
+          className={'text-[10px] md:text-xs'}
+        />
         <SelectUI.Icon>
           <CaretDown size={16} />
         </SelectUI.Icon>

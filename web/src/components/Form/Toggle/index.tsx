@@ -13,7 +13,7 @@ export function Toggle({ value, weekDays, title, letter }: ToggleProps) {
       value={value}
       title={title}
       aria-label={title}
-      className={`text-xs w-6 h-6 rounded ${
+      className={`text-[10px] md:text-xs w-6 h-6 rounded ${
         weekDays.includes(value) ? 'bg-violet-500' : 'bg-zinc-900'
       }`}
     >
