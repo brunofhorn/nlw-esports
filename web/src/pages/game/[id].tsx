@@ -25,10 +25,10 @@ const Game: NextPage<IGame> = (props) => {
   }, []);
 
   return (
-    <div className='max-w-[1344px] mx-auto flex flex-col items-center my-8 px-4'>
+    <div className='max-w-[1344px] mx-auto flex flex-col items-center my-8 px-0 md:px-4'>
       <Header />
-      <div className='w-[100%] lg:h-[436px] flex flex-col lg:flex-row items-center lg:items-start gap-10 mt-12 px-10 py-8 rounded'>
-        <div className='flex flex-col items-center gap-6 '>
+      <div className='w-[100%] lg:h-[436px] flex flex-col lg:flex-row items-center lg:items-start gap-10 mt-0 md:mt-12 px-10 py-0 md:pt-8 pb-8 rounded'>
+        <div className='flex flex-col items-center gap-6'>
           <h1 className='text-white font-bold text-3xl md:text-4xl lg:text-2xl'>
             {title}
           </h1>

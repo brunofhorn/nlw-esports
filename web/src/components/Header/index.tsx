@@ -16,7 +16,7 @@ export function Header() {
   };
 
   return (
-    <div className='w-[100%] flex p-2 items-center justify-between cursor-pointer mb-8'>
+    <div className='w-[100%] flex flex-col md:flex-row p-2 pt-10 md:pt-2 items-center justify-between cursor-pointer mb-8'>
       <div className='flex flex-1 justify-start items-center'>
         {router.pathname !== '/' && (
           <button
@@ -27,7 +27,7 @@ export function Header() {
           </button>
         )}
       </div>
-      <div className='flex flex-1 justify-center items-center'>
+      <div className='flex flex-1 justify-center items-center my-5 md:my-0'>
         <Image src={logo} alt='NLW eSports' />
       </div>
       <div className='flex flex-1 justify-end items-center'>

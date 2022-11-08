@@ -27,7 +27,7 @@ export function DuoCard({ data }: Props) {
   return (
     <li className='w-[100%] h-[84px] pl-5 flex justify-between items-center rounded-lg bg-[#2A2634] hover:bg-[#2a263483] overflow-hidden'>
       <img
-        className='w-12 h-12 rounded-full hidden md:block'
+        className='w-12 h-12 rounded-full'
         src={data.discordImage}
         alt={data.username}
         title='Foto de Perfil'
