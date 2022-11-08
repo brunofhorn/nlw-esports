@@ -10,6 +10,10 @@ import axios from 'axios';
 import { AppContext } from '@contexts/AppContext';
 
 const breakPointsConfig = {
+  360: {
+    slidesPerView: 2,
+    spaceBetween: 5,
+  },
   480: {
     slidesPerView: 2,
     spaceBetween: 5,
