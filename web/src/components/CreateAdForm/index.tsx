@@ -246,7 +246,7 @@ export function CreateAdForm() {
               <Label htmlFor='weekDays' text='Quando costuma jogar?' />
               <ToggleGroup.Root
                 type='multiple'
-                className='grid grid-cols-7 gap-4 md:gap-2'
+                className='grid grid-cols-7 gap-5 md:gap-2'
                 value={weekDays}
                 onValueChange={setWeekDays}
                 aria-label='Dias da semana'
@@ -298,7 +298,7 @@ export function CreateAdForm() {
             <div className='flex flex-col gap-2 flex-1'>
               <Label htmlFor='hourStart' text='Qual horário do dia?' />
               <div className='grid grid-cols-2 gap-4 md:gap-2'>
-                <div className='md:grid'>
+                <div className='md:grid mx-2 md:mx-0 w-[90%] md:w-[100%]'>
                   <Input
                     type='time'
                     id='hourStart'
@@ -307,7 +307,7 @@ export function CreateAdForm() {
                     registerName='hourStart'
                   />
                 </div>
-                <div className='md:grid'>
+                <div className='md:grid mx-2 md:mx-0 w-[90%] md:w-[100%]'>
                   <Input
                     type='time'
                     id='hourEnd'
