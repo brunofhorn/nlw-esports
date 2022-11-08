@@ -1,17 +1,17 @@
-import { View, Text, ViewProps } from "react-native";
+import { View, Text } from 'react-native';
+import { styles } from './styles';
+import { IHeading } from '../../interfaces/components';
+import { GradientText } from '../GradientText';
 
-import { styles } from "./styles";
-
-interface Props extends ViewProps {
-	title: string;
-	subtitle: string;
-}
-
-export function Heading({ title, subtitle, ...rest }: Props) {
-	return (
-		<View style={styles.container} {...rest}>
-			<Text style={styles.title}>{title}</Text>
-			<Text style={styles.subtitle}>{subtitle}</Text>
-		</View>
-	);
+export function Heading({ subtitle, ...rest }: IHeading) {
+  return (
+    <View style={styles.container} {...rest}>
+      <View style={styles.containerGradient}>
+        <Text style={styles.title}>O seu</Text>
+        <GradientText text='duo' />
+        <Text style={styles.title}>está aqui!</Text>
+      </View>
+      <Text style={styles.subtitle}>{subtitle}</Text>
+    </View>
+  );
 }
