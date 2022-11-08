@@ -229,7 +229,7 @@ export function CreateAdForm() {
               />
               {discord === '' && (
                 <button
-                  className='bg-violet-600 rounded pl-1.5 mt-5 md:mt-7 right-11 w-7 h-7 absolute'
+                  className='bg-violet-600 rounded pl-1.5 mt-6 md:mt-7 right-11 w-7 h-7 absolute'
                   onClick={() => signIn('discord')}
                 >
                   <DiscordLogo size={18} />
@@ -246,7 +246,7 @@ export function CreateAdForm() {
               <Label htmlFor='weekDays' text='Quando costuma jogar?' />
               <ToggleGroup.Root
                 type='multiple'
-                className='grid grid-cols-7 gap-3 md:gap-2'
+                className='grid grid-cols-7 gap-4 md:gap-2'
                 value={weekDays}
                 onValueChange={setWeekDays}
                 aria-label='Dias da semana'
@@ -297,7 +297,7 @@ export function CreateAdForm() {
             </div>
             <div className='flex flex-col gap-2 flex-1'>
               <Label htmlFor='hourStart' text='Qual horário do dia?' />
-              <div className='grid grid-cols-2 gap-3 md:gap-2'>
+              <div className='grid grid-cols-2 gap-4 md:gap-2'>
                 <div className='md:grid'>
                   <Input
                     type='time'
