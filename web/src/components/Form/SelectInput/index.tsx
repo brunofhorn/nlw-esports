@@ -26,7 +26,7 @@ export function Select({
     <SelectUI.Root onValueChange={(option) => onSelectedChange(option)}>
       <SelectUI.Trigger
         aria-label={label}
-        className='inline-flex items-center justify-between bg-zinc-900 py-3 px-4 rounded text-zinc-500 text-sm'
+        className='inline-flex items-center justify-between bg-zinc-900 py-3 px-4 rounded text-zinc-500 text-xs md:text-sm'
         {...rest}
       >
         <SelectUI.Value placeholder={placeholder} />
