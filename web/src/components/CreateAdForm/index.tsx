@@ -298,20 +298,24 @@ export function CreateAdForm() {
             <div className='flex flex-col gap-2 flex-1'>
               <Label htmlFor='hourStart' text='Qual horário do dia?' />
               <div className='grid grid-cols-2 gap-2'>
-                <Input
-                  type='time'
-                  id='hourStart'
-                  name='hourStart'
-                  placeholder='De'
-                  registerName='hourStart'
-                />
-                <Input
-                  type='time'
-                  id='hourEnd'
-                  name='hourEnd'
-                  placeholder='Até'
-                  registerName='hourEnd'
-                />
+                <div className='md:grid'>
+                  <Input
+                    type='time'
+                    id='hourStart'
+                    name='hourStart'
+                    placeholder='De'
+                    registerName='hourStart'
+                  />
+                </div>
+                <div className='md:grid'>
+                  <Input
+                    type='time'
+                    id='hourEnd'
+                    name='hourEnd'
+                    placeholder='Até'
+                    registerName='hourEnd'
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -328,7 +332,7 @@ export function CreateAdForm() {
               message={'A hora inicial não pode ser maior que a hora final.'}
             />
           )}
-          <div className='mt-2 flex items-center gap-2 text-label md:text-xs'>
+          <div className='mt-2 flex items-center gap-2 text-[10px] md:text-xs'>
             <Checkbox.Root
               className='w-6 h-6 p-1 rounded bg-zinc-900'
               onCheckedChange={(checked) =>
@@ -342,11 +346,11 @@ export function CreateAdForm() {
             Costumo me conectar ao chat de voz
           </div>
           <footer className='mt-2 flex justify-end gap-4'>
-            <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'>
+            <Dialog.Close className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600 text-[10px] md:text-sm'>
               Cancelar
             </Dialog.Close>
             <button
-              className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
+              className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600 text-[10px] md:text-sm'
               type='submit'
             >
               {isSubmitting ? (
