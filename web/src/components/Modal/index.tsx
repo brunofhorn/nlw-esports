@@ -41,7 +41,7 @@ export function Modal({
               <Dialog.Content
                 forceMount
                 asChild
-                className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'
+                className='fixed bg-[#2A2634] py-8 px-10 text-white mt-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[440px] md:w-[480px] shadow-lg shadow-black/25'
               >
                 <animated.div style={styles}>
                   {close && (
