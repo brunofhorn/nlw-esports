@@ -3,21 +3,21 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Background } from '../../components/Background';
 import { styles } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { GameParams } from '../../@types/navigation';
 import { FlatList, Image, TouchableOpacity, View, Text } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/logo-nlw-esports.png';
 import { Heading } from '../../components/Heading';
-import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { DuoCard } from '../../components/DuoCard';
 import { DuoMatch } from '../../components/DuoMatch';
 import { api } from '../../services/api';
+import { IDuoCard, IGames } from '../../interfaces';
 
 export function Game() {
   const navigation = useNavigation();
   const route = useRoute();
-  const game = route.params as GameParams;
-  const [duos, setDuos] = useState<DuoCardProps[]>([]);
+  const game = route.params as IGames;
+  const [duos, setDuos] = useState<IDuoCard[]>([]);
   const [discordDuoSelected, setDiscordDuoSelected] = useState('');
 
   const handleGoBack = () => {
@@ -59,13 +59,15 @@ export function Game() {
           style={styles.cover}
           resizeMode='cover'
         />
-        <Heading title={game.title} subtitle={'Conecte-se e comece a jogar!'} />
+        <Heading //title={game.title}
+          subtitle={'Conecte-se e comece a jogar!'}
+        />
 
         <FlatList
           data={duos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <DuoCard data={item} onConnect={() => getDiscordUser(item.id)} />
+            <DuoCard {...item} onConnect={() => getDiscordUser(item.id)} />
           )}
           horizontal
           style={styles.containerList}

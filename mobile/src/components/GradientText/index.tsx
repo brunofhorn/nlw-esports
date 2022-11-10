@@ -1,7 +1,7 @@
 import { Text } from 'react-native';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
-import { IGradientText } from '../../interfaces/components';
+import { IGradientText } from '../../interfaces';
 import { styles } from './styles';
 
 export function GradientText({ text }: IGradientText) {

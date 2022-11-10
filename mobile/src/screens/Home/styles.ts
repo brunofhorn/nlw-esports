@@ -12,10 +12,13 @@ export const styles = StyleSheet.create({
     marginBottom: 48,
     alignSelf: 'center',
   },
-  contentList: {
-    paddingLeft: 32,
-    paddingRight: 64,
-    marginBottom: 30,
+  containerGradient: {
+    flexDirection: 'row',
+  },
+  title: {
+    color: THEME.COLORS.TEXT,
+    fontSize: THEME.FONT_SIZE.LG,
+    fontFamily: THEME.FONT_FAMILY.BLACK,
   },
   containerBanner: {
     backgroundColor: '#2A2634',
@@ -41,6 +44,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#aaa',
     fontSize: 14,
+    marginVertical: 5,
   },
   bannerButton: {
     flex: 1,
