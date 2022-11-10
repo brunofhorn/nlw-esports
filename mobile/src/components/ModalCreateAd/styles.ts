@@ -9,6 +9,21 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     color: 'white',
   },
+  daysButtonView: {
+    marginVertical: 10,
+    flexDirection: 'row',
+  },
+  daysButton: {
+    backgroundColor: THEME.COLORS.BACKGROUND_900,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    marginRight: 10,
+    borderRadius: 6,
+  },
+  daysButtonText: {
+    color: 'white',
+    fontSize: 17,
+  },
   actionButtons: {
     marginTop: 12,
     justifyContent: 'flex-end',

@@ -1,4 +1,10 @@
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from 'react-native';
 import { IModal } from '../../interfaces';
 import { Modal } from '../Modal';
 import { useForm, Controller } from 'react-hook-form';
@@ -21,6 +27,7 @@ const schema = yup
       .number()
       .min(0, 'É preciso preencher um valor neste campo')
       .max(90, 'Não é possível ter mais de 90 anos só de jogos.'),
+    discord: yup.string().required('O campo discord é obrigatório'),
   })
   .required();
 
@@ -43,79 +50,106 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold' }}>
           Publique um anúncio
         </Text>
-        <View style={{ marginTop: 25 }}>
-          <Label text='Qual o game?' />
-          <SelectGames />
-          <Label text='Seu nome (ou nickname)' />
-          <Controller
-            name='name'
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <TextInput
-                value={value}
-                onChangeText={onChange}
-                style={styles.input}
-                placeholder='Como te chamam dentro do game?'
-                placeholderTextColor={THEME.COLORS.CAPTION_400}
-              />
-            )}
-          />
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-          >
-            <View style={{ flex: 1, marginRight: 5 }}>
-              <Label text='Joga há quantos anos?' />
-              <Controller
-                name='yearsPlaying'
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <TextInput
-                    value={value}
-                    onChangeText={onChange}
-                    style={styles.input}
-                    placeholder={'Tudo bem ser ZERO'}
-                    placeholderTextColor={THEME.COLORS.CAPTION_400}
-                  />
-                )}
-              />
+        <ScrollView>
+          <View style={{ marginTop: 25 }}>
+            <Label text='Qual o game?' />
+            <SelectGames />
+            <Label text='Seu nome (ou nickname)' />
+            <Controller
+              name='name'
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <TextInput
+                  value={value}
+                  onChangeText={onChange}
+                  style={styles.input}
+                  placeholder='Como te chamam dentro do game?'
+                  placeholderTextColor={THEME.COLORS.CAPTION_400}
+                />
+              )}
+            />
+            <View
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            >
+              <View style={{ flex: 1, marginRight: 5 }}>
+                <Label text='Joga há quantos anos?' />
+                <Controller
+                  name='yearsPlaying'
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <TextInput
+                      value={value}
+                      onChangeText={onChange}
+                      style={styles.input}
+                      placeholder={'Tudo bem ser ZERO'}
+                      placeholderTextColor={THEME.COLORS.CAPTION_400}
+                    />
+                  )}
+                />
+              </View>
+              <View style={{ flex: 1, marginLeft: 5 }}>
+                <Label text='Qual é o teu discord?' />
+                <Controller
+                  name='discord'
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <TextInput
+                      value={value}
+                      onChangeText={onChange}
+                      style={styles.input}
+                      placeholder={'Usuario#8080'}
+                      placeholderTextColor={THEME.COLORS.CAPTION_400}
+                    />
+                  )}
+                />
+              </View>
             </View>
-            <View style={{ flex: 1, marginLeft: 5 }}>
-              <Label text='Qual é o teu discord?' />
-              <Controller
-                name='discord'
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <TextInput
-                    value={value}
-                    onChangeText={onChange}
-                    style={styles.input}
-                    placeholder={'Usuario#8080'}
-                    placeholderTextColor={THEME.COLORS.CAPTION_400}
-                  />
-                )}
-              />
+            <Label text='Quando costuma jogar?' />
+            <View style={styles.daysButtonView}>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>S</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>T</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>Q</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>Q</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>S</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>S</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.daysButton}>
+                <Text style={styles.daysButtonText}>D</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </View>
-        <View style={styles.actionButtons}>
-          <TouchableOpacity
-            onPress={() => setVisible(false)}
-            style={styles.cancelButton}
-          >
-            <Text style={styles.cancelTextButton}>Cancelar</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={handleSubmit(handleCreateAd)}
-            style={styles.duoButton}
-          >
-            <GameController
-              color='white'
-              size={25}
-              style={styles.duoIconButton}
-            />
-            <Text style={styles.duoTextButton}>Encontrar duo</Text>
-          </TouchableOpacity>
-        </View>
+          <Label text='Qual horário do dia?' />
+          <View style={styles.actionButtons}>
+            <TouchableOpacity
+              onPress={() => setVisible(false)}
+              style={styles.cancelButton}
+            >
+              <Text style={styles.cancelTextButton}>Cancelar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleSubmit(handleCreateAd)}
+              style={styles.duoButton}
+            >
+              <GameController
+                color='white'
+                size={25}
+                style={styles.duoIconButton}
+              />
+              <Text style={styles.duoTextButton}>Encontrar duo</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </Modal>
   );
