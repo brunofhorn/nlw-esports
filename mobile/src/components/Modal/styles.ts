@@ -1,31 +1,27 @@
 import { StyleSheet } from 'react-native';
+import { THEME } from '../../theme';
 
 export const styles = StyleSheet.create({
-  centeredView: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000000AA',
+    backgroundColor: THEME.COLORS.OVERLAY,
   },
-  modalView: {
+  title: {
+    color: THEME.COLORS.TEXT,
+    fontSize: THEME.FONT_SIZE.LG,
+    fontFamily: THEME.FONT_FAMILY.BLACK,
+  },
+  content: {
     width: '95%',
-    margin: 20,
-    backgroundColor: '#2A2633',
-    borderRadius: 20,
-    padding: 20,
+    backgroundColor: THEME.COLORS.SHAPE,
+    borderRadius: 8,
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    justifyContent: 'center',
+    padding: 20,
   },
-  closeModal: {
-    position: 'absolute',
-    right: 10,
-    top: 10,
+  closeIcon: {
+    alignSelf: 'flex-end',
   },
 });

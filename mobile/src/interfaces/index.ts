@@ -17,6 +17,10 @@ export interface IAppContext {
   setGames(games: IGames[]): void;
   isGamesLoading: boolean;
   setIsGamesLoading(newValue: boolean): void;
+  gamesFormated: IGamesFormated[] | [];
+  setGamesFormated(games: IGamesFormated[]): void;
+  gameSelected: IGamesFormated;
+  setGameSelected(newValue: IGamesFormated): void;
 }
 
 export interface IBackground extends IDefaultChildren {}
@@ -52,6 +56,12 @@ export interface IGames {
   _count: { ads: number };
 }
 
+export interface IGamesFormated {
+  Id: string;
+  Name: string;
+  Value: string;
+}
+
 export interface IHeading extends ViewProps {
   title: JSX.Element | JSX.Element[];
   subtitle: string;
@@ -61,8 +71,18 @@ export interface IGradientText {
   text: string;
 }
 
-export interface IModal {
+export interface IModal extends ModalProps {
   visible: boolean;
   setVisible(visible: boolean): void;
   children?: JSX.Element[] | JSX.Element;
+}
+
+export interface ILabel {
+  text: string;
+}
+
+export interface IInput {
+  control: any;
+  name: string;
+  placeholder: string;
 }

@@ -25,12 +25,12 @@ export function Game() {
   };
 
   const getDiscordUser = async (adsId: string) => {
-    const { data } = await api.get(`/ads/${adsId}/discord`);
+    const { data } = await api.get(`/ads/discord/${adsId}`);
     setDiscordDuoSelected(data.discord);
   };
 
   const getGameData = async () => {
-    const { data } = await api.get(`/games/${game.id}/ads`);
+    const { data } = await api.get(`/ads/game/${game.id}`);
 
     setDuos(data);
   };
@@ -59,7 +59,8 @@ export function Game() {
           style={styles.cover}
           resizeMode='cover'
         />
-        <Heading //title={game.title}
+        <Heading
+          title={<Text style={styles.title}>{game.title}</Text>}
           subtitle={'Conecte-se e comece a jogar!'}
         />
 

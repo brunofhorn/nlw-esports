@@ -1,23 +1,31 @@
-import { X } from 'phosphor-react-native';
+import { CheckCircle, X } from 'phosphor-react-native';
 import { Modal as ModalRN, TouchableOpacity, View } from 'react-native';
 import { IModal } from '../../interfaces';
 import { styles } from './styles';
+import { MaterialIcons } from '@expo/vector-icons';
+import { THEME } from '../../theme';
 
-export function Modal({ visible, setVisible, children }: IModal) {
+export function Modal({ visible, setVisible, children, ...rest }: IModal) {
   return (
     <ModalRN
+      transparent
+      statusBarTranslucent
       animationType='fade'
-      transparent={true}
+      {...rest}
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+      <View style={styles.container}>
+        <View style={styles.content}>
           <TouchableOpacity
+            style={styles.closeIcon}
             onPress={() => setVisible(false)}
-            style={styles.closeModal}
           >
-            <X size={30} color='#52525B' />
+            <MaterialIcons
+              name='close'
+              size={20}
+              color={THEME.COLORS.CAPTION_500}
+            />
           </TouchableOpacity>
           {children}
         </View>

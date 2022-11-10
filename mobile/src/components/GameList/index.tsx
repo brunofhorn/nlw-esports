@@ -1,15 +1,21 @@
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { useApp } from '../../hooks/useApp';
-import { IGames } from '../../interfaces';
+import { IGames, IGamesFormated } from '../../interfaces';
 import { api } from '../../services/api';
 import { GameCard } from '../GameCard';
 import { Loading } from '../Loading';
 import { styles } from './styles';
 
 export function GameList() {
-  const { games, setGames, isGamesLoading, setIsGamesLoading } = useApp();
+  const {
+    games,
+    setGames,
+    isGamesLoading,
+    setIsGamesLoading,
+    setGamesFormated,
+  } = useApp();
   const { navigate } = useNavigation();
 
   const handleOpenGame = ({ id, title, bannerUrl, _count }: IGames) => {
@@ -22,6 +28,18 @@ export function GameList() {
       const { data } = await api.get('/games');
 
       setGames(data);
+
+      let newGames = [] as IGamesFormated[];
+
+      data.map((game: IGames) => {
+        newGames.push({
+          Id: game.id,
+          Name: game.title,
+          Value: game.id,
+        });
+      });
+
+      setGamesFormated(newGames.sort((a, b) => (a.Name < b.Name ? -1 : 1)));
     } catch (error) {
       console.log(error);
     } finally {
