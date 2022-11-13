@@ -11,14 +11,11 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {
-  CheckCircle,
   CheckSquare,
+  DiscordLogo,
   GameController,
   Spinner,
   Square,
-  SquareHalf,
-  SquareLogo,
-  X,
 } from 'phosphor-react-native';
 import { styles } from './styles';
 import { THEME } from '../../theme';
@@ -28,9 +25,14 @@ import { useEffect, useState } from 'react';
 import { Toggle } from '../Toggle';
 import { useApp } from '../../hooks/useApp';
 import { convertHoursToMinutesAmount } from '../../utils/convertHoursToMinutesAmount';
-import axios from 'axios';
 import { api } from '../../services/api';
 import { ErrorMessage } from '../ErrorMessage';
+import Toast from 'react-native-toast-message';
+import MaskInput from 'react-native-mask-input';
+import * as AuthSession from 'expo-auth-session';
+import axios from 'axios';
+
+const discordRegex = new RegExp('^.{3,32}#[0-9]{4}$');
 
 const schema = yup
   .object()
@@ -38,14 +40,19 @@ const schema = yup
     username: yup
       .string()
       .required('O campo nome é obrigatório.')
-      .min(3, 'O valor mínimo é 3 caracteres.'),
+      .min(3, 'O nome / nickname deve possui no mínimo 3 caracteres.'),
     yearsPlaying: yup
       .number()
       .min(0, 'É preciso preencher um valor neste campo')
-      .max(90, 'Não é possível ter mais de 90 anos só de jogos.'),
-    discord: yup.string().required('O campo discord é obrigatório'),
-    hourStart: yup.string().required('O campo de horas é obrigatório.'),
-    hourEnd: yup.string().required('O campo de horas é obrigatório.'),
+      .max(99, 'Não é possível ter mais de 99 anos só de jogos.'),
+    discord: yup
+      .string()
+      .matches(discordRegex, {
+        message: 'O formato padrão para o discord é: nome#0000',
+      })
+      .required('O campo discord é obrigatório.'),
+    hourStart: yup.string().min(5).required('O campo de horas é obrigatório.'),
+    hourEnd: yup.string().min(5).required('O campo de horas é obrigatório.'),
   })
   .required();
 
@@ -100,8 +107,20 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
 
       refreshAds(gameSelected.Value);
       handleCancel();
+
+      Toast.show({
+        type: 'success',
+        text1: 'PARABÉNS!',
+        text2: 'O anúncio foi criado com sucesso.',
+      });
     } catch (error) {
       console.log(error);
+
+      Toast.show({
+        type: 'error',
+        text1: 'OPS!',
+        text2: 'Ocorreu um erro ao criar o anúncio.',
+      });
     }
   };
 
@@ -112,6 +131,7 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
     setErrorGameSelected(false);
     setErrorHours(false);
     setErrorWeekDays(false);
+    setUseVoiceChannel(false);
     setVisible(false);
   };
 
@@ -134,6 +154,37 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
       setErrorWeekDays(false);
     }
   }, [weekDays.length]);
+
+  const handleDiscordSignIn = async () => {
+    const response = await AuthSession.startAsync({
+      authUrl:
+        'https://discord.com/api/oauth2/authorize?client_id=1028461626694848522&redirect_uri=https%3A%2F%2Fauth.expo.io%2F%40brunofhorn%2Fnlw-eSports&response_type=token&scope=identify',
+    });
+
+    if (response.type === 'success') {
+      const discordRes = await axios.get('https://discord.com/api/users/@me', {
+        headers: {
+          Authorization: `Bearer ${response.params?.access_token}`,
+        },
+      });
+      console.log(discordRes);
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'OPS!',
+        text2: 'Ocorreu um erro ao tentar efetuar o login com o Discord.',
+      });
+    }
+
+    // fetch('https://discord.com/api/users/@me', {
+    //   headers: {
+    //     'authorization': `Bearer ${response.params.access_token}`
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(data => console.log(data));
+    console.log(response);
+  };
 
   return (
     <Modal visible={visible} setVisible={setVisible}>
@@ -166,7 +217,10 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
               <ErrorMessage message={errors.username.message?.toString()} />
             )}
             <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}
             >
               <View style={{ flex: 1, marginRight: 5 }}>
                 <Label text='Joga há quantos anos?' />
@@ -200,6 +254,9 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
                     />
                   )}
                 />
+                <TouchableOpacity onPress={handleDiscordSignIn}>
+                  <DiscordLogo size={20} color='white' />
+                </TouchableOpacity>
               </View>
             </View>
             {errors.yearsPlaying && (
@@ -266,12 +323,13 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
               name='hourStart'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <TextInput
-                  keyboardType='numeric'
+                <MaskInput
                   value={value}
                   onChangeText={onChange}
+                  mask={[/\d/, /\d/, ':', /\d/, /\d/]}
                   style={[styles.input, { flex: 1, marginRight: 5 }]}
-                  placeholder={'De'}
+                  keyboardType='numeric'
+                  placeholder='De'
                   placeholderTextColor={THEME.COLORS.CAPTION_300}
                 />
               )}
@@ -280,12 +338,13 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
               name='hourEnd'
               control={control}
               render={({ field: { onChange, value } }) => (
-                <TextInput
-                  keyboardType='numeric'
+                <MaskInput
                   value={value}
                   onChangeText={onChange}
-                  style={[styles.input, { flex: 1, marginLeft: 5 }]}
-                  placeholder={'Até'}
+                  mask={[/\d/, /\d/, ':', /\d/, /\d/]}
+                  style={[styles.input, { flex: 1, marginRight: 5 }]}
+                  keyboardType='numeric'
+                  placeholder='Até'
                   placeholderTextColor={THEME.COLORS.CAPTION_300}
                 />
               )}

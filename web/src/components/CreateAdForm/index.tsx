@@ -27,7 +27,7 @@ const formSchema = z.object({
   yearsPlaying: z
     .string()
     .min(1, { message: 'É obrigatório preencher há quantos anos joga.' })
-    .max(300, { message: 'O valor deve ser menor do que 300.' }),
+    .max(99, { message: 'O valor deve ser menor do que 99.' }),
   discord: z.string().regex(discordRegex, {
     message: 'O formato padrão para o discord é: nome#0000',
   }),

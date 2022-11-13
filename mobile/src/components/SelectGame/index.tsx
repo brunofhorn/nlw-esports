@@ -3,6 +3,7 @@ import { CaretDown } from 'phosphor-react-native';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useApp } from '../../hooks/useApp';
 import { styles } from './styles';
+import { THEME } from '../../theme';
 
 export function SelectGames() {
   const { gamesFormated, gameSelected, setGameSelected } = useApp();
@@ -24,7 +25,7 @@ export function SelectGames() {
               ? selected.Name
               : 'Selecione o game que deseja jogar...'}
           </Text>
-          <CaretDown size={20} color='white' />
+          <CaretDown size={20} color={THEME.COLORS.CAPTION_300} />
         </TouchableOpacity>
       )}
       showAlphabeticalIndex={true}

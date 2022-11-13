@@ -45,4 +45,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 6,
   },
+  discordButton: {
+    backgroundColor: THEME.COLORS.PRIMARY,
+    borderRadius: 4,
+    padding: 6,
+    position: 'absolute',
+    right: 9,
+    top: 50,
+  },
 });

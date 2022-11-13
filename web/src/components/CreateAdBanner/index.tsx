@@ -1,5 +1,5 @@
 import { AppContext } from '@contexts/AppContext';
-import { MagnifyingGlassPlus } from 'phosphor-react';
+import { PlusCircle } from 'phosphor-react';
 import { useContext } from 'react';
 
 export function CreateAdBanner() {
@@ -21,7 +21,7 @@ export function CreateAdBanner() {
             onClick={() => setIsAdsModalOpen(true)}
             className='mt-5 md:mt-0 py-3 px-4 bg-violet-500 text-white rounded hover:bg-violet-600 flex items-center gap-3'
           >
-            <MagnifyingGlassPlus size={24} />
+            <PlusCircle size={24} />
             Publicar anúncio
           </button>
         </div>
