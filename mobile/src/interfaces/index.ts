@@ -21,6 +21,7 @@ export interface IAppContext {
   setGamesFormated(games: IGamesFormated[]): void;
   gameSelected: IGamesFormated;
   setGameSelected(newValue: IGamesFormated): void;
+  refreshAds: (newState: string) => void;
 }
 
 export interface IBackground extends IDefaultChildren {}
@@ -85,4 +86,11 @@ export interface IInput {
   control: any;
   name: string;
   placeholder: string;
+}
+
+export interface IToggle {
+  weekDayText: string;
+  weekDayNumber: string;
+  weekDays: string[];
+  handleSelectWeekDay(newValue: string): void;
 }

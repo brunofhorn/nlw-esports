@@ -13,17 +13,7 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
     flexDirection: 'row',
   },
-  daysButton: {
-    backgroundColor: THEME.COLORS.BACKGROUND_900,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    marginRight: 10,
-    borderRadius: 6,
-  },
-  daysButtonText: {
-    color: 'white',
-    fontSize: 17,
-  },
+
   actionButtons: {
     marginTop: 12,
     justifyContent: 'flex-end',
@@ -39,6 +29,7 @@ export const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     borderRadius: 6,
+    justifyContent: 'center',
   },
   duoIconButton: {
     marginRight: 5,

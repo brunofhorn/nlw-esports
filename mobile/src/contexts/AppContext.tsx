@@ -16,6 +16,18 @@ export function AppContextProvider({ children }: IAppProvider) {
     {} as IGamesFormated
   );
 
+  const refreshAds = (gameId: string) => {
+    const refreshGames: IGames[] = games.map((game: IGames) => {
+      if (game.id === gameId) {
+        game._count.ads += 1;
+      }
+
+      return game;
+    });
+
+    setGames(refreshGames as IGames[]);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -27,6 +39,7 @@ export function AppContextProvider({ children }: IAppProvider) {
         setGamesFormated,
         gameSelected,
         setGameSelected,
+        refreshAds,
       }}
     >
       {children}
