@@ -2,6 +2,18 @@ import { StyleSheet } from 'react-native';
 import { THEME } from '../../theme';
 
 export const styles = StyleSheet.create({
+  discordLoginButton: {
+    backgroundColor: THEME.COLORS.PRIMARY,
+    borderRadius: 6,
+    marginVertical: 15,
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  discordLoginButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   input: {
     backgroundColor: THEME.COLORS.BACKGROUND_800,
     padding: 10,

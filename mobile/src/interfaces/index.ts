@@ -22,13 +22,23 @@ export interface IAppContext {
   gameSelected: IGamesFormated;
   setGameSelected(newValue: IGamesFormated): void;
   refreshAds: (newState: string) => void;
+  discordUser: IDiscordUser;
+  setDiscordUser(newValue: IDiscordUser): void;
+}
+
+export interface IDiscordUser {
+  discordId: string;
+  discordAvatar: string;
+  discordUsername: string;
+  discordDiscriminator: string;
 }
 
 export interface IBackground extends IDefaultChildren {}
 
 export interface IDuoCard {
   id: string;
-  name: string;
+  discordImage?: string;
+  username: string;
   yearsPlaying: number;
   weekDays: string[];
   hourStart: string;
@@ -44,6 +54,8 @@ export interface IDuoInfo {
 }
 
 export interface IDuoMatch extends ModalProps {
+  visible: boolean;
+  setVisible(visible: boolean): void;
   discord: string;
   onClose: () => void;
 }
@@ -76,6 +88,13 @@ export interface IModal extends ModalProps {
   visible: boolean;
   setVisible(visible: boolean): void;
   children?: JSX.Element[] | JSX.Element;
+}
+
+export interface IModalImage {
+  visible: boolean;
+  setVisible(visible: boolean): void;
+  title: string;
+  bannerUrl: string;
 }
 
 export interface ILabel {

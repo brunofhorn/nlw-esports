@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import {
   useFonts,

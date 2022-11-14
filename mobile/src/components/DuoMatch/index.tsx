@@ -7,10 +7,10 @@ import { Heading } from '../Heading';
 import * as Clipboard from 'expo-clipboard';
 import { IDuoMatch } from '../../interfaces';
 import { Modal } from '../Modal';
+import Toast from 'react-native-toast-message';
 
-export function DuoMatch({ discord, onClose, ...rest }: IDuoMatch) {
+export function DuoMatch({ visible, setVisible, discord, onClose }: IDuoMatch) {
   const [isCopping, setIsCopping] = useState(false);
-  const [modal, setModal] = useState(false);
 
   const handleCopyDiscordToClipboard = async () => {
     setIsCopping(true);
@@ -18,14 +18,17 @@ export function DuoMatch({ discord, onClose, ...rest }: IDuoMatch) {
     await Clipboard.setStringAsync(discord);
 
     setIsCopping(false);
-    Alert.alert(
-      'Usuário copiado!',
-      'Usuário copiado para sua área de transferência para você colocar no Discord e encontrar essa pessoa.'
-    );
+    setVisible(false);
+
+    Toast.show({
+      type: 'success',
+      text1: 'Discord copiado com sucesso!',
+      text2: 'O discord foi copiado para a sua área de transferência.',
+    });
   };
 
   return (
-    <Modal visible={modal} setVisible={setModal}>
+    <Modal visible={visible} setVisible={setVisible}>
       <CheckCircle size={64} color={THEME.COLORS.SUCCESS} weight='bold' />
       <Heading
         title={<Text style={styles.title}>Let's play!</Text>}

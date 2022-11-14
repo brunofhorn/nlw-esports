@@ -17,6 +17,7 @@ export default async function adsHandler(
       id: true,
       discord: true,
       discordImage: true,
+      discordId: true,
       username: true,
       weekDays: true,
       useVoiceChannel: true,
@@ -36,6 +37,9 @@ export default async function adsHandler(
     ads.map((ad) => {
       return {
         ...ad,
+        discordImage: ad.discordImage?.trim().includes('http')
+          ? ad.discordImage
+          : `https://cdn.discordapp.com/avatars/${ad.discordId}/${ad.discordImage}.png`,
         weekDays: ad.weekDays.split(','),
         hourStart: convertMinutesAmountToHours(ad.hourStart),
         hourEnd: convertMinutesAmountToHours(ad.hourEnd),

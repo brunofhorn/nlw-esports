@@ -7,8 +7,6 @@ export default async function adsHandler(
 ) {
   const { id } = req.query;
 
-  console.log(id);
-
   const ad = await prisma.ad.findUniqueOrThrow({
     select: {
       discord: true,

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: THEME.COLORS.BACKGROUND_900,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginRight: 10,
+    marginRight: 7,
     borderRadius: 6,
   },
   daysButtonText: {

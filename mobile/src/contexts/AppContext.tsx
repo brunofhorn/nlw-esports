@@ -2,6 +2,7 @@ import { createContext, useState } from 'react';
 import {
   IAppContext,
   IAppProvider,
+  IDiscordUser,
   IGames,
   IGamesFormated,
 } from '../interfaces';
@@ -12,6 +13,9 @@ export function AppContextProvider({ children }: IAppProvider) {
   const [games, setGames] = useState<IGames[]>([]);
   const [gamesFormated, setGamesFormated] = useState<IGamesFormated[]>([]);
   const [isGamesLoading, setIsGamesLoading] = useState(true);
+  const [discordUser, setDiscordUser] = useState<IDiscordUser>(
+    {} as IDiscordUser
+  );
   const [gameSelected, setGameSelected] = useState<IGamesFormated>(
     {} as IGamesFormated
   );
@@ -40,6 +44,8 @@ export function AppContextProvider({ children }: IAppProvider) {
         gameSelected,
         setGameSelected,
         refreshAds,
+        discordUser,
+        setDiscordUser,
       }}
     >
       {children}

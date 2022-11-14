@@ -57,7 +57,13 @@ const schema = yup
   .required();
 
 export function ModalCreateAd({ visible, setVisible }: IModal) {
-  const { gameSelected, setGameSelected, refreshAds } = useApp();
+  const {
+    gameSelected,
+    setGameSelected,
+    refreshAds,
+    discordUser,
+    setDiscordUser,
+  } = useApp();
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
   const [errorGameSelected, setErrorGameSelected] = useState(false);
@@ -68,6 +74,7 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -92,11 +99,19 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         return;
       }
 
+      if (
+        data.hourStart.replace(':', '') > 2359 ||
+        data.hourEnd.replace(':', '') > 2359
+      ) {
+        setErrorHours(true);
+        return;
+      }
+
       await api.post(`/ads/`, {
         gameId: gameSelected.Value,
         username: data.username,
-        discordId: '',
-        discordImage: '',
+        discordId: discordUser?.discordId ?? '',
+        discordImage: discordUser?.discordAvatar ?? '',
         yearsPlaying: Number(data.yearsPlaying),
         discord: data.discord,
         weekDays: weekDays?.map(Number),
@@ -104,6 +119,22 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         hourEnd: data.hourEnd,
         useVoiceChannel,
       });
+
+      console.log(
+        {
+          gameId: gameSelected.Value,
+          username: data.username,
+          discordId: discordUser?.discordId ?? '',
+          discordImage: discordUser?.discordAvatar ?? '',
+          yearsPlaying: Number(data.yearsPlaying),
+          discord: data.discord,
+          weekDays: weekDays?.map(Number),
+          hourStart: data.hourStart,
+          hourEnd: data.hourEnd,
+          useVoiceChannel,
+        },
+        discordUser
+      );
 
       refreshAds(gameSelected.Value);
       handleCancel();
@@ -168,23 +199,25 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         },
       });
 
-      // data: {
-      //   "accent_color": null,
-      //   "avatar": "6068afbc33b26bd08ef4d061d8967265",
-      //   "avatar_decoration": null,
-      //   "banner": null,
-      //   "banner_color": null,
-      //   "discriminator": "1703",
-      //   "email": "b.fernandeshorn@gmail.com",
-      //   "flags": 0,
-      //   "id": "1019236735726649375",
-      //   "locale": "pt-BR",
-      //   "mfa_enabled": false,
-      //   "premium_type": 0,
-      //   "public_flags": 0,
-      //   "username": "brunofhorn",
-      //   "verified": true
-      // }
+      let avatar = '';
+
+      if (data.avatar === null) {
+        const defaultAvatarNumber = parseInt(data.discriminator) % 5;
+        avatar = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarNumber}.png`;
+      } else {
+        const format = data.avatar.startsWith('a_') ? 'gif' : 'png';
+        avatar = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.${format}`;
+      }
+
+      setDiscordUser({
+        discordAvatar: avatar,
+        discordDiscriminator: data.discriminator,
+        discordId: data.id,
+        discordUsername: data.username,
+      });
+
+      setValue('username', data.username);
+      setValue('discord', `${data.username}#${data.discriminator}`);
     } else {
       Toast.show({
         type: 'error',
@@ -200,229 +233,254 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold' }}>
           Publique um anúncio
         </Text>
-        <ScrollView style={{ maxHeight: 450, marginTop: 10 }}>
-          <View style={{ marginTop: 25 }}>
-            <Label text='Qual o game?' />
-            <SelectGames />
-            {!gameSelected && errorGameSelected && (
-              <ErrorMessage message={'É obrigatório a seleção de um jogo'} />
-            )}
-            <Label text='Seu nome (ou nickname)' />
-            <Controller
-              name='username'
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <TextInput
-                  value={value}
-                  onChangeText={onChange}
-                  style={styles.input}
-                  placeholder='Como te chamam dentro do game?'
-                  placeholderTextColor={THEME.COLORS.CAPTION_400}
-                />
-              )}
-            />
-            {errors.username && (
-              <ErrorMessage message={errors.username.message?.toString()} />
-            )}
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}
+        {!discordUser ? (
+          <>
+            <TouchableOpacity
+              style={styles.discordLoginButton}
+              onPress={() => handleDiscordSignIn()}
             >
-              <View style={{ flex: 1, marginRight: 5 }}>
-                <Label text='Joga há quantos anos?' />
+              <DiscordLogo size={25} color='white' />
+              <Text style={styles.discordLoginButtonText}>
+                EFETUAR O LOGIN COM O DISCORD
+              </Text>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <ScrollView style={{ maxHeight: 450, marginTop: 10 }}>
+              <View style={{ marginTop: 25 }}>
+                <Label text='Qual o game?' />
+                <SelectGames />
+                {!gameSelected && errorGameSelected && (
+                  <ErrorMessage
+                    message={'É obrigatório a seleção de um jogo'}
+                  />
+                )}
+                <Label text='Seu nome (ou nickname)' />
                 <Controller
-                  name='yearsPlaying'
+                  name='username'
                   control={control}
                   render={({ field: { onChange, value } }) => (
                     <TextInput
-                      keyboardType='numeric'
                       value={value}
                       onChangeText={onChange}
                       style={styles.input}
-                      placeholder={'Tudo bem ser ZERO'}
+                      placeholder='Como te chamam dentro do game?'
                       placeholderTextColor={THEME.COLORS.CAPTION_400}
+                    />
+                  )}
+                />
+                {errors.username && (
+                  <ErrorMessage message={errors.username.message?.toString()} />
+                )}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <View style={{ flex: 1, marginRight: 5 }}>
+                    <Label text='Joga há quantos anos?' />
+                    <Controller
+                      name='yearsPlaying'
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <TextInput
+                          keyboardType='numeric'
+                          value={value}
+                          onChangeText={onChange}
+                          style={styles.input}
+                          placeholder={'Tudo bem ser ZERO'}
+                          placeholderTextColor={THEME.COLORS.CAPTION_400}
+                        />
+                      )}
+                    />
+                  </View>
+                  <View style={{ flex: 1, marginLeft: 5 }}>
+                    <Label text='Qual é o teu discord?' />
+                    <Controller
+                      name='discord'
+                      control={control}
+                      render={({ field: { onChange, value } }) => (
+                        <TextInput
+                          value={value}
+                          onChangeText={onChange}
+                          style={[styles.input, { fontSize: 13 }]}
+                          placeholder={'Usuario#8080'}
+                          placeholderTextColor={THEME.COLORS.CAPTION_400}
+                          editable={false}
+                        />
+                      )}
+                    />
+                    <TouchableOpacity
+                      onPress={() => handleDiscordSignIn()}
+                      style={styles.discordButton}
+                    >
+                      <DiscordLogo size={20} color='white' />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                {errors.yearsPlaying && (
+                  <ErrorMessage
+                    message={errors.yearsPlaying.message?.toString()}
+                  />
+                )}
+                {errors.discord && (
+                  <ErrorMessage message={errors.discord.message?.toString()} />
+                )}
+                <Label text='Quando costuma jogar?' />
+                <View style={styles.daysButtonView}>
+                  <Toggle
+                    weekDayNumber='2'
+                    weekDayText='S'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='3'
+                    weekDayText='T'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='4'
+                    weekDayText='Q'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='5'
+                    weekDayText='Q'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='6'
+                    weekDayText='S'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='7'
+                    weekDayText='S'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                  <Toggle
+                    weekDayNumber='1'
+                    weekDayText='D'
+                    weekDays={weekDays}
+                    handleSelectWeekDay={handleSelectWeekDay}
+                  />
+                </View>
+              </View>
+              {weekDays.length == 0 && errorWeekDays && (
+                <ErrorMessage
+                  message={'Selecione os dias da semana que costuma jogar.'}
+                />
+              )}
+
+              <Label text='Qual horário do dia?' />
+              <View style={{ flexDirection: 'row' }}>
+                <Controller
+                  name='hourStart'
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <MaskInput
+                      value={value}
+                      onChangeText={onChange}
+                      mask={[/\d/, /\d/, ':', /\d/, /\d/]}
+                      style={[styles.input, { flex: 1, marginRight: 5 }]}
+                      keyboardType='numeric'
+                      placeholder='De'
+                      placeholderTextColor={THEME.COLORS.CAPTION_300}
+                    />
+                  )}
+                />
+                <Controller
+                  name='hourEnd'
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <MaskInput
+                      value={value}
+                      onChangeText={onChange}
+                      mask={[/\d/, /\d/, ':', /\d/, /\d/]}
+                      style={[styles.input, { flex: 1, marginRight: 5 }]}
+                      keyboardType='numeric'
+                      placeholder='Até'
+                      placeholderTextColor={THEME.COLORS.CAPTION_300}
                     />
                   )}
                 />
               </View>
-              <View style={{ flex: 1, marginLeft: 5 }}>
-                <Label text='Qual é o teu discord?' />
-                <Controller
-                  name='discord'
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <TextInput
-                      value={value}
-                      onChangeText={onChange}
-                      style={styles.input}
-                      placeholder={'Usuario#8080'}
-                      placeholderTextColor={THEME.COLORS.CAPTION_400}
-                    />
-                  )}
+              {(errors.hourStart || errors.hourEnd) && (
+                <ErrorMessage
+                  message={'Informar os horários inicial e final.'}
                 />
+              )}
+              {errorHours && (
+                <ErrorMessage
+                  message={
+                    'A hora inicial não pode ser maior que a hora final.'
+                  }
+                />
+              )}
+              <TouchableOpacity
+                onPress={() => setUseVoiceChannel(!useVoiceChannel)}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  marginTop: 10,
+                }}
+              >
+                {useVoiceChannel ? (
+                  <CheckSquare size={30} color='green' />
+                ) : (
+                  <Square size={30} color='white' />
+                )}
+
+                <Text style={{ color: 'white', marginLeft: 10 }}>
+                  Costumo me conectar ao chat de voz
+                </Text>
+              </TouchableOpacity>
+              <View style={styles.actionButtons}>
                 <TouchableOpacity
-                  onPress={() => handleDiscordSignIn()}
-                  style={styles.discordButton}
+                  onPress={() => {
+                    handleCancel();
+                    setVisible(false);
+                  }}
+                  style={styles.cancelButton}
                 >
-                  <DiscordLogo size={20} color='white' />
+                  <Text style={styles.cancelTextButton}>Cancelar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={handleSubmit(handleCreateAd)}
+                  style={styles.duoButton}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Spinner
+                        size={25}
+                        color='white'
+                        style={styles.duoIconButton}
+                      />
+                      <Text style={styles.duoTextButton}>Carregando</Text>
+                    </>
+                  ) : (
+                    <>
+                      <GameController
+                        color='white'
+                        size={25}
+                        style={styles.duoIconButton}
+                      />
+                      <Text style={styles.duoTextButton}>Encontrar duo</Text>
+                    </>
+                  )}
                 </TouchableOpacity>
               </View>
-            </View>
-            {errors.yearsPlaying && (
-              <ErrorMessage message={errors.yearsPlaying.message?.toString()} />
-            )}
-            {errors.discord && (
-              <ErrorMessage message={errors.discord.message?.toString()} />
-            )}
-            <Label text='Quando costuma jogar?' />
-            <View style={styles.daysButtonView}>
-              <Toggle
-                weekDayNumber='2'
-                weekDayText='S'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='3'
-                weekDayText='T'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='4'
-                weekDayText='Q'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='5'
-                weekDayText='Q'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='6'
-                weekDayText='S'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='7'
-                weekDayText='S'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-              <Toggle
-                weekDayNumber='1'
-                weekDayText='D'
-                weekDays={weekDays}
-                handleSelectWeekDay={handleSelectWeekDay}
-              />
-            </View>
-          </View>
-          {weekDays.length == 0 && errorWeekDays && (
-            <ErrorMessage
-              message={'Selecione os dias da semana que costuma jogar.'}
-            />
-          )}
-
-          <Label text='Qual horário do dia?' />
-          <View style={{ flexDirection: 'row' }}>
-            <Controller
-              name='hourStart'
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <MaskInput
-                  value={value}
-                  onChangeText={onChange}
-                  mask={[/\d/, /\d/, ':', /\d/, /\d/]}
-                  style={[styles.input, { flex: 1, marginRight: 5 }]}
-                  keyboardType='numeric'
-                  placeholder='De'
-                  placeholderTextColor={THEME.COLORS.CAPTION_300}
-                />
-              )}
-            />
-            <Controller
-              name='hourEnd'
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <MaskInput
-                  value={value}
-                  onChangeText={onChange}
-                  mask={[/\d/, /\d/, ':', /\d/, /\d/]}
-                  style={[styles.input, { flex: 1, marginRight: 5 }]}
-                  keyboardType='numeric'
-                  placeholder='Até'
-                  placeholderTextColor={THEME.COLORS.CAPTION_300}
-                />
-              )}
-            />
-          </View>
-          {(errors.hourStart || errors.hourEnd) && (
-            <ErrorMessage message={'Informar os horários inicial e final.'} />
-          )}
-          {errorHours && (
-            <ErrorMessage
-              message={'A hora inicial não pode ser maior que a hora final.'}
-            />
-          )}
-          <TouchableOpacity
-            onPress={() => setUseVoiceChannel(!useVoiceChannel)}
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: 10,
-            }}
-          >
-            {useVoiceChannel ? (
-              <CheckSquare size={30} color='green' />
-            ) : (
-              <Square size={30} color='white' />
-            )}
-
-            <Text style={{ color: 'white', marginLeft: 10 }}>
-              Costumo me conectar ao chat de voz
-            </Text>
-          </TouchableOpacity>
-          <View style={styles.actionButtons}>
-            <TouchableOpacity
-              onPress={() => {
-                handleCancel();
-                setVisible(false);
-              }}
-              style={styles.cancelButton}
-            >
-              <Text style={styles.cancelTextButton}>Cancelar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={handleSubmit(handleCreateAd)}
-              style={styles.duoButton}
-            >
-              {isSubmitting ? (
-                <>
-                  <Spinner
-                    size={25}
-                    color='white'
-                    style={styles.duoIconButton}
-                  />
-                  <Text style={styles.duoTextButton}>Carregando</Text>
-                </>
-              ) : (
-                <>
-                  <GameController
-                    color='white'
-                    size={25}
-                    style={styles.duoIconButton}
-                  />
-                  <Text style={styles.duoTextButton}>Encontrar duo</Text>
-                </>
-              )}
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+            </ScrollView>
+          </>
+        )}
       </View>
     </Modal>
   );

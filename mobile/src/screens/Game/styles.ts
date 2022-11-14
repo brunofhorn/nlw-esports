@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     color: THEME.COLORS.TEXT,
     fontSize: THEME.FONT_SIZE.LG,
     fontFamily: THEME.FONT_FAMILY.BLACK,
+    marginLeft: 0,
   },
   header: {
     width: '100%',
@@ -23,15 +24,19 @@ export const styles = StyleSheet.create({
     width: 72,
     height: 40,
   },
+  scroll: {
+    width: '100%',
+  },
   right: {
     width: 20,
     height: 20,
   },
   cover: {
-    width: 311,
+    width: '85%',
     height: 160,
     borderRadius: 8,
     marginTop: 32,
+    alignSelf: 'center',
   },
   containerList: {
     width: '100%',
@@ -41,10 +46,15 @@ export const styles = StyleSheet.create({
     paddingRight: 64,
     alignItems: 'flex-start',
   },
+  emptyList: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   emptyListText: {
     color: THEME.COLORS.CAPTION_300,
-    fontSize: THEME.FONT_SIZE.SM,
+    fontSize: THEME.FONT_SIZE.MD,
     fontFamily: THEME.FONT_FAMILY.BLACK,
+    marginLeft: 10,
   },
   emptyListContent: {
     flex: 1,
