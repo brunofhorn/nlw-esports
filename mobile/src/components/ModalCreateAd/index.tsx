@@ -162,12 +162,29 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
     });
 
     if (response.type === 'success') {
-      const discordRes = await axios.get('https://discord.com/api/users/@me', {
+      const { data } = await axios.get('https://discord.com/api/users/@me', {
         headers: {
           Authorization: `Bearer ${response.params?.access_token}`,
         },
       });
-      console.log(discordRes);
+
+      // data: {
+      //   "accent_color": null,
+      //   "avatar": "6068afbc33b26bd08ef4d061d8967265",
+      //   "avatar_decoration": null,
+      //   "banner": null,
+      //   "banner_color": null,
+      //   "discriminator": "1703",
+      //   "email": "b.fernandeshorn@gmail.com",
+      //   "flags": 0,
+      //   "id": "1019236735726649375",
+      //   "locale": "pt-BR",
+      //   "mfa_enabled": false,
+      //   "premium_type": 0,
+      //   "public_flags": 0,
+      //   "username": "brunofhorn",
+      //   "verified": true
+      // }
     } else {
       Toast.show({
         type: 'error',
@@ -175,15 +192,6 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
         text2: 'Ocorreu um erro ao tentar efetuar o login com o Discord.',
       });
     }
-
-    // fetch('https://discord.com/api/users/@me', {
-    //   headers: {
-    //     'authorization': `Bearer ${response.params.access_token}`
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(data => console.log(data));
-    console.log(response);
   };
 
   return (
@@ -254,7 +262,10 @@ export function ModalCreateAd({ visible, setVisible }: IModal) {
                     />
                   )}
                 />
-                <TouchableOpacity onPress={handleDiscordSignIn}>
+                <TouchableOpacity
+                  onPress={() => handleDiscordSignIn()}
+                  style={styles.discordButton}
+                >
                   <DiscordLogo size={20} color='white' />
                 </TouchableOpacity>
               </View>
