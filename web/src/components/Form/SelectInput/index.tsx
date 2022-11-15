@@ -1,18 +1,6 @@
+import { ISelect } from '@interfaces/index';
 import * as SelectUI from '@radix-ui/react-select';
 import { CaretDown, Check, GameController } from 'phosphor-react';
-
-type Game = {
-  id: string;
-  title: string;
-};
-
-interface SelectProps extends SelectUI.SelectTriggerProps {
-  options: Game[];
-  label: string;
-  placeholder: string;
-  name: string;
-  onSelectedChange: (option: string) => void;
-}
 
 export function Select({
   options,
@@ -21,7 +9,7 @@ export function Select({
   name,
   onSelectedChange,
   ...rest
-}: SelectProps) {
+}: ISelect) {
   return (
     <SelectUI.Root onValueChange={(option) => onSelectedChange(option)}>
       <SelectUI.Trigger

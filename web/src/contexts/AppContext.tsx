@@ -1,23 +1,5 @@
-import { IGame } from '@interfaces/index';
-import { createContext, ReactNode, useState } from 'react';
-
-type AppContextProps = {
-  children: ReactNode;
-};
-
-type AppContextType = {
-  isAdsModalOpen: boolean;
-  setIsAdsModalOpen: (open: boolean) => void;
-  isGamesLoading: boolean;
-  setIsGamesLoading: (newState: boolean) => void;
-  games: IGame[] | [];
-  setGames: (newState: IGame[]) => void;
-  refreshAds: (newState: string) => void;
-  gameSelected: IGame;
-  setGameSelected: (newState: IGame) => void;
-  isPageLoading: boolean;
-  setIsPageLoading: (newState: boolean) => void;
-};
+import { IAppContext, IAppProvider, IGame } from '@interfaces/index';
+import { createContext, useState } from 'react';
 
 const initialValue = {
   isAdsModalOpen: false,
@@ -40,9 +22,9 @@ const initialValue = {
   setIsPageLoading: () => {},
 };
 
-export const AppContext = createContext<AppContextType>(initialValue);
+export const AppContext = createContext<IAppContext>(initialValue);
 
-export const AppProvider = ({ children }: AppContextProps) => {
+export const AppProvider = ({ children }: IAppProvider) => {
   const [isAdsModalOpen, setIsAdsModalOpen] = useState(
     initialValue.isAdsModalOpen
   );
@@ -56,8 +38,6 @@ export const AppProvider = ({ children }: AppContextProps) => {
   const [gameSelected, setGameSelected] = useState<IGame>(
     initialValue.gameSelected
   );
-
-  console.log(isAdsModalOpen);
 
   const refreshAds = (gameId: string) => {
     const refreshGames: IGame[] = games.map((game: IGame) => {

@@ -1,11 +1,7 @@
-import { InputHTMLAttributes } from 'react';
+import { IInput } from '@interfaces/index';
 import { useFormContext } from 'react-hook-form';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  registerName?: string | undefined;
-}
-
-export function Input({ registerName = undefined, ...rest }: InputProps) {
+export function Input({ registerName = undefined, ...rest }: IInput) {
   const { register } = useFormContext();
 
   return (

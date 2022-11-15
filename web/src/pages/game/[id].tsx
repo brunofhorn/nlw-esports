@@ -1,40 +1,61 @@
 import { useContext, useEffect, useState } from 'react';
 import { NextPage } from 'next';
-import axios from 'axios';
 import { DuoCard } from '@components/DuoCard';
 import { Loading } from '@components/Loading';
 import { Header } from '@components/Header';
 import { AppContext } from '@contexts/AppContext';
-import { IAdsParams, IGame } from '@interfaces/index';
+import { IAds, IGame } from '@interfaces/index';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
-const Game: NextPage<IGame> = (props) => {
-  const { gameSelected, setIsPageLoading } = useContext(AppContext);
-  const { id, title, bannerUrl } = gameSelected as IGame;
-  const [ads, setAds] = useState<IAdsParams[]>([]);
+const Game: NextPage<IGame> = () => {
+  const { gameSelected, setGameSelected, setIsPageLoading } =
+    useContext(AppContext);
+  const [ads, setAds] = useState<IAds[]>([]);
   const [loadingAds, setLoadingAds] = useState(true);
+  const router = useRouter();
 
   const getAds = async () => {
-    await axios.get(`/api/ads/game/${id}`).then(({ data }) => setAds(data));
+    await axios
+      .get(`/api/ads/game/${gameSelected.id}`)
+      .then(({ data }) => setAds(data));
     setLoadingAds(false);
+  };
+
+  const getGameData = async () => {
+    await axios.get(`/api/game/${router?.query?.id}`).then(({ data }) => {
+      setGameSelected(data as IGame);
+    });
   };
 
   useEffect(() => {
     setIsPageLoading(false);
     setLoadingAds(true);
-    getAds();
-  }, []);
+
+    if (gameSelected && gameSelected.id !== '') {
+      getAds();
+    }
+  }, [gameSelected]);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (!gameSelected || gameSelected.id === '') {
+      getGameData();
+    }
+  }, [router.isReady]);
 
   return (
     <div className='max-w-[1344px] mx-auto flex flex-col items-center my-8 px-0 md:px-4'>
       <Header />
       <div className='w-[100%] lg:h-[436px] flex flex-col lg:flex-row items-center lg:items-start gap-10 mt-0 md:mt-12 px-10 py-0 md:pt-8 pb-8 rounded'>
         <div className='flex flex-col items-center gap-6'>
-          <h1 className='text-white font-bold text-3xl md:text-4xl lg:text-2xl'>
-            {title}
+          <h1 className='text-white font-bold text-3xl md:text-3xl lg:text-xl text-center'>
+            {gameSelected.title}
           </h1>
           <img
-            src={bannerUrl}
-            alt={title}
+            src={gameSelected.bannerUrl}
+            alt={gameSelected.title}
             className='w-[300px] rounded shadow-[0_1px_20px_10px_#0c0c0ca9]'
           />
         </div>
@@ -46,7 +67,7 @@ const Game: NextPage<IGame> = (props) => {
             <Loading load={loadingAds} />
             <ul className='flex flex-col w-[100%] gap-3'>
               {ads.map((ad) => (
-                <DuoCard data={ad} key={ad.id} />
+                <DuoCard {...ad} key={ad.id} />
               ))}
             </ul>
           </div>

@@ -76,14 +76,13 @@ export function CreateAdForm() {
   });
 
   const {
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isSubmitting },
     handleSubmit,
-    register,
     reset,
   } = methods;
 
   useEffect(() => {
-    axios('api/games').then(({ data }) => setGames(data));
+    axios('/api/games').then(({ data }) => setGames(data));
   }, []);
 
   const handleCreateAd = async (data: formInputs) => {
@@ -106,7 +105,7 @@ export function CreateAdForm() {
         return;
       }
 
-      await axios.post(`api/ads/`, {
+      await axios.post(`/api/ads/`, {
         gameId: gameSelected,
         username: data.username,
         discordId,

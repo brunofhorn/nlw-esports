@@ -38,7 +38,7 @@ export default function GameList() {
     useContext(AppContext);
 
   const loadGames = async () => {
-    await axios('/api/games').then(({ data }) => setGames(data));
+    await axios.get('/api/games').then(({ data }) => setGames(data));
     setIsGamesLoading(false);
   };
 

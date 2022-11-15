@@ -1,6 +1,6 @@
 import { Header } from '@components/Header';
 import Link from 'next/link';
-import { Ghost, ArrowLeft } from 'phosphor-react';
+import { Ghost } from 'phosphor-react';
 
 function Custom404() {
   return (

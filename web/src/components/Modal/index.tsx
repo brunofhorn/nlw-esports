@@ -1,9 +1,6 @@
-import { Loading } from '@components/Loading';
-import { AppContext } from '@contexts/AppContext';
 import { IModal } from '@interfaces/index';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'phosphor-react';
-import { useContext } from 'react';
 import { useTransition, animated, config } from 'react-spring';
 
 export function Modal({

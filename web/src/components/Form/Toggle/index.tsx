@@ -1,13 +1,7 @@
+import { IToggle } from '@interfaces/index';
 import * as ToggleGroup from '@radix-ui/react-toggle-group';
 
-interface ToggleProps {
-  value: string;
-  weekDays: string[];
-  title: string;
-  letter: string;
-}
-
-export function Toggle({ value, weekDays, title, letter }: ToggleProps) {
+export function Toggle({ value, weekDays, title, letter }: IToggle) {
   return (
     <ToggleGroup.Item
       value={value}

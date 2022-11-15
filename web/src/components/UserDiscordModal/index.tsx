@@ -3,12 +3,9 @@ import axios from 'axios';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CheckCircle, Spinner, X } from 'phosphor-react';
 import { Toast } from '@components/Toast';
+import { IUserDiscordModal } from '@interfaces/index';
 
-interface UserDiscordModal {
-  discordId: string | null;
-}
-
-export function UserDiscordModal({ discordId }: UserDiscordModal) {
+export function UserDiscordModal({ discordId }: IUserDiscordModal) {
   const [discordUsername, setDiscordUsername] = useState('');
   const [isToastOpen, setIsToastOpen] = useState<boolean>(false);
 

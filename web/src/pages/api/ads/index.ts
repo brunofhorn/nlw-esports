@@ -8,8 +8,6 @@ export default async function adsHandler(
 ) {
   const { body } = req;
 
-  console.log(body);
-
   const ad = await prisma.ad.create({
     data: {
       gameId: body.gameId,

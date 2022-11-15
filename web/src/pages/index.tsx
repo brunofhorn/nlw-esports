@@ -4,7 +4,7 @@ import { CreateAdBanner } from '@components/CreateAdBanner';
 import { CreateAdForm } from '@components/CreateAdForm';
 import { Header } from '@components/Header';
 import GameList from '@components/GameList';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '@contexts/AppContext';
 import { Loading } from '@components/Loading';
 import { Modal } from '@components/Modal';

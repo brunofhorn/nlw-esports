@@ -1,11 +1,7 @@
+import { IErrorMessage } from '@interfaces/index';
 import { WarningCircle } from 'phosphor-react';
-import { HTMLAttributes } from 'react';
 
-interface ErrorMessageProps extends HTMLAttributes<HTMLSpanElement> {
-  message: string | undefined | null;
-}
-
-export function ErrorMessage({ message = '', ...rest }: ErrorMessageProps) {
+export function ErrorMessage({ message = '', ...rest }: IErrorMessage) {
   return (
     <span
       className='text-[10px] md:text-xs text-red-700 flex items-center gap-1 ml-2'
