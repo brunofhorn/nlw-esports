@@ -258,15 +258,14 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 **NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
 
 <br />
-<br />
 
 <img src=".github/project-web-preview-2.jpg" alt="NLW eSports" />
 
 <br />
+<br />
 
 It is a system that allows users to search for their duo (duo) in online games and post an ad to find other players in the game they want.
 
-<br />
 <br />
 
 <img src=".github/project-web-preview-3.jpg" alt="NLW eSports" />
@@ -277,10 +276,10 @@ It is a system that allows users to search for their duo (duo) in online games a
 <img src=".github/project-web-preview-4.jpg" alt="NLW eSports" />
 
 <br />
+<br />
 
 In the mobile version, player ads are displayed for registered games, and users will be able to connect via discord to play together.
 
-<br />
 <br />
 
 <img src=".github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
