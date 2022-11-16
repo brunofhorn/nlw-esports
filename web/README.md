@@ -22,7 +22,7 @@
 </div>
 <br />
 <div align="center">
-   <img src="../.github/app-preview.jpeg" alt="NLW eSports" />
+   <img src="../.github/app-preview.jpg" alt="NLW eSports" />
 </div>
 <br/>
 <a href="#english"><b><i>Read it in English</i></b></a>
@@ -48,17 +48,20 @@ O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-du
 
 ## 🎮 Projeto
 
-<img src="../.github/landing-web.png" alt="NLW eSports" />
+<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
 
+<br/>
 <br/>
 
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
 <br/>
-<br/>
+<img src=".github/project-web-preview-2.jpg" alt="Modal de criação de anúncio" />
+<br />
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
-<br/>
-<img src="../.github/create-ad-web.png" alt="Modal de criação de anúncio" />
+<img src='.github/project-web-preview-3.jpg' alt='NLW eSports' />
+<br />
+<img src='.github/project-web-preview-4.jpg' alt='NLW eSports' />
 
 ## ✨ Features
 
@@ -73,7 +76,7 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
 - [x] Listagem de anúncios
 - [x] Copiar o usuário do discord para a área de transferência
 - [x] Página de erro 404
-- [ ] Design totalmente responsivo
+- [x] Design totalmente responsivo
 
 ## 🚀 Tecnologias
 
@@ -124,7 +127,6 @@ Em seguida execute o comando abaixo para rodar o projeto:
 
 ```bash
 npm run dev
-
 ```
 
 Abra http://localhost:3000 em seu navegador para ver o resultado.
@@ -198,17 +200,20 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 
 ## 🎮 Project
 
-<img src=".github/landing-web.png" alt="NLW eSports" />
+<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
 
+<br/>
 <br/>
 
 **NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
 <br/>
+<img src=".github/project-web-preview-2.jpg" alt="NLW eSports" />
 <br/>
 It is a system that allows users to search for their duo (duo) in online games and post an ad to find other players in the game they want.
 <br/>
-<br/>
-<img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
+<img src=".github/project-web-preview-3.jpg" alt="NLW eSports" />
+<br />
+<img src=".github/project-web-preview-4.jpg" alt="NLW eSports" />
 
 ## ✨ Features
 
@@ -223,7 +228,7 @@ It is a system that allows users to search for their duo (duo) in online games a
 - [x] Ads listing
 - [x] Copy discord user to clipboard
 - [x] 404 error page
-- [ ] Fully responsive design
+- [x] Fully responsive design
 
 ## 🚀 Technologies
 
@@ -274,7 +279,6 @@ Then run the command below to run the project:
 
 ```bash
 npm run dev
-
 ```
 
 Open http://localhost:3000 in your browser to see the result.

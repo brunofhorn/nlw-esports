@@ -22,7 +22,7 @@
 </div>
 <br/>
 <div align="center">
-   <img src=".github/app-preview.jpeg" alt="NLW eSports" />
+   <img src=".github/app-preview.jpg" alt="NLW eSports" />
 </div>
 <br/>
 <a href="#english"><b><i>Read it in English</i></b></a>
@@ -44,48 +44,51 @@
 
 ## 🔗 Links
 
-O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-duo.vercel.app/" target="_blank">**DUO eSports**</a>.
+O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-duo.vercel.app/" target="_blank">**NLW eSports DUO**</a>.
 
 ## 🎮 Projeto
 
-<img src=".github/landing-web.png" alt="NLW eSports" />
+<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
 
+<br/>
 <br/>
 
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
 <br/>
-<br/>
+<img src=".github/project-web-preview-2.jpg" alt="Modal de criação de anúncio" />
+<br />
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
 <br/>
-<br/>
-<img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
-
+<img src='.github/project-web-preview-3.jpg' alt='NLW eSports' />
+<br />
+<img src='.github/project-web-preview-4.jpg' alt='NLW eSports' />
+<br />
 Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
 
-<img src=".github/mobile-screens.png" alt="Telas do aplicativo mobile" />
+<img src=".github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
 
 - [x] Mudança de ReactJS + NodeJS para NextJS (web)
 - [x] Listagem de games (web e mobile)
 - [x] Criação de um novo anúncio (web e mobile)
-- [x] Validação de autenticação com o discord (web)
+- [x] Validação de autenticação com o discord (web e mobile)
 - [x] Validações de formulário com o Zod (web)
-- [x] Combobox autocomplete com lista de games para seleção (web)
-- [x] Context API (web)
-- [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro (web)
+- [x] Validações de formulário com o Yup (mobile) 
+- [x] Combobox autocomplete com lista de games para seleção (web e mobile)
+- [x] Context API (web e mobile)
+- [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro (web e mobile)
 - [x] Listagem de anúncios (web e mobile)
 - [x] Copiar o usuário do discord para a área de transferência (web e mobile)
-- [x] Página de erro 404 (web e mobile)
-- [ ] Recebendo notificações push (mobile)
-- [ ] Design totalmente responsivo (web)
+- [x] Página de erro 404 (web)
+- [x] Design totalmente responsivo (web)
 
 ## 🚀 Tecnologias
 
 ### Web + Server
 
 <ul>
-   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Javascript (https://www.javascript.com/)</li>
    <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
@@ -112,6 +115,9 @@ Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadast
    <li>React Navigation (https://reactnavigation.org/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
    <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Yup (https://github.com/jquense/yup)</li>
+   <li>Toast Message (https://github.com/calintamas/react-native-toast-message#readme)</li>
 </ul>
 
 ## 📟 Layout
@@ -143,7 +149,6 @@ Em seguida execute o comando abaixo para rodar o projeto:
 
 ```bash
 npm run dev
-
 ```
 
 Abra http://localhost:3000 em seu navegador para ver o resultado.
@@ -232,44 +237,48 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 
 ## 🎮 Project
 
-<img src=".github/landing-web.png" alt="NLW eSports" />
+<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
 
+<br/>
 <br/>
 
 **NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
 <br/>
+<img src=".github/project-web-preview-2.jpg" alt="NLW eSports" />
 <br/>
 It is a system that allows users to search for their duo (duo) in online games and post an ad to find other players in the game they want.
 <br/>
-<br/>
-<img src=".github/create-ad-web.png" alt="Modal de criação de anúncio" />
+<img src=".github/project-web-preview-3.jpg" alt="NLW eSports" />
+<br />
+<img src=".github/project-web-preview-4.jpg" alt="NLW eSports" />
+
 
 In the mobile version, player ads are displayed for registered games, and users will be able to connect via discord to play together.
 
-<img src=".github/mobile-screens.png" alt="Telas do aplicativo mobile" />
+<img src=".github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
 
 - [x] Moving from ReactJS + NodeJS to NextJS (web)
 - [x] Games listing (web and mobile)
 - [x] Creating a new ad (web and mobile)
-- [x] Authentication validation with discord (web)
+- [x] Authentication validation with discord (web and mobile)
 - [x] Form Validations with Zod (web)
-- [x] Combobox autocomplete with list of games for selection (web)
-- [x] Context API (web)
-- [x] User feedback: loading during creation, page change, success and error toast (web)
+- [x] Form Validations with Yup (mobile) 
+- [x] Combobox autocomplete with list of games for selection (web and mobile)
+- [x] Context API (web and mobile)
+- [x] User feedback: loading during creation, page change, success and error toast (web and mobile)
 - [x] Ads listing (web and mobile)
 - [x] Copy discord user to clipboard (web and mobile)
-- [x] 404 error page (web and mobile)
-- [ ] Receiving push notifications (mobile)
-- [ ] Fully responsive design (web)
+- [x] 404 error page (web)
+- [x] Fully responsive design (web)
 
 ## 🚀 Technologies
 
 ### Web + Server
 
 <ul>
-   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Javascript (https://www.javascript.com/)</li>
    <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>ReactJS (https://reactjs.org/)</li>
    <li>NextJS (https://nextjs.org/)</li>
@@ -291,11 +300,15 @@ In the mobile version, player ads are displayed for registered games, and users 
 ### Mobile
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>React Native (https://reactnative.dev/)</li>
    <li>Expo (https://docs.expo.dev/)</li>
    <li>React Navigation (https://reactnavigation.org/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Yup (https://github.com/jquense/yup)</li>
+   <li>Toast Message (https://github.com/calintamas/react-native-toast-message#readme)</li>
 </ul>
 
 ## 📟 Layout
@@ -327,7 +340,6 @@ Then run the command below to run the project:
 
 ```bash
 npm run dev
-
 ```
 
 Open http://localhost:3000 in your browser to see the result.

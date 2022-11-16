@@ -4,9 +4,15 @@ import { styles } from './styles';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { ModalCreateAd } from '../ModalCreateAd';
 import { useState } from 'react';
+import { useApp } from '../../hooks/useApp';
 
 export function BannerCreateAd() {
   const [modalCreateAd, setModalCreateAd] = useState(false);
+  const { games } = useApp();
+
+  if (games.length > 0) {
+    return null;
+  }
 
   return (
     <>

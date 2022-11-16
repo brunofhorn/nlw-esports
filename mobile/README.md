@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" id="top">
    <img alt="NLW eSports" src="../.github/logo-nlw-esports.svg" width="40%"/>
 </div>
 <br/>
@@ -22,7 +22,7 @@
 </div>
 <br />
 <div align="center">
-   <img src="../.github/app-preview.jpeg" alt="NLW eSports" />
+   <img src="../.github/app-preview.jpg" alt="NLW eSports" />
 </div>
 <br/>
 <a href="#english"><b><i>Read it in English</i></b></a>
@@ -43,33 +43,42 @@
 
 ## 🎮 Projeto
 
-<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
+<img src="../.github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
+<br/>
 <br/>
 
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
-<br /><br />
+<br />
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
-<br/><br />
+<br/>
 Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
 
 ## ✨ Features
 
 - [x] Listagem de games
 - [x] Criação de um novo anúncio
+- [x] Validação de autenticação com o discord
+- [x] Validações de formulário com o Yup
+- [x] Combobox autocomplete com lista de games para seleção
+- [x] Context API
+- [x] Feedbacks para o usuário: loading durante criação, mudança de página, toast de sucesso e erro
 - [x] Listagem de anúncios
 - [x] Copiar o usuário do discord para a área de transferência
 - [x] Página de erro 404
-- [ ] Recebendo notificações push
 
 ## 🚀 Tecnologias
 
 <ul>
+   <li>Javascript (https://www.javascript.com/)</li>
+   <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>React Native (https://reactnative.dev/)</li>
    <li>Expo (https://docs.expo.dev/)</li>
    <li>React Navigation (https://reactnavigation.org/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Yup (https://github.com/jquense/yup)</li>
+   <li>Toast Message (https://github.com/calintamas/react-native-toast-message#readme)</li>
 </ul>
 
 ## 📟 Layout
@@ -99,7 +108,6 @@ Em seguida, execute o comando abaixo para rodar a versão mobile (em um emulador
 
 ```bash
 npm start
-
 ```
 
 ## 💡 Contribuição
@@ -167,7 +175,7 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 
 ## 🎮 Project
 
-<img src="../.github/mobile-screens.png" alt="Telas do aplicativo mobile" />
+<img src="../.github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 <br/>
 
@@ -179,23 +187,29 @@ In the mobile version, player ads are displayed for registered games, and users 
 
 ## ✨ Features
 
+
 - [x] Games listing
 - [x] Creating a new ad
+- [x] Authentication validation with discord
+- [x] Form Validations with Yup
+- [x] Combobox autocomplete with list of games for selection
+- [x] Context API
+- [x] User feedback: loading during creation, page change, success and error toast
 - [x] Ads listing
 - [x] Copy discord user to clipboard
-- [x] 404 error page
-- [ ] Receiving push notifications
 
 ## 🚀 Technologies
 
 <ul>
-   <li>Javascript (https://www.javascript.com/)<li>
+   <li>Javascript (https://www.javascript.com/)</li>
    <li>Typescript (https://www.typescriptlang.org/)</li>
    <li>React Native (https://reactnative.dev/)</li>
    <li>Expo (https://docs.expo.dev/)</li>
    <li>React Navigation (https://reactnavigation.org/)</li>
    <li>Phosphor Icons (https://phosphoricons.com/)</li>
-   <li>Typescript (https://www.typescriptlang.org/)</li>
+   <li>React Hook Form (https://react-hook-form.com/)</li>
+   <li>Yup (https://github.com/jquense/yup)</li>
+   <li>Toast Message (https://github.com/calintamas/react-native-toast-message#readme)</li>
 </ul>
 
 ## 📟 Layout
@@ -225,7 +239,6 @@ Then, run the command below to run the mobile version (in an emulator or directl
 
 ```bash
 npm start
-
 ```
 
 ## 💡 Contribution

@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
+import { Ghost } from 'phosphor-react-native';
 import { useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { useApp } from '../../hooks/useApp';
 import { IGames, IGamesFormated } from '../../interfaces';
 import { api } from '../../services/api';
@@ -64,7 +65,24 @@ export function GameList() {
       )}
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.contentList}
+      contentContainerStyle={
+        games.length == 0 ? styles.contentList : styles.emptyList
+      }
+      ListEmptyComponent={() => (
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            flex: 1,
+          }}
+        >
+          <Ghost size={30} color='white' />
+          <Text style={styles.textEmptyList}>
+            Não há nenhum jogo cadastrado ainda.
+          </Text>
+        </View>
+      )}
     />
   );
 }
