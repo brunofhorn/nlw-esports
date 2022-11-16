@@ -49,22 +49,21 @@ O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-du
 ## 🎮 Projeto
 
 <img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
-
-<br/>
-<br/>
-
+<br />
 **NLW eSports** é o projeto desenvolvido durante a trilha Ignite da **Next Level Week**, um evento online produzido pela [**Rocketseat**](https://github.com/Rocketseat).
-<br/>
+<br />
+<br />
 <img src=".github/project-web-preview-2.jpg" alt="Modal de criação de anúncio" />
 <br />
+<br />
 Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar outros jogadores no jogo que desejar.
-<br/>
+<br/><br />
 <img src='.github/project-web-preview-3.jpg' alt='NLW eSports' />
-<br />
+<br /><br />
 <img src='.github/project-web-preview-4.jpg' alt='NLW eSports' />
-<br />
+<br /><br />
 Na versão mobile, são exibidos os anúncios dos jogadores para os jogos cadastrados, e os usuários terão a possibilidade de se conectarem pelo discord para jogarem juntos.
-
+<br /><br />
 <img src=".github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
@@ -243,18 +242,18 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 <br/>
 
 **NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
-<br/>
+<br/><br />
 <img src=".github/project-web-preview-2.jpg" alt="NLW eSports" />
-<br/>
+<br/><br />
 It is a system that allows users to search for their duo (duo) in online games and post an ad to find other players in the game they want.
-<br/>
+<br/><br />
 <img src=".github/project-web-preview-3.jpg" alt="NLW eSports" />
-<br />
+<br /><br />
 <img src=".github/project-web-preview-4.jpg" alt="NLW eSports" />
-
+<br /><br />
 
 In the mobile version, player ads are displayed for registered games, and users will be able to connect via discord to play together.
-
+<br /><br />
 <img src=".github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 ## ✨ Features
