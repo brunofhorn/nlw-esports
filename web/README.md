@@ -48,7 +48,7 @@ O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-du
 
 ## 🎮 Projeto
 
-<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
+<img src="../.github/project-web-preview-1.jpg" alt="NLW eSports" />
 
 <br/>
 
@@ -57,7 +57,7 @@ O projeto pode ser acompanhado através do link: <a href="https://nlw-esports-du
 <br />
 <br />
 
-<img src=".github/project-web-preview-2.jpg" alt="Modal de criação de anúncio" />
+<img src="../.github/project-web-preview-2.jpg" alt="Modal de criação de anúncio" />
 
 <br />
 
@@ -66,11 +66,11 @@ Trata-se de um sistema que permite os usuários buscarem seu duo (dupla) em jogo
 <br />
 <br />
 
-<img src='.github/project-web-preview-3.jpg' alt='NLW eSports' />
+<img src='../.github/project-web-preview-3.jpg' alt='NLW eSports' />
 
 <br />
 
-<img src='.github/project-web-preview-4.jpg' alt='NLW eSports' />
+<img src='../.github/project-web-preview-4.jpg' alt='NLW eSports' />
 
 ## ✨ Features
 
@@ -209,7 +209,7 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 
 ## 🎮 Project
 
-<img src=".github/project-web-preview-1.jpg" alt="NLW eSports" />
+<img src="../.github/project-web-preview-1.jpg" alt="NLW eSports" />
 
 <br />
 
@@ -217,7 +217,7 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 
 <br />
 
-<img src=".github/project-web-preview-2.jpg" alt="NLW eSports" />
+<img src="../.github/project-web-preview-2.jpg" alt="NLW eSports" />
 
 <br />
 <br />
@@ -226,12 +226,12 @@ It is a system that allows users to search for their duo (duo) in online games a
 
 <br />
 
-<img src=".github/project-web-preview-3.jpg" alt="NLW eSports" />
+<img src="../.github/project-web-preview-3.jpg" alt="NLW eSports" />
 
 <br />
 <br />
 
-<img src=".github/project-web-preview-4.jpg" alt="NLW eSports" />
+<img src="../.github/project-web-preview-4.jpg" alt="NLW eSports" />
 
 ## ✨ Features
 

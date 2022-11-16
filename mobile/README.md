@@ -181,6 +181,7 @@ The project can be followed through the link: <a href="https://nlw-esports-duo.v
 <img src="../.github/mobile-screens.jpg" alt="Telas do aplicativo mobile" />
 
 <br />
+<br />
 
 **NLW eSports** is the project developed during the Ignite track of **Next Level Week**, an online event produced by [**Rocketseat**](https://github.com/Rocketseat).
 
