@@ -10,7 +10,7 @@ export function BannerCreateAd() {
   const [modalCreateAd, setModalCreateAd] = useState(false);
   const { games } = useApp();
 
-  if (games.length > 0) {
+  if (games.length == 0) {
     return null;
   }
 

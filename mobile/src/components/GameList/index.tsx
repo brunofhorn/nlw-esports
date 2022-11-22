@@ -66,7 +66,7 @@ export function GameList() {
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={
-        games.length == 0 ? styles.contentList : styles.emptyList
+        games.length > 0 ? styles.contentList : styles.emptyList
       }
       ListEmptyComponent={() => (
         <View
